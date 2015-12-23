@@ -13,27 +13,20 @@ extern xSemaphoreHandle sem;
 
 /* PID / UART */
 // Variables bellow are used for both PID calculation and storing values sent from Matlab
-extern uint8_t P_CONSTANT_temp;
-extern uint8_t I_CONSTANT_temp;
-extern uint8_t D_CONSTANT_temp;
-extern double P_CONSTANT;
-extern double I_CONSTANT;
-extern double D_CONSTANT;
+extern double kP_Gain;
+extern double kI_Gain;
+extern double kD_Gain;
+extern int setPoint;
 
-extern uint8_t distanceSetCM_temp;
-extern int distanceSetCM;
+#define DTIME_MS 50
+// Convert ms to s
+//#define DTIME_SECONDS DTIME_MS/1000
 
-extern uint8_t dTime_temp;
-extern double dTime;
-extern uint8_t dTimeRtos;
-
+extern uint8_t isMatlab;
 extern int output_value;
 extern int distance;
 extern int error;
 extern int old_error;
-
-extern uint8_t testByte;
-extern uint8_t testByte2;
 
 /* PWM */
 pwm_channel_t pwm_channel;

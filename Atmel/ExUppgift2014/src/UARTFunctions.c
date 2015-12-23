@@ -25,68 +25,99 @@ void configure_console(void){
 /* Function that receives values from Matlab */
 void getPIDValues()
 {
+	// divier which is used to decode encoded doubles sent from Matlab
 	const uint8_t divider = 100;
-	const uint8_t timeDivider = 10;
 	
+	isMatlab = 0; // 1 for matlab, 0 for terminal debugging
+	uint8_t kP_Gain_temp = 0;
+	uint8_t kI_Gain_temp = 0;
+	uint8_t kD_Gain_temp = 0;
+	uint8_t setPointCm = 0;
 	while (!uart_is_rx_ready (CONF_UART)){
 		vTaskDelay(1);
 	}
-	uart_read(CONF_UART, &P_CONSTANT_temp);
+	uart_read(CONF_UART, &isMatlab);
+	if(!isMatlab){
+		printf("Terminal debugging enabled\n");
+	}
+	while (!uart_is_rx_ready (CONF_UART)){
+		vTaskDelay(1);
+	}
+	uart_read(CONF_UART, &kP_Gain_temp);
 	while (!uart_is_rx_ready (CONF_UART)){
 		vTaskDelay(1);
 	};
-	uart_read(CONF_UART, &I_CONSTANT_temp);
+	uart_read(CONF_UART, &kI_Gain_temp);
 	while (!uart_is_rx_ready (CONF_UART)){
 		vTaskDelay(1);
 	};
-	uart_read(CONF_UART, &D_CONSTANT_temp);
+	uart_read(CONF_UART, &kD_Gain_temp);
 	while (!uart_is_rx_ready (CONF_UART)){
 		vTaskDelay(1);
 	};
-	uart_read(CONF_UART, &dTime_temp);
-	while (!uart_is_rx_ready (CONF_UART)){
-		vTaskDelay(1);
-	};
-	uart_read(CONF_UART, &distanceSetCM_temp);
+	uart_read(CONF_UART, &setPointCm);
 	
-	P_CONSTANT = (double) ((double) P_CONSTANT_temp / divider);
-	I_CONSTANT = (double) (I_CONSTANT_temp / divider);
-	D_CONSTANT = (double) (D_CONSTANT_temp / divider);
+	//Convert to correct data types
+	kP_Gain = (double) ((double) kP_Gain_temp / divider);
+	kI_Gain = (double) (kI_Gain_temp / divider);
+	kD_Gain = (double) (kD_Gain_temp / divider);
 	
-	distanceSetCM = (uint8_t) distanceSetCM_temp;
-
-	dTime = (double) ((double)dTime_temp / timeDivider);
-	dTimeRtos = (uint8_t) (dTime_temp * 10);
+	//kP_Gain = (double) ((double) kP_Gain);
+	//kI_Gain = (double) (kI_Gain);
+	//kD_Gain = (double) (kD_Gain);
 	
-	switch(distanceSetCM){
+	//kP_Gain = 1.5;
+	//kI_Gain = 0;
+	//kD_Gain = 0;
+	//distanceSetCM = 40;
+	
+	//distanceSetCM = (uint8_t) distanceSetCM_temp;
+	
+	switch(setPointCm){
 		case 10 :
-		distanceSetCM = 3340; // 3270 - 3470
+		setPoint = 3340;
 		break;
 		
 		case 20:
-		distanceSetCM = 1850; // 1780 - 1900
+		setPoint = 1800;
 		break;
 		
 		case 30 :
-		distanceSetCM = 1600; // 1550 - 1650
+		setPoint = 1550;
 		break;
 		
 		case 40 :
-		distanceSetCM = 1500; // 1450 - 1550
+		setPoint = 1350;
 		break;
 		
 		case 50 :
-		distanceSetCM = 1300; // 1250 - 1350
+		setPoint = 1250;
 		break;
 		
 		default:
+		setPoint = 1350;
+		break;
 		printf("Invalid distance\n");
 	}
+	
+	printf("Received:\n");
+	if(!isMatlab){
+		printf("Received:\n");
+		printf("%u", kP_Gain_temp);
+		printf("%u", kI_Gain_temp);
+		printf("%u", kD_Gain_temp);
+		printf("%u", setPointCm);
+	}
+	
 }
+
 /* Function that sends values to Matlab */
 void sendValues(){
+	if(!isMatlab){
+		printf("Values:\n");
+	}
 	printf("%i\n\r", error);
 	printf("%i\n\r", output_value);
 	printf("%i\n\r", distance);
-	printf("%i\n\r", distanceSetCM);
+	printf("%i\n\r", setPoint);
 }

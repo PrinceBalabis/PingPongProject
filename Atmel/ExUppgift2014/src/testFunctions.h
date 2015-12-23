@@ -18,6 +18,7 @@ void blinkTest(void);
 void testReceive(void);
 void testFilter(void);
 void testFans(void);
+void testADC(void);
 
 #define TASK_testFunctions_STACK_SIZE (2048/sizeof(portSTACK_TYPE))
 #define TASK_testFunctions_STACK_PRIORITY (4)

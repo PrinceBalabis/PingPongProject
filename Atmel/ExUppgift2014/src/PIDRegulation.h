@@ -11,6 +11,4 @@
 
 void PIDRegulate(void);
 
-#define M 3
-
 #endif /* PIDREGULATION_H_ */
