@@ -61,12 +61,12 @@ for i = 1:N
     
     %Read values from Arduino
     error =  fscanf(arduino,'%d')
-    PID_output =  fscanf(arduino,'%d')
+    pid_output =  fscanf(arduino,'%d')
     distance =  fscanf(arduino,'%d')
     setPoint = fscanf(arduino, '%d')
     
     e(i) = error;
-    o(i) = PID_output;
+    o(i) = pid_output;
     d(i) = distance;
     sp(i) = setPoint;
     
