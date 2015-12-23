@@ -37,25 +37,38 @@ void getPIDValues()
 		vTaskDelay(1);
 	}
 	uart_read(CONF_UART, &isMatlab);
-	if(!isMatlab){
+	if(isMatlab == 48){ // Receive 48 because its char, 48 = 0
+		isMatlab = 0; // save 0 to indicate is not Matlab COM
 		printf("Terminal debugging enabled\n");
+		// Set debugging values
+		kP_Gain = 2.5;
+		kI_Gain = 0;
+		kD_Gain = 0;
+		setPointCm = 40;
+		printf("Preset values:\n");
+		printf("kP: %u\n\r", (uint8_t)((double)kP_Gain*divider));
+		printf("kI: %u\n\r", (uint8_t)((double)kI_Gain*divider));
+		printf("kD: %u\n\r", (uint8_t)((double)kD_Gain*divider));
+		printf("SetpointCm: %u\n\r", setPointCm);
+		} else {
+		while (!uart_is_rx_ready (CONF_UART)){
+			vTaskDelay(1);
+		}
+		uart_read(CONF_UART, &kP_Gain_temp);
+		while (!uart_is_rx_ready (CONF_UART)){
+			vTaskDelay(1);
+		};
+		uart_read(CONF_UART, &kI_Gain_temp);
+		while (!uart_is_rx_ready (CONF_UART)){
+			vTaskDelay(1);
+		};
+		uart_read(CONF_UART, &kD_Gain_temp);
+		while (!uart_is_rx_ready (CONF_UART)){
+			vTaskDelay(1);
+		};
+		uart_read(CONF_UART, &setPointCm);
 	}
-	while (!uart_is_rx_ready (CONF_UART)){
-		vTaskDelay(1);
-	}
-	uart_read(CONF_UART, &kP_Gain_temp);
-	while (!uart_is_rx_ready (CONF_UART)){
-		vTaskDelay(1);
-	};
-	uart_read(CONF_UART, &kI_Gain_temp);
-	while (!uart_is_rx_ready (CONF_UART)){
-		vTaskDelay(1);
-	};
-	uart_read(CONF_UART, &kD_Gain_temp);
-	while (!uart_is_rx_ready (CONF_UART)){
-		vTaskDelay(1);
-	};
-	uart_read(CONF_UART, &setPointCm);
+
 	
 	//Convert to correct data types
 	kP_Gain = (double) ((double) kP_Gain_temp / divider);
@@ -65,11 +78,6 @@ void getPIDValues()
 	//kP_Gain = (double) ((double) kP_Gain);
 	//kI_Gain = (double) (kI_Gain);
 	//kD_Gain = (double) (kD_Gain);
-	
-	//kP_Gain = 1.5;
-	//kI_Gain = 0;
-	//kD_Gain = 0;
-	//distanceSetCM = 40;
 	
 	//distanceSetCM = (uint8_t) distanceSetCM_temp;
 	
@@ -99,16 +107,6 @@ void getPIDValues()
 		break;
 		printf("Invalid distance\n");
 	}
-	
-	printf("Received:\n");
-	if(!isMatlab){
-		printf("Received:\n");
-		printf("%u", kP_Gain_temp);
-		printf("%u", kI_Gain_temp);
-		printf("%u", kD_Gain_temp);
-		printf("%u", setPointCm);
-	}
-	
 }
 
 /* Function that sends values to Matlab */

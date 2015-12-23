@@ -1,6 +1,6 @@
 function [] = startPID(port, dT, T, setpoint, Kp, Ki, Kd)
 % Example 
-% COM port = ex startPID('COM13', 0.1, 30, 40, 150, 0, 0)
+% COM port = ex startPID('COM13', 0.2, 30, 40, 150, 0, 0)
 % dT,(seconds) sampletime for graphing/Arduino UART polling = 0.1
 % T,(seconds) Total time for test to run
 % setpoint,(cm), 10,20,30,40 or 50
@@ -60,15 +60,15 @@ for i = 1:N
     %disp('Reading values')
     
     %Read values from Arduino
-    etemp =  fscanf(arduino,'%d')
-    otemp =  fscanf(arduino,'%d')
-    dtemp =  fscanf(arduino,'%d')
-    sptemp = fscanf(arduino, '%d')
+    error =  fscanf(arduino,'%d')
+    PID_output =  fscanf(arduino,'%d')
+    distance =  fscanf(arduino,'%d')
+    setPoint = fscanf(arduino, '%d')
     
-    e(i) =etemp;
-    o(i) =otemp;
-    d(i) =dtemp;
-    sp(i) =sptemp;
+    e(i) = error;
+    o(i) = PID_output;
+    d(i) = distance;
+    sp(i) = setPoint;
     
     plot(x(1:i), sp,'magenta',x(1:i),e,'red',x(1:i),o,'black',x(1:i),d,'blue');
     ylim([-2000 4000 ]);
