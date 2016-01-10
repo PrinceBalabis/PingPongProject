@@ -15,7 +15,7 @@
 #define PID_PWM_MAX 999
 
 // Setpoint ADC to centimeter
-#define CENTIMETER_10 3050
+#define CENTIMETER_10 3450
 #define CENTIMETER_20 1580
 #define CENTIMETER_30 1070
 #define CENTIMETER_40 820
@@ -33,15 +33,15 @@
 	example for kP=5.0  insert "KP_GAIN_DEBUGGING 500"
 	
 	WORKING PID VALUES WITH SETPOINT
-	#define KP_GAIN_DEBUGGING 600
-	#define KI_GAIN_DEBUGGING 99
-	#define KD_GAIN_DEBUGGING 300
-	#define SETPOINT_DEBUGGING 40
+#define KP_GAIN_DEBUGGING 600
+#define KI_GAIN_DEBUGGING 99
+#define KD_GAIN_DEBUGGING 400
+#define SETPOINT_DEBUGGING 10
 **/
 #define KP_GAIN_DEBUGGING 600
 #define KI_GAIN_DEBUGGING 99
 #define KD_GAIN_DEBUGGING 400
-#define SETPOINT_DEBUGGING 20
+#define SETPOINT_DEBUGGING 10
 // ------------------------------DEBUGGING CONFIG--------------------------------------
 
 

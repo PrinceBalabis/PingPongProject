@@ -1455,7 +1455,7 @@ void getPIDValues()
    80788:	f44f 73c8 	mov.w	r3, #400	; 0x190
    8078c:	f8ad 3002 	strh.w	r3, [sp, #2]
 		setPointCm = SETPOINT_DEBUGGING;
-   80790:	2314      	movs	r3, #20
+   80790:	230a      	movs	r3, #10
    80792:	f8ad 3000 	strh.w	r3, [sp]
 		printf("Preset values:\n");
    80796:	4858      	ldr	r0, [pc, #352]	; (808f8 <getPIDValues+0x1d0>)
@@ -1646,7 +1646,7 @@ void getPIDValues()
    8089d:	00          	.byte	0x00
 		case 10 :
 		setPoint = CENTIMETER_10;
-   8089e:	f640 32ea 	movw	r2, #3050	; 0xbea
+   8089e:	f640 527a 	movw	r2, #3450	; 0xd7a
    808a2:	4b22      	ldr	r3, [pc, #136]	; (8092c <getPIDValues+0x204>)
    808a4:	601a      	str	r2, [r3, #0]
 		break;

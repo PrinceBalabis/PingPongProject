@@ -68,7 +68,6 @@ void getPIDValues()
 		};
 		uart_read(CONF_UART, &setPointCm);
 	}
-
 	
 	//Convert to correct data types
 	kP_Gain = (double) ((double) kP_Gain_temp / divider);

@@ -14,3 +14,9 @@ Vid manual kalibrering börjar man alltid med konstanterna på noll och sakta ökar
 P-kalibrering: Oscillation är ok men övershoot ska knappt överstiga setpoint
 I-kalibrering: Oscillation är ok och överstigningen är ej viktigt, viktigt är att minsta värdet(i oscillationen) närmar sig setpoint
 D-kalibrering: Oscillationen ska nästan helt bort, bollen ska ligga vid setpoint
+
+BRA VÄRDEN
+#define KP_GAIN_DEBUGGING 600
+#define KI_GAIN_DEBUGGING 99
+#define KD_GAIN_DEBUGGING 400
+#define SETPOINT_DEBUGGING 10
