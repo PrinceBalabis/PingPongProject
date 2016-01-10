@@ -29,11 +29,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
  12 .debug_macro  0001bdb4  00000000  00000000  000351e2  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_line   00016b95  00000000  00000000  00050f96  2**0
+ 13 .debug_line   00016b8f  00000000  00000000  00050f96  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_str    0006b02f  00000000  00000000  00067b2b  2**0
+ 14 .debug_str    0006b02f  00000000  00000000  00067b25  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_frame  00002db4  00000000  00000000  000d2b5c  2**2
+ 15 .debug_frame  00002db4  00000000  00000000  000d2b54  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -619,7 +619,7 @@ void PIDRegulate(void){
 		I_Output = 0;
    80366:	f04f 0800 	mov.w	r8, #0
    8036a:	f04f 0900 	mov.w	r9, #0
-	//double I_Output = (I_Output + ((double)error_sum);
+	}
 	
 	// D-regulation
 	double D_Output;
@@ -657,14 +657,12 @@ void PIDRegulate(void){
    8039a:	2700      	movs	r7, #0
 		} else {
 		D_Output = (double)((kD_Gain*(error - error_old))/DT_SECONDS);
-		//double D_Output = (double) (((double)error - (double)error_sum) / DTIME_MS);
 	}
 	error_old = error;
    8039c:	4b22      	ldr	r3, [pc, #136]	; (80428 <PIDRegulate+0x150>)
    8039e:	f8c3 a000 	str.w	sl, [r3]
 	
 	// Add up P, I and D outputs
-	//output_value = (double)kP_Gain*error;
 	output_value = (double)((double)kP_Gain*(double)(error+I_Output+D_Output));
    803a2:	f8df a06c 	ldr.w	sl, [pc, #108]	; 80410 <PIDRegulate+0x138>
    803a6:	4640      	mov	r0, r8
@@ -682,9 +680,6 @@ void PIDRegulate(void){
    803c0:	4b14      	ldr	r3, [pc, #80]	; (80414 <PIDRegulate+0x13c>)
    803c2:	4798      	blx	r3
 	
-	//output_value = (P_CONSTANT * (error + (I_CONSTANT*I_SET) + (D_SET * D_CONSTANT)));
-	//output_value = ((kP_Gain*error) + (kI_Gain*I_Output) + (kD_Gain*D_Output));
-
 	// Protection vs overflow/underflow
 	if (output_value < PID_PWM_MIN)
    803c4:	f5b0 7fb4 	cmp.w	r0, #360	; 0x168
@@ -699,11 +694,11 @@ void PIDRegulate(void){
 	else if (output_value > PID_PWM_MAX)
    803d4:	f5b0 7f7a 	cmp.w	r0, #1000	; 0x3e8
    803d8:	da02      	bge.n	803e0 <PIDRegulate+0x108>
+		D_Output = (double)((kD_Gain*(error - error_old))/DT_SECONDS);
 	}
 	error_old = error;
 	
 	// Add up P, I and D outputs
-	//output_value = (double)kP_Gain*error;
 	output_value = (double)((double)kP_Gain*(double)(error+I_Output+D_Output));
    803da:	4b16      	ldr	r3, [pc, #88]	; (80434 <PIDRegulate+0x15c>)
    803dc:	6018      	str	r0, [r3, #0]
@@ -778,18 +773,16 @@ void PIDRegulationTask (void *pvParameters)
    80462:	4798      	blx	r3
    80464:	ac02      	add	r4, sp, #8
    80466:	f824 0d02 	strh.w	r0, [r4, #-2]!
-	//		printf("%d\n\r", dTimeRtos);
-	
-	//	printf("PID Task LOOP started\n\r");
+	const portTickType xFrequency =  DTIME_MS; // Run between 50-100ms
 	
 	for(;;){
 		vTaskDelayUntil(&xLastWakeTime,xFrequency);	// Samplingstid
    8046a:	4e06      	ldr	r6, [pc, #24]	; (80484 <PIDRegulationTask+0x44>)
 		PIDRegulate(); // Run PID
    8046c:	4d06      	ldr	r5, [pc, #24]	; (80488 <PIDRegulationTask+0x48>)
-	//		printf("%d\n\r", dTimeRtos);
 	
-	//	printf("PID Task LOOP started\n\r");
+	portTickType xLastWakeTime = xTaskGetTickCount();
+	const portTickType xFrequency =  DTIME_MS; // Run between 50-100ms
 	
 	for(;;){
 		vTaskDelayUntil(&xLastWakeTime,xFrequency);	// Samplingstid
@@ -1526,11 +1519,8 @@ void getPIDValues()
    807dc:	47a0      	blx	r4
    807de:	2800      	cmp	r0, #0
    807e0:	d0f9      	beq.n	807d6 <getPIDValues+0xae>
-			//vTaskDelay(1);
-		//};
-		//printf("%i\n\r", kP_Gain_temp);
-		//printf("%i\n\r", kP_Gain_temp2);
-		//
+			vTaskDelay(1);
+		}
 		uart_read(CONF_UART, &kI_Gain_temp);
    807e2:	483e      	ldr	r0, [pc, #248]	; (808dc <getPIDValues+0x1b4>)
    807e4:	a901      	add	r1, sp, #4
@@ -1541,20 +1531,20 @@ void getPIDValues()
    807ec:	4c3c      	ldr	r4, [pc, #240]	; (808e0 <getPIDValues+0x1b8>)
 			vTaskDelay(1);
    807ee:	4e3d      	ldr	r6, [pc, #244]	; (808e4 <getPIDValues+0x1bc>)
-		//};
-		//printf("%i\n\r", kP_Gain_temp);
-		//printf("%i\n\r", kP_Gain_temp2);
-		//
+		uart_read(CONF_UART, &kP_Gain_temp);
+		while (!uart_is_rx_ready (CONF_UART)){
+			vTaskDelay(1);
+		}
 		uart_read(CONF_UART, &kI_Gain_temp);
 		while (!uart_is_rx_ready (CONF_UART)){
    807f0:	e001      	b.n	807f6 <getPIDValues+0xce>
 			vTaskDelay(1);
    807f2:	2001      	movs	r0, #1
    807f4:	47b0      	blx	r6
-		//};
-		//printf("%i\n\r", kP_Gain_temp);
-		//printf("%i\n\r", kP_Gain_temp2);
-		//
+		uart_read(CONF_UART, &kP_Gain_temp);
+		while (!uart_is_rx_ready (CONF_UART)){
+			vTaskDelay(1);
+		}
 		uart_read(CONF_UART, &kI_Gain_temp);
 		while (!uart_is_rx_ready (CONF_UART)){
    807f6:	4628      	mov	r0, r5

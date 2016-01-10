@@ -10225,36 +10225,36 @@ OUTPUT(ExUppgift2014_6_2.elf elf32-littlearm)
  .debug_macro   0x0001b562      0x120 src/ASF/sam/utils/syscalls/gcc/syscalls.o
  .debug_macro   0x0001b682      0x732 src/main.o
 
-.debug_line     0x00000000    0x16b95
+.debug_line     0x00000000    0x16b8f
  .debug_line    0x00000000     0x1072 src/ADCCustom.o
  .debug_line    0x00001072      0xad9 src/ASF/common/utils/stdio/read.o
  .debug_line    0x00001b4b      0xe60 src/ASF/sam/drivers/adc/adc.o
  .debug_line    0x000029ab     0x11a9 src/ASF/sam/drivers/usart/usart.o
  .debug_line    0x00003b54     0x102c src/global_variables.o
- .debug_line    0x00004b80     0x10b5 src/PIDRegulation.o
- .debug_line    0x00005c35     0x1074 src/PIDTask.o
- .debug_line    0x00006ca9     0x1080 src/PWMCustom.o
- .debug_line    0x00007d29     0x119f src/UARTFunctions.o
- .debug_line    0x00008ec8     0x108b src/UARTTask.o
- .debug_line    0x00009f53      0x467 src/ASF/thirdparty/freertos/freertos-7.3.0/source/list.o
- .debug_line    0x0000a3ba      0xdcd src/ASF/thirdparty/freertos/freertos-7.3.0/source/portable/gcc/sam/port.o
- .debug_line    0x0000b187      0x4c2 src/ASF/thirdparty/freertos/freertos-7.3.0/source/portable/memmang/heap_4.o
- .debug_line    0x0000b649      0x7de src/ASF/thirdparty/freertos/freertos-7.3.0/source/queue.o
- .debug_line    0x0000be27      0xa28 src/ASF/thirdparty/freertos/freertos-7.3.0/source/tasks.o
- .debug_line    0x0000c84f      0x4ee src/ASF/thirdparty/freertos/freertos-7.3.0/source/timers.o
- .debug_line    0x0000cd3d      0xacf src/ASF/common/utils/stdio/write.o
- .debug_line    0x0000d80c      0xe5d src/ASF/sam/drivers/pwm/pwm.o
- .debug_line    0x0000e669      0xc8f src/ASF/sam/drivers/uart/uart.o
- .debug_line    0x0000f2f8      0xc48 src/ASF/common/services/clock/sam3x/sysclk.o
- .debug_line    0x0000ff40      0xce5 src/ASF/sam/boards/arduino_due_x/init.o
- .debug_line    0x00010c25      0xe42 src/ASF/sam/drivers/pio/pio.o
- .debug_line    0x00011a67      0xb8d src/ASF/sam/drivers/pio/pio_handler.o
- .debug_line    0x000125f4     0x1047 src/ASF/sam/drivers/pmc/pmc.o
- .debug_line    0x0001363b      0xab5 src/ASF/sam/utils/cmsis/sam3x/source/templates/exceptions.o
- .debug_line    0x000140f0      0xb05 src/ASF/sam/utils/cmsis/sam3x/source/templates/gcc/startup_sam3x.o
- .debug_line    0x00014bf5      0xb22 src/ASF/sam/utils/cmsis/sam3x/source/templates/system_sam3x.o
- .debug_line    0x00015717      0x39b src/ASF/sam/utils/syscalls/gcc/syscalls.o
- .debug_line    0x00015ab2     0x10e3 src/main.o
+ .debug_line    0x00004b80     0x10b1 src/PIDRegulation.o
+ .debug_line    0x00005c31     0x1074 src/PIDTask.o
+ .debug_line    0x00006ca5     0x1080 src/PWMCustom.o
+ .debug_line    0x00007d25     0x119d src/UARTFunctions.o
+ .debug_line    0x00008ec2     0x108b src/UARTTask.o
+ .debug_line    0x00009f4d      0x467 src/ASF/thirdparty/freertos/freertos-7.3.0/source/list.o
+ .debug_line    0x0000a3b4      0xdcd src/ASF/thirdparty/freertos/freertos-7.3.0/source/portable/gcc/sam/port.o
+ .debug_line    0x0000b181      0x4c2 src/ASF/thirdparty/freertos/freertos-7.3.0/source/portable/memmang/heap_4.o
+ .debug_line    0x0000b643      0x7de src/ASF/thirdparty/freertos/freertos-7.3.0/source/queue.o
+ .debug_line    0x0000be21      0xa28 src/ASF/thirdparty/freertos/freertos-7.3.0/source/tasks.o
+ .debug_line    0x0000c849      0x4ee src/ASF/thirdparty/freertos/freertos-7.3.0/source/timers.o
+ .debug_line    0x0000cd37      0xacf src/ASF/common/utils/stdio/write.o
+ .debug_line    0x0000d806      0xe5d src/ASF/sam/drivers/pwm/pwm.o
+ .debug_line    0x0000e663      0xc8f src/ASF/sam/drivers/uart/uart.o
+ .debug_line    0x0000f2f2      0xc48 src/ASF/common/services/clock/sam3x/sysclk.o
+ .debug_line    0x0000ff3a      0xce5 src/ASF/sam/boards/arduino_due_x/init.o
+ .debug_line    0x00010c1f      0xe42 src/ASF/sam/drivers/pio/pio.o
+ .debug_line    0x00011a61      0xb8d src/ASF/sam/drivers/pio/pio_handler.o
+ .debug_line    0x000125ee     0x1047 src/ASF/sam/drivers/pmc/pmc.o
+ .debug_line    0x00013635      0xab5 src/ASF/sam/utils/cmsis/sam3x/source/templates/exceptions.o
+ .debug_line    0x000140ea      0xb05 src/ASF/sam/utils/cmsis/sam3x/source/templates/gcc/startup_sam3x.o
+ .debug_line    0x00014bef      0xb22 src/ASF/sam/utils/cmsis/sam3x/source/templates/system_sam3x.o
+ .debug_line    0x00015711      0x39b src/ASF/sam/utils/syscalls/gcc/syscalls.o
+ .debug_line    0x00015aac     0x10e3 src/main.o
 
 .debug_str      0x00000000    0x6b02f
  .debug_str     0x00000000    0x62d9f src/ADCCustom.o

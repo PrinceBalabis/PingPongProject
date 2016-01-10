@@ -21,10 +21,6 @@ void PIDRegulationTask (void *pvParameters)
 	portTickType xLastWakeTime = xTaskGetTickCount();
 	const portTickType xFrequency =  DTIME_MS; // Run between 50-100ms
 	
-	//		printf("%d\n\r", dTimeRtos);
-	
-	//	printf("PID Task LOOP started\n\r");
-	
 	for(;;){
 		vTaskDelayUntil(&xLastWakeTime,xFrequency);	// Samplingstid
 		PIDRegulate(); // Run PID

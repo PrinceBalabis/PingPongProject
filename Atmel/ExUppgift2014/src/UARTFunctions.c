@@ -60,13 +60,6 @@ void getPIDValues()
 		while (!uart_is_rx_ready (CONF_UART)){
 			vTaskDelay(1);
 		}
-		//uart_read(CONF_UART, &kP_Gain_temp2);
-		//while (!uart_is_rx_ready (CONF_UART)){
-			//vTaskDelay(1);
-		//};
-		//printf("%i\n\r", kP_Gain_temp);
-		//printf("%i\n\r", kP_Gain_temp2);
-		//
 		uart_read(CONF_UART, &kI_Gain_temp);
 		while (!uart_is_rx_ready (CONF_UART)){
 			vTaskDelay(1);

@@ -35,8 +35,6 @@ void PIDRegulate(void){
 		} else {
 		I_Output = (double)(DT_SECONDS/((double)kI_Gain))*error_sum;
 	}
-
-	//double I_Output = (I_Output + ((double)error_sum);
 	
 	// D-regulation
 	double D_Output;
@@ -46,26 +44,12 @@ void PIDRegulate(void){
 		D_Output = 0;
 		} else {
 		D_Output = (double)((kD_Gain*(error - error_old))/DT_SECONDS);
-		//double D_Output = (double) (((double)error - (double)error_sum) / DTIME_MS);
 	}
 	error_old = error;
 	
 	// Add up P, I and D outputs
-	//output_value = (double)kP_Gain*error;
 	output_value = (double)((double)kP_Gain*(double)(error+I_Output+D_Output));
 	
-	//printf("oP: %u\n\r", (uint16_t)(output_value));
-	//printf("oP: %u\n\r", (uint16_t)(error));
-	//printf("oI: %u\n\r", (uint16_t)(I_Output));
-	//printf("oD: %u\n\r", (uint16_t)(D_Output));
-	
-	//printf("kP: %u\n\r", (uint16_t)(kP_Gain));
-	//printf("error: %u\n\r", (uint16_t)(error));
-	//printf("output_value: %u\n\r", (uint16_t)(output_value));
-	
-	//output_value = (P_CONSTANT * (error + (I_CONSTANT*I_SET) + (D_SET * D_CONSTANT)));
-	//output_value = ((kP_Gain*error) + (kI_Gain*I_Output) + (kD_Gain*D_Output));
-
 	// Protection vs overflow/underflow
 	if (output_value < PID_PWM_MIN)
 	{
