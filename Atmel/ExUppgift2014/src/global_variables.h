@@ -24,11 +24,19 @@
 // -------------------------------DEBUGGING CONFIG-------------------------------------
 // DEBUGGING CONFIG AREA
 
-// P,I and D values
-// set value 100 times bigger, for instance if you want 5.0, set P, I or D to 500.
-// example for kP=5.0  insert "KP_GAIN_DEBUGGING 500"
-#define KP_GAIN_DEBUGGING 90
-#define KI_GAIN_DEBUGGING 200
+/** 
+	P,I and D values
+	set value 100 times bigger, for instance if you want 5.0, set P, I or D to 500.
+	example for kP=5.0  insert "KP_GAIN_DEBUGGING 500"
+	
+	WORKING PID VALUES WITH SETPOINT
+	#define KP_GAIN_DEBUGGING 80
+	#define KI_GAIN_DEBUGGING 50
+	#define KD_GAIN_DEBUGGING 0
+	#define SETPOINT_DEBUGGING 20
+**/
+#define KP_GAIN_DEBUGGING 80
+#define KI_GAIN_DEBUGGING 90
 #define KD_GAIN_DEBUGGING 0
 #define SETPOINT_DEBUGGING 20
 // ------------------------------DEBUGGING CONFIG--------------------------------------

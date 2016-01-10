@@ -47,8 +47,8 @@ void getPIDValues()
 		setPointCm = SETPOINT_DEBUGGING;
 		printf("Preset values:\n");
 		printf("kP: %u\n\r", (uint16_t)(kP_Gain_temp));
-		printf("kI: %u\n\r", (uint8_t)(kI_Gain_temp));
-		printf("kD: %u\n\r", (uint8_t)(kD_Gain_temp));
+		printf("kI: %u\n\r", (uint16_t)(kI_Gain_temp));
+		printf("kD: %u\n\r", (uint16_t)(kD_Gain_temp));
 		printf("SetpointCm: %u\n\r", setPointCm);
 		} else {
 		while (!uart_is_rx_ready (CONF_UART)){

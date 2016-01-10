@@ -51,8 +51,8 @@ void PIDRegulate(void){
 	error_old = error;
 	
 	// Add up P, I and D outputs
-	output_value = (double)kP_Gain*error;
-	//output_value = (double)((double)kP_Gain*(double)(error+I_Output+D_Output));
+	//output_value = (double)kP_Gain*error;
+	output_value = (double)((double)kP_Gain*(double)(error+I_Output+D_Output));
 	
 	//printf("oP: %u\n\r", (uint16_t)(output_value));
 	//printf("oP: %u\n\r", (uint16_t)(error));
