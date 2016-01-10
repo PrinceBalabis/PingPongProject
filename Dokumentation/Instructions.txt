@@ -2,11 +2,15 @@ Sensor: Signal A8, Spänning 5V, GND
 Motor: Shield output A
 PWM för Motor: Kabel mellan Digitalpin 3 till Digitalpin 7
 
+Tanka ner Github repot
+
+"Add to path" i matlab för matlabkoden
+C:\Users\Spellabbet\Desktop\PingPongProject\Matlab
+
 Sätt en mörk matt objekt över motorn(för att sensorn läser av fel pga reflektioner av motorn)
 Kalibrera sensorn vinkel på systemet(för högt eller för lågt ger fel sensorvärden)
 
 Kalibrera sensor setpoits för cm(kolla i global_variables.h CALIBRATION CONFIG section)
-
 
 Manual Kalibrering(ej Ziegler–Nichols method):
 kolla GIF, "PID_Compensation_Animated_MANUAL_TUNING" för en animation av hur manual tuning fungerar
