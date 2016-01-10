@@ -29,10 +29,10 @@ void getPIDValues()
 	const uint8_t divider = 100;
 	
 	isMatlab = 0; // 1 for matlab, 0 for terminal debugging
-	uint8_t kP_Gain_temp = 0;
-	uint8_t kI_Gain_temp = 0;
-	uint8_t kD_Gain_temp = 0;
-	uint8_t setPointCm = 0;
+	uint16_t kP_Gain_temp = 0;
+	uint16_t kI_Gain_temp = 0;
+	uint16_t kD_Gain_temp = 0;
+	uint16_t setPointCm = 0;
 	while (!uart_is_rx_ready (CONF_UART)){
 		vTaskDelay(1);
 	}
@@ -41,14 +41,14 @@ void getPIDValues()
 		isMatlab = 0; // save 0 to indicate is not Matlab COM
 		printf("Terminal debugging enabled\n");
 		// Set debugging values
-		kP_Gain = 2.5;
-		kI_Gain = 0;
-		kD_Gain = 0;
-		setPointCm = 40;
+		kP_Gain_temp = KP_GAIN_DEBUGGING;
+		kI_Gain_temp = KI_GAIN_DEBUGGING;
+		kD_Gain_temp = KD_GAIN_DEBUGGING;
+		setPointCm = SETPOINT_DEBUGGING;
 		printf("Preset values:\n");
-		printf("kP: %u\n\r", (uint8_t)((double)kP_Gain*divider));
-		printf("kI: %u\n\r", (uint8_t)((double)kI_Gain*divider));
-		printf("kD: %u\n\r", (uint8_t)((double)kD_Gain*divider));
+		printf("kP: %u\n\r", (uint16_t)(kP_Gain_temp));
+		printf("kI: %u\n\r", (uint8_t)(kI_Gain_temp));
+		printf("kD: %u\n\r", (uint8_t)(kD_Gain_temp));
 		printf("SetpointCm: %u\n\r", setPointCm);
 		} else {
 		while (!uart_is_rx_ready (CONF_UART)){
@@ -75,35 +75,29 @@ void getPIDValues()
 	kI_Gain = (double) (kI_Gain_temp / divider);
 	kD_Gain = (double) (kD_Gain_temp / divider);
 	
-	//kP_Gain = (double) ((double) kP_Gain);
-	//kI_Gain = (double) (kI_Gain);
-	//kD_Gain = (double) (kD_Gain);
-	
-	//distanceSetCM = (uint8_t) distanceSetCM_temp;
-	
 	switch(setPointCm){
 		case 10 :
-		setPoint = 3340;
+		setPoint = CENTIMETER_10;
 		break;
 		
 		case 20:
-		setPoint = 1800;
+		setPoint = CENTIMETER_20;
 		break;
 		
 		case 30 :
-		setPoint = 1550;
+		setPoint = CENTIMETER_30;
 		break;
 		
 		case 40 :
-		setPoint = 1350;
+		setPoint = CENTIMETER_40;
 		break;
 		
 		case 50 :
-		setPoint = 1250;
+		setPoint = CENTIMETER_50;
 		break;
 		
 		default:
-		setPoint = 1350;
+		setPoint = CENTIMETER_DEFAULT;
 		break;
 		printf("Invalid distance\n");
 	}

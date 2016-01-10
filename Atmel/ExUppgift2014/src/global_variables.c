@@ -20,8 +20,8 @@ uint8_t isMatlab = 1; // 1 for matlab, 0 for terminal debugging
 int output_value = 0;
 int distance = 0;
 int error = 0;
-int old_error = 0;
-
+int error_sum = 0;
+int error_old = 0;
 
 
 

@@ -1,0 +1,5 @@
+Sensor: Signal A8, Spänning 5V, GND
+Motor: Shield output A
+PWM för Motor: Kabel mellan Digitalpin 3 till Digitalpin 7
+
+Kalibrera sensor setpoits för cm(kolla i global_variables.h CALIBRATION CONFIG section)

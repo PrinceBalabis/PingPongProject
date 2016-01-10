@@ -1,12 +1,14 @@
 function [] = startPID(port, dT, T, setpoint, Kp, Ki, Kd)
-% Example 
-% COM port = ex startPID('COM13', 0.2, 30, 40, 150, 0, 0)
+
 % dT,(seconds) sampletime for graphing/Arduino UART polling = 0.1
 % T,(seconds) Total time for test to run
 % setpoint,(cm), 10,20,30,40 or 50
 % Kp,K-constant to send '2.2', send '220', because its divided with 100 in Arduino
 % Ki,I-constant to send '2', send '200', because its divided with 100 in Arduino
 % Kd,D-constant to send '1.5', send '150', because its divided with 100 in Arduino
+
+% Example 
+% startPID('COM13', 0.2, 30, 40, 150, 0, 0)
 
 %Before running, dont forget to put something to disable reflection of
 %motor to sensor(like a scarf or something)
