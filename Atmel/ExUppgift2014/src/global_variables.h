@@ -10,6 +10,9 @@
 #define GLOBAL_VARIABLES_H_
 // -------------------------------CALIBRATION CONFIG-------------------------------------
 // CALIBRATION CONFIG AREA
+//Minimum/Maximum PWM output from PID-regulation
+#define PID_PWM_MIN 360
+#define PID_PWM_MAX 999
 
 // Setpoint ADC to centimeter
 #define CENTIMETER_10 3050
@@ -30,14 +33,14 @@
 	example for kP=5.0  insert "KP_GAIN_DEBUGGING 500"
 	
 	WORKING PID VALUES WITH SETPOINT
-	#define KP_GAIN_DEBUGGING 80
-	#define KI_GAIN_DEBUGGING 50
-	#define KD_GAIN_DEBUGGING 0
-	#define SETPOINT_DEBUGGING 20
+	#define KP_GAIN_DEBUGGING 600
+	#define KI_GAIN_DEBUGGING 99
+	#define KD_GAIN_DEBUGGING 300
+	#define SETPOINT_DEBUGGING 40
 **/
-#define KP_GAIN_DEBUGGING 80
-#define KI_GAIN_DEBUGGING 90
-#define KD_GAIN_DEBUGGING 0
+#define KP_GAIN_DEBUGGING 600
+#define KI_GAIN_DEBUGGING 99
+#define KD_GAIN_DEBUGGING 400
 #define SETPOINT_DEBUGGING 20
 // ------------------------------DEBUGGING CONFIG--------------------------------------
 

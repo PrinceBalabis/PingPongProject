@@ -67,13 +67,13 @@ void PIDRegulate(void){
 	//output_value = ((kP_Gain*error) + (kI_Gain*I_Output) + (kD_Gain*D_Output));
 
 	// Protection vs overflow/underflow
-	if (output_value < 300)
+	if (output_value < PID_PWM_MIN)
 	{
-		output_value = 300;
+		output_value = PID_PWM_MIN;
 	}
-	else if (output_value > 999)
+	else if (output_value > PID_PWM_MAX)
 	{
-		output_value = 999;
+		output_value = PID_PWM_MAX;
 	}
 
 	// Write PID value to PWM
