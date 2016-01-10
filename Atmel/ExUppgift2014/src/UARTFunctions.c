@@ -26,10 +26,11 @@ void configure_console(void){
 void getPIDValues()
 {
 	// divier which is used to decode encoded doubles sent from Matlab
-	const uint8_t divider = 100;
+	const uint8_t divider = 10;
 	
 	isMatlab = 0; // 1 for matlab, 0 for terminal debugging
 	uint16_t kP_Gain_temp = 0;
+	uint16_t kP_Gain_temp2 = 0;
 	uint16_t kI_Gain_temp = 0;
 	uint16_t kD_Gain_temp = 0;
 	uint16_t setPointCm = 0;
@@ -54,10 +55,18 @@ void getPIDValues()
 		while (!uart_is_rx_ready (CONF_UART)){
 			vTaskDelay(1);
 		}
+		
 		uart_read(CONF_UART, &kP_Gain_temp);
 		while (!uart_is_rx_ready (CONF_UART)){
 			vTaskDelay(1);
-		};
+		}
+		//uart_read(CONF_UART, &kP_Gain_temp2);
+		//while (!uart_is_rx_ready (CONF_UART)){
+			//vTaskDelay(1);
+		//};
+		//printf("%i\n\r", kP_Gain_temp);
+		//printf("%i\n\r", kP_Gain_temp2);
+		//
 		uart_read(CONF_UART, &kI_Gain_temp);
 		while (!uart_is_rx_ready (CONF_UART)){
 			vTaskDelay(1);
@@ -112,3 +121,6 @@ void sendValues(){
 	printf("%i\n\r", distance);
 	printf("%i\n\r", setPoint);
 }
+
+
+

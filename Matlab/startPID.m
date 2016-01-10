@@ -3,12 +3,12 @@ function [] = startPID(port, dT, T, setpoint, Kp, Ki, Kd)
 % dT,(seconds) sampletime for graphing/Arduino UART polling = 0.1
 % T,(seconds) Total time for test to run
 % setpoint,(cm), 10,20,30,40 or 50
-% Kp,K-constant to send '2.2', send '220', because its divided with 100 in Arduino
-% Ki,I-constant to send '2', send '200', because its divided with 100 in Arduino
-% Kd,D-constant to send '1.5', send '150', because its divided with 100 in Arduino
+% Kp,K-constant to send '2.2', send '22', because its divided with 10 in Arduino
+% Ki,I-constant to send '2', send '20', because its divided with 10 in Arduino
+% Kd,D-constant to send '1.5', send '15', because its divided with 10 in Arduino
 
 % Example 
-% startPID('COM13', 0.2, 30, 40, 150, 0, 0)
+% startPID('COM13', 0.2, 60, 10, 60, 9, 40)
 
 %Before running, dont forget to put something to disable reflection of
 %motor to sensor(like a scarf or something)
@@ -44,6 +44,11 @@ fwrite(arduino, setpoint, 'int8');
 pause(1);
 
 disp('Start loop')
+disp(['Kp: ' num2str(Kp)]) 
+disp(['Ki: ' num2str(Ki)]) 
+disp(['Kd: ' num2str(Kd)]) 
+disp(['Setpoint: ' num2str(setpoint)]) 
+
 %Clear uart buffer
 flushinput(arduino);
 flushoutput(arduino)
@@ -66,7 +71,7 @@ for i = 1:N
     pid_output =  fscanf(arduino,'%d')
     distance =  fscanf(arduino,'%d')
     setPoint = fscanf(arduino, '%d')
-    
+
     e(i) = error;
     o(i) = pid_output;
     d(i) = distance;

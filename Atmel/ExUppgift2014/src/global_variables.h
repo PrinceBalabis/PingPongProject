@@ -38,9 +38,9 @@
 #define KD_GAIN_DEBUGGING 400
 #define SETPOINT_DEBUGGING 10
 **/
-#define KP_GAIN_DEBUGGING 600
-#define KI_GAIN_DEBUGGING 99
-#define KD_GAIN_DEBUGGING 400
+#define KP_GAIN_DEBUGGING 60
+#define KI_GAIN_DEBUGGING 9
+#define KD_GAIN_DEBUGGING 40
 #define SETPOINT_DEBUGGING 10
 // ------------------------------DEBUGGING CONFIG--------------------------------------
 
