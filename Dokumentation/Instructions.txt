@@ -11,6 +11,7 @@ Sätt en mörk matt objekt över motorn(för att sensorn läser av fel pga reflektion
 Kalibrera sensorn vinkel på systemet(för högt eller för lågt ger fel sensorvärden)
 
 Kalibrera sensor setpoits för cm(kolla i global_variables.h CALIBRATION CONFIG section)
+Använd Arduino IDE Serial Monitor och skicka en nolla("0") för att starta debug mode
 
 Manual Kalibrering(ej Ziegler–Nichols method):
 kolla GIF, "PID_Compensation_Animated_MANUAL_TUNING" för en animation av hur manual tuning fungerar

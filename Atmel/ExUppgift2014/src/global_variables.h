@@ -15,12 +15,15 @@
 #define PID_PWM_MAX 999
 
 // Setpoint ADC to centimeter
-#define CENTIMETER_10 3450
-#define CENTIMETER_20 1580
-#define CENTIMETER_30 1070
+#define CENTIMETER_10 3278
+#define CENTIMETER_20 1560
+#define CENTIMETER_30 920
 #define CENTIMETER_40 820
-#define CENTIMETER_50 700
-#define CENTIMETER_DEFAULT 820
+#define CENTIMETER_50 750
+#define CENTIMETER_DEFAULT 1560
+
+// How many samples to acquire for filter at each PID run.
+#define FILTER_AVERAGE_SAMPLES 10
 
 // ------------------------------CALIBRATION CONFIG--------------------------------------
 
@@ -40,8 +43,8 @@
 **/
 #define KP_GAIN_DEBUGGING 60
 #define KI_GAIN_DEBUGGING 9
-#define KD_GAIN_DEBUGGING 40
-#define SETPOINT_DEBUGGING 10
+#define KD_GAIN_DEBUGGING 60
+#define SETPOINT_DEBUGGING 20
 // ------------------------------DEBUGGING CONFIG--------------------------------------
 
 

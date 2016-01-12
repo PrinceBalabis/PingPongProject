@@ -17,23 +17,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   6 .comment      0000005b  00000000  00000000  000109cd  2**0
                   CONTENTS, READONLY
-  7 .debug_info   00016706  00000000  00000000  00010a28  2**0
+  7 .debug_info   000166f5  00000000  00000000  00010a28  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_abbrev 00003afe  00000000  00000000  0002712e  2**0
+  8 .debug_abbrev 00003aef  00000000  00000000  0002711d  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_loc    000086e6  00000000  00000000  0002ac2c  2**0
+  9 .debug_loc    000086e6  00000000  00000000  0002ac0c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_aranges 00000ff8  00000000  00000000  00033312  2**0
+ 10 .debug_aranges 00000ff8  00000000  00000000  000332f2  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000ed8  00000000  00000000  0003430a  2**0
+ 11 .debug_ranges 00000ed8  00000000  00000000  000342ea  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_macro  0001bdb4  00000000  00000000  000351e2  2**0
+ 12 .debug_macro  0001bdba  00000000  00000000  000351c2  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_line   00016b8f  00000000  00000000  00050f96  2**0
+ 13 .debug_line   00016b8f  00000000  00000000  00050f7c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_str    0006b02f  00000000  00000000  00067b25  2**0
+ 14 .debug_str    0006b03a  00000000  00000000  00067b0b  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_frame  00002db4  00000000  00000000  000d2b54  2**2
+ 15 .debug_frame  00002db4  00000000  00000000  000d2b48  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -524,25 +524,24 @@ void PIDRegulate(void){
    802dc:	2409      	movs	r4, #9
 	
 	// moving average filter of sampled sensor values
-	const int readingsAmount = 10;
 	int valuesTotal = 0;
    802de:	2500      	movs	r5, #0
-	for(int i = 0; i<readingsAmount-1; i++){
+	for(int i = 0; i<FILTER_AVERAGE_SAMPLES-1; i++){
 		valuesTotal += ADCReadSensor();
    802e0:	4e44      	ldr	r6, [pc, #272]	; (803f4 <PIDRegulate+0x11c>)
    802e2:	47b0      	blx	r6
    802e4:	4405      	add	r5, r0
+/* PID Function */
 void PIDRegulate(void){
 	
 	// moving average filter of sampled sensor values
-	const int readingsAmount = 10;
 	int valuesTotal = 0;
-	for(int i = 0; i<readingsAmount-1; i++){
+	for(int i = 0; i<FILTER_AVERAGE_SAMPLES-1; i++){
    802e6:	3c01      	subs	r4, #1
    802e8:	d1fb      	bne.n	802e2 <PIDRegulate+0xa>
 		valuesTotal += ADCReadSensor();
 	}
-	distance = valuesTotal / readingsAmount;
+	distance = valuesTotal / FILTER_AVERAGE_SAMPLES;
    802ea:	4b43      	ldr	r3, [pc, #268]	; (803f8 <PIDRegulate+0x120>)
    802ec:	fb83 2a05 	smull	r2, sl, r3, r5
    802f0:	17ed      	asrs	r5, r5, #31
@@ -1424,7 +1423,7 @@ void getPIDValues()
    80768:	4c5d      	ldr	r4, [pc, #372]	; (808e0 <getPIDValues+0x1b8>)
 			vTaskDelay(1);
    8076a:	4e5e      	ldr	r6, [pc, #376]	; (808e4 <getPIDValues+0x1bc>)
-   8076c:	e026      	b.n	807bc <getPIDValues+0x94>
+   8076c:	e025      	b.n	807ba <getPIDValues+0x92>
 	while (!uart_is_rx_ready (CONF_UART)){
 		vTaskDelay(1);
 	}
@@ -1443,252 +1442,253 @@ void getPIDValues()
    8077a:	233c      	movs	r3, #60	; 0x3c
    8077c:	f8ad 3006 	strh.w	r3, [sp, #6]
 		kI_Gain_temp = KI_GAIN_DEBUGGING;
-   80780:	2309      	movs	r3, #9
-   80782:	f8ad 3004 	strh.w	r3, [sp, #4]
+   80780:	2209      	movs	r2, #9
+   80782:	f8ad 2004 	strh.w	r2, [sp, #4]
 		kD_Gain_temp = KD_GAIN_DEBUGGING;
-   80786:	2328      	movs	r3, #40	; 0x28
-   80788:	f8ad 3002 	strh.w	r3, [sp, #2]
+   80786:	f8ad 3002 	strh.w	r3, [sp, #2]
 		setPointCm = SETPOINT_DEBUGGING;
-   8078c:	230a      	movs	r3, #10
-   8078e:	f8ad 3000 	strh.w	r3, [sp]
+   8078a:	2314      	movs	r3, #20
+   8078c:	f8ad 3000 	strh.w	r3, [sp]
 		printf("Preset values:\n");
-   80792:	4858      	ldr	r0, [pc, #352]	; (808f4 <getPIDValues+0x1cc>)
-   80794:	47a0      	blx	r4
+   80790:	4858      	ldr	r0, [pc, #352]	; (808f4 <getPIDValues+0x1cc>)
+   80792:	47a0      	blx	r4
 		printf("kP: %u\n\r", (uint16_t)(kP_Gain_temp));
-   80796:	4858      	ldr	r0, [pc, #352]	; (808f8 <getPIDValues+0x1d0>)
-   80798:	f8bd 1006 	ldrh.w	r1, [sp, #6]
-   8079c:	47a0      	blx	r4
+   80794:	4858      	ldr	r0, [pc, #352]	; (808f8 <getPIDValues+0x1d0>)
+   80796:	f8bd 1006 	ldrh.w	r1, [sp, #6]
+   8079a:	47a0      	blx	r4
 		printf("kI: %u\n\r", (uint16_t)(kI_Gain_temp));
-   8079e:	4857      	ldr	r0, [pc, #348]	; (808fc <getPIDValues+0x1d4>)
-   807a0:	f8bd 1004 	ldrh.w	r1, [sp, #4]
-   807a4:	47a0      	blx	r4
+   8079c:	4857      	ldr	r0, [pc, #348]	; (808fc <getPIDValues+0x1d4>)
+   8079e:	f8bd 1004 	ldrh.w	r1, [sp, #4]
+   807a2:	47a0      	blx	r4
 		printf("kD: %u\n\r", (uint16_t)(kD_Gain_temp));
-   807a6:	4856      	ldr	r0, [pc, #344]	; (80900 <getPIDValues+0x1d8>)
-   807a8:	f8bd 1002 	ldrh.w	r1, [sp, #2]
-   807ac:	47a0      	blx	r4
+   807a4:	4856      	ldr	r0, [pc, #344]	; (80900 <getPIDValues+0x1d8>)
+   807a6:	f8bd 1002 	ldrh.w	r1, [sp, #2]
+   807aa:	47a0      	blx	r4
 		printf("SetpointCm: %u\n\r", setPointCm);
-   807ae:	4855      	ldr	r0, [pc, #340]	; (80904 <getPIDValues+0x1dc>)
-   807b0:	f8bd 1000 	ldrh.w	r1, [sp]
-   807b4:	47a0      	blx	r4
-   807b6:	e035      	b.n	80824 <getPIDValues+0xfc>
+   807ac:	4855      	ldr	r0, [pc, #340]	; (80904 <getPIDValues+0x1dc>)
+   807ae:	f8bd 1000 	ldrh.w	r1, [sp]
+   807b2:	47a0      	blx	r4
+   807b4:	e035      	b.n	80822 <getPIDValues+0xfa>
 		} else {
 		while (!uart_is_rx_ready (CONF_UART)){
 			vTaskDelay(1);
-   807b8:	2001      	movs	r0, #1
-   807ba:	47b0      	blx	r6
+   807b6:	2001      	movs	r0, #1
+   807b8:	47b0      	blx	r6
 		printf("kP: %u\n\r", (uint16_t)(kP_Gain_temp));
 		printf("kI: %u\n\r", (uint16_t)(kI_Gain_temp));
 		printf("kD: %u\n\r", (uint16_t)(kD_Gain_temp));
 		printf("SetpointCm: %u\n\r", setPointCm);
 		} else {
 		while (!uart_is_rx_ready (CONF_UART)){
-   807bc:	4628      	mov	r0, r5
-   807be:	47a0      	blx	r4
-   807c0:	2800      	cmp	r0, #0
-   807c2:	d0f9      	beq.n	807b8 <getPIDValues+0x90>
+   807ba:	4628      	mov	r0, r5
+   807bc:	47a0      	blx	r4
+   807be:	2800      	cmp	r0, #0
+   807c0:	d0f9      	beq.n	807b6 <getPIDValues+0x8e>
 			vTaskDelay(1);
 		}
 		
 		uart_read(CONF_UART, &kP_Gain_temp);
-   807c4:	4845      	ldr	r0, [pc, #276]	; (808dc <getPIDValues+0x1b4>)
-   807c6:	f10d 0106 	add.w	r1, sp, #6
-   807ca:	4b47      	ldr	r3, [pc, #284]	; (808e8 <getPIDValues+0x1c0>)
-   807cc:	4798      	blx	r3
+   807c2:	4846      	ldr	r0, [pc, #280]	; (808dc <getPIDValues+0x1b4>)
+   807c4:	f10d 0106 	add.w	r1, sp, #6
+   807c8:	4b47      	ldr	r3, [pc, #284]	; (808e8 <getPIDValues+0x1c0>)
+   807ca:	4798      	blx	r3
 		while (!uart_is_rx_ready (CONF_UART)){
-   807ce:	4d43      	ldr	r5, [pc, #268]	; (808dc <getPIDValues+0x1b4>)
-   807d0:	4c43      	ldr	r4, [pc, #268]	; (808e0 <getPIDValues+0x1b8>)
+   807cc:	4d43      	ldr	r5, [pc, #268]	; (808dc <getPIDValues+0x1b4>)
+   807ce:	4c44      	ldr	r4, [pc, #272]	; (808e0 <getPIDValues+0x1b8>)
 			vTaskDelay(1);
-   807d2:	4e44      	ldr	r6, [pc, #272]	; (808e4 <getPIDValues+0x1bc>)
-		while (!uart_is_rx_ready (CONF_UART)){
-			vTaskDelay(1);
-		}
-		
-		uart_read(CONF_UART, &kP_Gain_temp);
-		while (!uart_is_rx_ready (CONF_UART)){
-   807d4:	e001      	b.n	807da <getPIDValues+0xb2>
-			vTaskDelay(1);
-   807d6:	2001      	movs	r0, #1
-   807d8:	47b0      	blx	r6
+   807d0:	4e44      	ldr	r6, [pc, #272]	; (808e4 <getPIDValues+0x1bc>)
 		while (!uart_is_rx_ready (CONF_UART)){
 			vTaskDelay(1);
 		}
 		
 		uart_read(CONF_UART, &kP_Gain_temp);
 		while (!uart_is_rx_ready (CONF_UART)){
-   807da:	4628      	mov	r0, r5
-   807dc:	47a0      	blx	r4
-   807de:	2800      	cmp	r0, #0
-   807e0:	d0f9      	beq.n	807d6 <getPIDValues+0xae>
+   807d2:	e001      	b.n	807d8 <getPIDValues+0xb0>
+			vTaskDelay(1);
+   807d4:	2001      	movs	r0, #1
+   807d6:	47b0      	blx	r6
+		while (!uart_is_rx_ready (CONF_UART)){
+			vTaskDelay(1);
+		}
+		
+		uart_read(CONF_UART, &kP_Gain_temp);
+		while (!uart_is_rx_ready (CONF_UART)){
+   807d8:	4628      	mov	r0, r5
+   807da:	47a0      	blx	r4
+   807dc:	2800      	cmp	r0, #0
+   807de:	d0f9      	beq.n	807d4 <getPIDValues+0xac>
 			vTaskDelay(1);
 		}
 		uart_read(CONF_UART, &kI_Gain_temp);
-   807e2:	483e      	ldr	r0, [pc, #248]	; (808dc <getPIDValues+0x1b4>)
-   807e4:	a901      	add	r1, sp, #4
-   807e6:	4b40      	ldr	r3, [pc, #256]	; (808e8 <getPIDValues+0x1c0>)
-   807e8:	4798      	blx	r3
+   807e0:	483e      	ldr	r0, [pc, #248]	; (808dc <getPIDValues+0x1b4>)
+   807e2:	a901      	add	r1, sp, #4
+   807e4:	4b40      	ldr	r3, [pc, #256]	; (808e8 <getPIDValues+0x1c0>)
+   807e6:	4798      	blx	r3
 		while (!uart_is_rx_ready (CONF_UART)){
-   807ea:	4d3c      	ldr	r5, [pc, #240]	; (808dc <getPIDValues+0x1b4>)
-   807ec:	4c3c      	ldr	r4, [pc, #240]	; (808e0 <getPIDValues+0x1b8>)
+   807e8:	4d3c      	ldr	r5, [pc, #240]	; (808dc <getPIDValues+0x1b4>)
+   807ea:	4c3d      	ldr	r4, [pc, #244]	; (808e0 <getPIDValues+0x1b8>)
 			vTaskDelay(1);
-   807ee:	4e3d      	ldr	r6, [pc, #244]	; (808e4 <getPIDValues+0x1bc>)
+   807ec:	4e3d      	ldr	r6, [pc, #244]	; (808e4 <getPIDValues+0x1bc>)
 		uart_read(CONF_UART, &kP_Gain_temp);
 		while (!uart_is_rx_ready (CONF_UART)){
 			vTaskDelay(1);
 		}
 		uart_read(CONF_UART, &kI_Gain_temp);
 		while (!uart_is_rx_ready (CONF_UART)){
-   807f0:	e001      	b.n	807f6 <getPIDValues+0xce>
+   807ee:	e001      	b.n	807f4 <getPIDValues+0xcc>
 			vTaskDelay(1);
-   807f2:	2001      	movs	r0, #1
-   807f4:	47b0      	blx	r6
+   807f0:	2001      	movs	r0, #1
+   807f2:	47b0      	blx	r6
 		uart_read(CONF_UART, &kP_Gain_temp);
 		while (!uart_is_rx_ready (CONF_UART)){
 			vTaskDelay(1);
 		}
 		uart_read(CONF_UART, &kI_Gain_temp);
 		while (!uart_is_rx_ready (CONF_UART)){
-   807f6:	4628      	mov	r0, r5
-   807f8:	47a0      	blx	r4
-   807fa:	2800      	cmp	r0, #0
-   807fc:	d0f9      	beq.n	807f2 <getPIDValues+0xca>
+   807f4:	4628      	mov	r0, r5
+   807f6:	47a0      	blx	r4
+   807f8:	2800      	cmp	r0, #0
+   807fa:	d0f9      	beq.n	807f0 <getPIDValues+0xc8>
 			vTaskDelay(1);
 		};
 		uart_read(CONF_UART, &kD_Gain_temp);
-   807fe:	4837      	ldr	r0, [pc, #220]	; (808dc <getPIDValues+0x1b4>)
-   80800:	f10d 0102 	add.w	r1, sp, #2
-   80804:	4b38      	ldr	r3, [pc, #224]	; (808e8 <getPIDValues+0x1c0>)
-   80806:	4798      	blx	r3
+   807fc:	4837      	ldr	r0, [pc, #220]	; (808dc <getPIDValues+0x1b4>)
+   807fe:	f10d 0102 	add.w	r1, sp, #2
+   80802:	4b39      	ldr	r3, [pc, #228]	; (808e8 <getPIDValues+0x1c0>)
+   80804:	4798      	blx	r3
 		while (!uart_is_rx_ready (CONF_UART)){
-   80808:	4d34      	ldr	r5, [pc, #208]	; (808dc <getPIDValues+0x1b4>)
-   8080a:	4c35      	ldr	r4, [pc, #212]	; (808e0 <getPIDValues+0x1b8>)
+   80806:	4d35      	ldr	r5, [pc, #212]	; (808dc <getPIDValues+0x1b4>)
+   80808:	4c35      	ldr	r4, [pc, #212]	; (808e0 <getPIDValues+0x1b8>)
 			vTaskDelay(1);
-   8080c:	4e35      	ldr	r6, [pc, #212]	; (808e4 <getPIDValues+0x1bc>)
+   8080a:	4e36      	ldr	r6, [pc, #216]	; (808e4 <getPIDValues+0x1bc>)
 		uart_read(CONF_UART, &kI_Gain_temp);
 		while (!uart_is_rx_ready (CONF_UART)){
 			vTaskDelay(1);
 		};
 		uart_read(CONF_UART, &kD_Gain_temp);
 		while (!uart_is_rx_ready (CONF_UART)){
-   8080e:	e001      	b.n	80814 <getPIDValues+0xec>
+   8080c:	e001      	b.n	80812 <getPIDValues+0xea>
 			vTaskDelay(1);
-   80810:	2001      	movs	r0, #1
-   80812:	47b0      	blx	r6
+   8080e:	2001      	movs	r0, #1
+   80810:	47b0      	blx	r6
 		uart_read(CONF_UART, &kI_Gain_temp);
 		while (!uart_is_rx_ready (CONF_UART)){
 			vTaskDelay(1);
 		};
 		uart_read(CONF_UART, &kD_Gain_temp);
 		while (!uart_is_rx_ready (CONF_UART)){
-   80814:	4628      	mov	r0, r5
-   80816:	47a0      	blx	r4
-   80818:	2800      	cmp	r0, #0
-   8081a:	d0f9      	beq.n	80810 <getPIDValues+0xe8>
+   80812:	4628      	mov	r0, r5
+   80814:	47a0      	blx	r4
+   80816:	2800      	cmp	r0, #0
+   80818:	d0f9      	beq.n	8080e <getPIDValues+0xe6>
 			vTaskDelay(1);
 		};
 		uart_read(CONF_UART, &setPointCm);
-   8081c:	482f      	ldr	r0, [pc, #188]	; (808dc <getPIDValues+0x1b4>)
-   8081e:	4669      	mov	r1, sp
-   80820:	4b31      	ldr	r3, [pc, #196]	; (808e8 <getPIDValues+0x1c0>)
-   80822:	4798      	blx	r3
+   8081a:	4830      	ldr	r0, [pc, #192]	; (808dc <getPIDValues+0x1b4>)
+   8081c:	4669      	mov	r1, sp
+   8081e:	4b32      	ldr	r3, [pc, #200]	; (808e8 <getPIDValues+0x1c0>)
+   80820:	4798      	blx	r3
 	}
 	
 	//Convert to correct data types
 	kP_Gain = (double) ((double) kP_Gain_temp / divider);
-   80824:	f8bd 0006 	ldrh.w	r0, [sp, #6]
-   80828:	4b37      	ldr	r3, [pc, #220]	; (80908 <getPIDValues+0x1e0>)
-   8082a:	4798      	blx	r3
-   8082c:	2200      	movs	r2, #0
-   8082e:	4b37      	ldr	r3, [pc, #220]	; (8090c <getPIDValues+0x1e4>)
-   80830:	4c37      	ldr	r4, [pc, #220]	; (80910 <getPIDValues+0x1e8>)
-   80832:	47a0      	blx	r4
-   80834:	4b37      	ldr	r3, [pc, #220]	; (80914 <getPIDValues+0x1ec>)
-   80836:	e9c3 0100 	strd	r0, r1, [r3]
+   80822:	f8bd 0006 	ldrh.w	r0, [sp, #6]
+   80826:	4b38      	ldr	r3, [pc, #224]	; (80908 <getPIDValues+0x1e0>)
+   80828:	4798      	blx	r3
+   8082a:	2200      	movs	r2, #0
+   8082c:	4b37      	ldr	r3, [pc, #220]	; (8090c <getPIDValues+0x1e4>)
+   8082e:	4c38      	ldr	r4, [pc, #224]	; (80910 <getPIDValues+0x1e8>)
+   80830:	47a0      	blx	r4
+   80832:	4b38      	ldr	r3, [pc, #224]	; (80914 <getPIDValues+0x1ec>)
+   80834:	e9c3 0100 	strd	r0, r1, [r3]
 	kI_Gain = (double) (kI_Gain_temp / divider);
-   8083a:	f8bd 0004 	ldrh.w	r0, [sp, #4]
-   8083e:	4d36      	ldr	r5, [pc, #216]	; (80918 <getPIDValues+0x1f0>)
-   80840:	fb85 2000 	smull	r2, r0, r5, r0
-   80844:	4c35      	ldr	r4, [pc, #212]	; (8091c <getPIDValues+0x1f4>)
-   80846:	1080      	asrs	r0, r0, #2
-   80848:	47a0      	blx	r4
-   8084a:	4b35      	ldr	r3, [pc, #212]	; (80920 <getPIDValues+0x1f8>)
-   8084c:	e9c3 0100 	strd	r0, r1, [r3]
+   80838:	f8bd 0004 	ldrh.w	r0, [sp, #4]
+   8083c:	4d36      	ldr	r5, [pc, #216]	; (80918 <getPIDValues+0x1f0>)
+   8083e:	fb85 2000 	smull	r2, r0, r5, r0
+   80842:	4c36      	ldr	r4, [pc, #216]	; (8091c <getPIDValues+0x1f4>)
+   80844:	1080      	asrs	r0, r0, #2
+   80846:	47a0      	blx	r4
+   80848:	4b35      	ldr	r3, [pc, #212]	; (80920 <getPIDValues+0x1f8>)
+   8084a:	e9c3 0100 	strd	r0, r1, [r3]
 	kD_Gain = (double) (kD_Gain_temp / divider);
-   80850:	f8bd 3002 	ldrh.w	r3, [sp, #2]
-   80854:	fb85 2003 	smull	r2, r0, r5, r3
-   80858:	1080      	asrs	r0, r0, #2
-   8085a:	47a0      	blx	r4
-   8085c:	4b31      	ldr	r3, [pc, #196]	; (80924 <getPIDValues+0x1fc>)
-   8085e:	e9c3 0100 	strd	r0, r1, [r3]
+   8084e:	f8bd 3002 	ldrh.w	r3, [sp, #2]
+   80852:	fb85 2003 	smull	r2, r0, r5, r3
+   80856:	1080      	asrs	r0, r0, #2
+   80858:	47a0      	blx	r4
+   8085a:	4b32      	ldr	r3, [pc, #200]	; (80924 <getPIDValues+0x1fc>)
+   8085c:	e9c3 0100 	strd	r0, r1, [r3]
 	
 	switch(setPointCm){
-   80862:	f8bd 3000 	ldrh.w	r3, [sp]
-   80866:	3b0a      	subs	r3, #10
-   80868:	2b28      	cmp	r3, #40	; 0x28
-   8086a:	d82f      	bhi.n	808cc <getPIDValues+0x1a4>
-   8086c:	e8df f003 	tbb	[pc, r3]
-   80870:	2e2e2e15 	.word	0x2e2e2e15
+   80860:	f8bd 3000 	ldrh.w	r3, [sp]
+   80864:	3b0a      	subs	r3, #10
+   80866:	2b28      	cmp	r3, #40	; 0x28
+   80868:	d82f      	bhi.n	808ca <getPIDValues+0x1a2>
+   8086a:	e8df f003 	tbb	[pc, r3]
+   8086e:	2e15      	.short	0x2e15
+   80870:	2e2e2e2e 	.word	0x2e2e2e2e
    80874:	2e2e2e2e 	.word	0x2e2e2e2e
-   80878:	2e1a2e2e 	.word	0x2e1a2e2e
+   80878:	2e2e2e1a 	.word	0x2e2e2e1a
    8087c:	2e2e2e2e 	.word	0x2e2e2e2e
-   80880:	2e2e2e2e 	.word	0x2e2e2e2e
-   80884:	2e2e2e1f 	.word	0x2e2e2e1f
+   80880:	2e1f2e2e 	.word	0x2e1f2e2e
+   80884:	2e2e2e2e 	.word	0x2e2e2e2e
    80888:	2e2e2e2e 	.word	0x2e2e2e2e
-   8088c:	2e242e2e 	.word	0x2e242e2e
+   8088c:	2e2e2e24 	.word	0x2e2e2e24
    80890:	2e2e2e2e 	.word	0x2e2e2e2e
-   80894:	2e2e2e2e 	.word	0x2e2e2e2e
-   80898:	29          	.byte	0x29
-   80899:	00          	.byte	0x00
+   80894:	2e2e      	.short	0x2e2e
+   80896:	29          	.byte	0x29
+   80897:	00          	.byte	0x00
 		case 10 :
 		setPoint = CENTIMETER_10;
-   8089a:	f640 527a 	movw	r2, #3450	; 0xd7a
-   8089e:	4b22      	ldr	r3, [pc, #136]	; (80928 <getPIDValues+0x200>)
-   808a0:	601a      	str	r2, [r3, #0]
+   80898:	f640 42ce 	movw	r2, #3278	; 0xcce
+   8089c:	4b22      	ldr	r3, [pc, #136]	; (80928 <getPIDValues+0x200>)
+   8089e:	601a      	str	r2, [r3, #0]
 		break;
-   808a2:	e017      	b.n	808d4 <getPIDValues+0x1ac>
+   808a0:	e017      	b.n	808d2 <getPIDValues+0x1aa>
 		
 		case 20:
 		setPoint = CENTIMETER_20;
-   808a4:	f240 622c 	movw	r2, #1580	; 0x62c
-   808a8:	4b1f      	ldr	r3, [pc, #124]	; (80928 <getPIDValues+0x200>)
-   808aa:	601a      	str	r2, [r3, #0]
+   808a2:	f44f 62c3 	mov.w	r2, #1560	; 0x618
+   808a6:	4b20      	ldr	r3, [pc, #128]	; (80928 <getPIDValues+0x200>)
+   808a8:	601a      	str	r2, [r3, #0]
 		break;
-   808ac:	e012      	b.n	808d4 <getPIDValues+0x1ac>
+   808aa:	e012      	b.n	808d2 <getPIDValues+0x1aa>
 		
 		case 30 :
 		setPoint = CENTIMETER_30;
-   808ae:	f240 422e 	movw	r2, #1070	; 0x42e
-   808b2:	4b1d      	ldr	r3, [pc, #116]	; (80928 <getPIDValues+0x200>)
-   808b4:	601a      	str	r2, [r3, #0]
+   808ac:	f44f 7266 	mov.w	r2, #920	; 0x398
+   808b0:	4b1d      	ldr	r3, [pc, #116]	; (80928 <getPIDValues+0x200>)
+   808b2:	601a      	str	r2, [r3, #0]
 		break;
-   808b6:	e00d      	b.n	808d4 <getPIDValues+0x1ac>
+   808b4:	e00d      	b.n	808d2 <getPIDValues+0x1aa>
 		
 		case 40 :
 		setPoint = CENTIMETER_40;
-   808b8:	f44f 724d 	mov.w	r2, #820	; 0x334
-   808bc:	4b1a      	ldr	r3, [pc, #104]	; (80928 <getPIDValues+0x200>)
-   808be:	601a      	str	r2, [r3, #0]
+   808b6:	f44f 724d 	mov.w	r2, #820	; 0x334
+   808ba:	4b1b      	ldr	r3, [pc, #108]	; (80928 <getPIDValues+0x200>)
+   808bc:	601a      	str	r2, [r3, #0]
 		break;
-   808c0:	e008      	b.n	808d4 <getPIDValues+0x1ac>
+   808be:	e008      	b.n	808d2 <getPIDValues+0x1aa>
 		
 		case 50 :
 		setPoint = CENTIMETER_50;
-   808c2:	f44f 722f 	mov.w	r2, #700	; 0x2bc
-   808c6:	4b18      	ldr	r3, [pc, #96]	; (80928 <getPIDValues+0x200>)
-   808c8:	601a      	str	r2, [r3, #0]
+   808c0:	f240 22ee 	movw	r2, #750	; 0x2ee
+   808c4:	4b18      	ldr	r3, [pc, #96]	; (80928 <getPIDValues+0x200>)
+   808c6:	601a      	str	r2, [r3, #0]
 		break;
-   808ca:	e003      	b.n	808d4 <getPIDValues+0x1ac>
+   808c8:	e003      	b.n	808d2 <getPIDValues+0x1aa>
 		
 		default:
 		setPoint = CENTIMETER_DEFAULT;
-   808cc:	f44f 724d 	mov.w	r2, #820	; 0x334
-   808d0:	4b15      	ldr	r3, [pc, #84]	; (80928 <getPIDValues+0x200>)
-   808d2:	601a      	str	r2, [r3, #0]
+   808ca:	f44f 62c3 	mov.w	r2, #1560	; 0x618
+   808ce:	4b16      	ldr	r3, [pc, #88]	; (80928 <getPIDValues+0x200>)
+   808d0:	601a      	str	r2, [r3, #0]
 		break;
 		printf("Invalid distance\n");
 	}
 }
-   808d4:	b002      	add	sp, #8
-   808d6:	bd70      	pop	{r4, r5, r6, pc}
+   808d2:	b002      	add	sp, #8
+   808d4:	bd70      	pop	{r4, r5, r6, pc}
+   808d6:	bf00      	nop
    808d8:	2007012c 	.word	0x2007012c
    808dc:	400e0800 	.word	0x400e0800
    808e0:	00082299 	.word	0x00082299

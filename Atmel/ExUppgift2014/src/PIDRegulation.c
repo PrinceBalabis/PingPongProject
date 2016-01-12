@@ -16,12 +16,11 @@
 void PIDRegulate(void){
 	
 	// moving average filter of sampled sensor values
-	const int readingsAmount = 10;
 	int valuesTotal = 0;
-	for(int i = 0; i<readingsAmount-1; i++){
+	for(int i = 0; i<FILTER_AVERAGE_SAMPLES-1; i++){
 		valuesTotal += ADCReadSensor();
 	}
-	distance = valuesTotal / readingsAmount;
+	distance = valuesTotal / FILTER_AVERAGE_SAMPLES;
 	
 	// P-regulation
 	error = (setPoint - distance);

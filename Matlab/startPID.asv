@@ -81,7 +81,7 @@ for i = 1:N
     if(tq(i)<1)
         tq(i)=1;
     end
-    plot(tq, sp,'magenta',tq,e,'red',tq,o,'black',tq,d,'blue');
+    plot(x(1:tq), sp(,'magenta',x(1:tq),e,'red',x(1:tq),o,'black',x(1:tq),d,'blue');
     ylim([-3000 4000 ]);
     xlabel('Time(seconds)');
     ylabel('Position');
