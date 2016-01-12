@@ -13,6 +13,9 @@ function [] = startPID(port, dT, T, setpoint, Kp, Ki, Kd)
 %Before running, dont forget to put something to disable reflection of
 %motor to sensor(like a scarf or something)
 
+%Make sure the same divider is set for Arduino
+divider = 10;
+
 arduino = serial(port, 'BaudRate', 115200,'databits', 8);
 fopen(arduino);
 

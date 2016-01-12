@@ -1,0 +1,68 @@
+>> startPID('COM13', 0.5, 30, 30, 28, 0, 0)
+Amount of iterations(N): 60
+Kp: 28
+Ki: 0
+Kd: 0
+Setpoint: 30
+Sending data to Arduino...
+Starting sampling...
+NuTid: 1		Error: 187		Utsignal: 523		Sensor Distans: 733		Setpoint: 920
+NuTid: 1		Error: 184		Utsignal: 515		Sensor Distans: 736		Setpoint: 920
+NuTid: 1.5		Error: 138		Utsignal: 386		Sensor Distans: 782		Setpoint: 920
+NuTid: 2		Error: 18		Utsignal: 360		Sensor Distans: 902		Setpoint: 920
+NuTid: 2.5		Error: 99		Utsignal: 360		Sensor Distans: 821		Setpoint: 920
+NuTid: 3		Error: 181		Utsignal: 506		Sensor Distans: 739		Setpoint: 920
+NuTid: 3.5		Error: 186		Utsignal: 520		Sensor Distans: 734		Setpoint: 920
+NuTid: 4		Error: 216		Utsignal: 604		Sensor Distans: 704		Setpoint: 920
+NuTid: 4.5		Error: 159		Utsignal: 445		Sensor Distans: 761		Setpoint: 920
+NuTid: 5		Error: -139		Utsignal: 360		Sensor Distans: 1059		Setpoint: 920
+NuTid: 5.5		Error: -107		Utsignal: 360		Sensor Distans: 1027		Setpoint: 920
+NuTid: 6		Error: 146		Utsignal: 408		Sensor Distans: 774		Setpoint: 920
+NuTid: 6.5		Error: 189		Utsignal: 529		Sensor Distans: 731		Setpoint: 920
+NuTid: 7		Error: 178		Utsignal: 498		Sensor Distans: 742		Setpoint: 920
+NuTid: 7.5		Error: 170		Utsignal: 475		Sensor Distans: 750		Setpoint: 920
+NuTid: 8		Error: -63		Utsignal: 360		Sensor Distans: 983		Setpoint: 920
+NuTid: 8.5		Error: -101		Utsignal: 360		Sensor Distans: 1021		Setpoint: 920
+NuTid: 9		Error: 166		Utsignal: 464		Sensor Distans: 754		Setpoint: 920
+NuTid: 9.5		Error: 174		Utsignal: 487		Sensor Distans: 746		Setpoint: 920
+NuTid: 10		Error: 183		Utsignal: 512		Sensor Distans: 737		Setpoint: 920
+NuTid: 10.5		Error: 165		Utsignal: 461		Sensor Distans: 755		Setpoint: 920
+NuTid: 11		Error: -143		Utsignal: 360		Sensor Distans: 1063		Setpoint: 920
+NuTid: 11.5		Error: -243		Utsignal: 360		Sensor Distans: 1163		Setpoint: 920
+NuTid: 12		Error: 100		Utsignal: 360		Sensor Distans: 820		Setpoint: 920
+NuTid: 12.5		Error: 209		Utsignal: 585		Sensor Distans: 711		Setpoint: 920
+NuTid: 13		Error: 181		Utsignal: 506		Sensor Distans: 739		Setpoint: 920
+NuTid: 13.5		Error: 160		Utsignal: 448		Sensor Distans: 760		Setpoint: 920
+NuTid: 14		Error: -65		Utsignal: 360		Sensor Distans: 985		Setpoint: 920
+NuTid: 14.5		Error: -235		Utsignal: 360		Sensor Distans: 1155		Setpoint: 920
+NuTid: 15		Error: 101		Utsignal: 360		Sensor Distans: 819		Setpoint: 920
+NuTid: 15.5		Error: 189		Utsignal: 529		Sensor Distans: 731		Setpoint: 920
+NuTid: 16		Error: 185		Utsignal: 518		Sensor Distans: 735		Setpoint: 920
+NuTid: 16.5		Error: 187		Utsignal: 523		Sensor Distans: 733		Setpoint: 920
+NuTid: 17		Error: 36		Utsignal: 360		Sensor Distans: 884		Setpoint: 920
+NuTid: 17.5		Error: -188		Utsignal: 360		Sensor Distans: 1108		Setpoint: 920
+NuTid: 18		Error: 35		Utsignal: 360		Sensor Distans: 885		Setpoint: 920
+NuTid: 18.5		Error: 186		Utsignal: 520		Sensor Distans: 734		Setpoint: 920
+NuTid: 19		Error: 206		Utsignal: 576		Sensor Distans: 714		Setpoint: 920
+NuTid: 19.5		Error: 192		Utsignal: 537		Sensor Distans: 728		Setpoint: 920
+NuTid: 20		Error: 85		Utsignal: 360		Sensor Distans: 835		Setpoint: 920
+NuTid: 20.5		Error: -224		Utsignal: 360		Sensor Distans: 1144		Setpoint: 920
+NuTid: 21		Error: -80		Utsignal: 360		Sensor Distans: 1000		Setpoint: 920
+NuTid: 21.5		Error: 179		Utsignal: 501		Sensor Distans: 741		Setpoint: 920
+NuTid: 22		Error: 183		Utsignal: 512		Sensor Distans: 737		Setpoint: 920
+NuTid: 22.5		Error: 127		Utsignal: 360		Sensor Distans: 793		Setpoint: 920
+NuTid: 23		Error: 77		Utsignal: 360		Sensor Distans: 843		Setpoint: 920
+NuTid: 23.5		Error: -171		Utsignal: 360		Sensor Distans: 1091		Setpoint: 920
+NuTid: 24		Error: 14		Utsignal: 360		Sensor Distans: 906		Setpoint: 920
+NuTid: 24.5		Error: 188		Utsignal: 526		Sensor Distans: 732		Setpoint: 920
+NuTid: 25		Error: 157		Utsignal: 439		Sensor Distans: 763		Setpoint: 920
+NuTid: 25.5		Error: 190		Utsignal: 532		Sensor Distans: 730		Setpoint: 920
+NuTid: 26		Error: 127		Utsignal: 360		Sensor Distans: 793		Setpoint: 920
+NuTid: 26.5		Error: -95		Utsignal: 360		Sensor Distans: 1015		Setpoint: 920
+NuTid: 27		Error: 40		Utsignal: 360		Sensor Distans: 880		Setpoint: 920
+NuTid: 27.5		Error: 181		Utsignal: 506		Sensor Distans: 739		Setpoint: 920
+NuTid: 28		Error: 177		Utsignal: 495		Sensor Distans: 743		Setpoint: 920
+NuTid: 28.5		Error: 179		Utsignal: 501		Sensor Distans: 741		Setpoint: 920
+NuTid: 29		Error: 96		Utsignal: 360		Sensor Distans: 824		Setpoint: 920
+NuTid: 29.5		Error: -149		Utsignal: 360		Sensor Distans: 1069		Setpoint: 920
+NuTid: 30		Error: 14		Utsignal: 360		Sensor Distans: 906		Setpoint: 920
