@@ -47,7 +47,7 @@ void PIDRegulate(void){
 	error_old = error;
 
 	// Add up P, I and D outputs
-	output_value = (double)((double)kP_Gain*(double)(error+I_Output+D_Output));
+	output_value = (kP_Gain*(error+I_Output+D_Output));
 
 	// Protection vs overflow/underflow
 	if (output_value < PID_PWM_MIN)

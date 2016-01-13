@@ -8,7 +8,7 @@ function [] = startPID(port, dT, T, setpoint, Kp, Ki, Kd)
 % Kd,D-constant to send '1.5', send '15', because its divided with 10 in Arduino
 
 % Example
-% startPID('COM13', 0.1, 30, 30, 10, 0, 0)
+% startPID('COM13', 0.3, 30, 20, 60, 9, 40)
 
 %Before running, dont forget to put something to disable reflection of
 %motor to sensor(like a scarf or something)
@@ -37,17 +37,17 @@ x = 1:N;
 flushinput(arduino);
 flushoutput(arduino);
 
-pause(1);
+pause(0.5);
 fwrite(arduino, 1, 'int8');
-pause(1);
+pause(0.5);
 fwrite(arduino, Kp, 'int8');
-pause(1);
+pause(0.5);
 fwrite(arduino, Ki, 'int8');
-pause(1);
+pause(0.5);
 fwrite(arduino, Kd, 'int8');
-pause(1);
+pause(0.5);
 fwrite(arduino, setpoint, 'int8');
-pause(1);
+pause(0.5);
 
 disp('Starting sampling...');
 %Clear uart buffer
@@ -84,6 +84,7 @@ for i = 1:N
     end
     
     disp(['NuTid: '  num2str(tq(i))  9 9 'Error: ' num2str(error)  9 9 'Utsignal: ' num2str(pid_output)  9 9 'Sensor Distans: '  num2str(distance)  9 9 'Setpoint: '  num2str(setPoint)]);
+    
     plot(tq, sp,'magenta',tq,e,'red',tq,o,'black',tq,d,'blue');
     ylim([-3000 4000 ]);
     xlabel('Time(seconds)');
