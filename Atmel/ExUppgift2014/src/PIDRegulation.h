@@ -2,8 +2,8 @@
  * PIDRegulation.h
  *
  * Created: 2015-10-10 16:05:39
- *  Author: Stefan
- */ 
+ *  Author: Stefan & Prince
+ */
 
 
 #ifndef PIDREGULATION_H_

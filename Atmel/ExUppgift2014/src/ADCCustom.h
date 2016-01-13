@@ -2,8 +2,8 @@
  * ADCCustom.h
  *
  * Created: 2015-10-10 16:03:42
- *  Author: Stefan
- */ 
+ *  Author: Stefan & Prince
+ */
 
 #ifndef ADCCUSTOM_H_
 #define ADCCUSTOM_H_

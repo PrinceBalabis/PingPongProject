@@ -2,8 +2,8 @@
  * testFunctions.h
  *
  * Created: 2015-10-10 16:07:07
- *  Author: Stefan
- */ 
+ *  Author: Stefan & Prince
+ */
 
 
 #ifndef TESTFUNCTIONS_H_

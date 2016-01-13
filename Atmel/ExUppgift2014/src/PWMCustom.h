@@ -2,8 +2,8 @@
  * PWMCustom.h
  *
  * Created: 2015-10-10 16:06:17
- *  Author: Stefan
- */ 
+ *  Author: Stefan & Prince
+ */
 
 
 #ifndef PWMCUSTOM_H_

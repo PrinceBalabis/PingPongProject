@@ -2,7 +2,7 @@
 * global_variables.c
 *
 * Created: 2015-12-07 00:18:21
-*  Author: Stefan
+*  Author: Stefan & Prince
 */
 #include <asf.h>
 #include "global_variables.h"
@@ -22,7 +22,3 @@ int distance = 0;
 int error = 0;
 int error_sum = 0;
 int error_old = 0;
-
-
-
-

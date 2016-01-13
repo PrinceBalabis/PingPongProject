@@ -2,7 +2,7 @@
 * global_variables.h
 *
 * Created: 2015-12-07 00:18:34
-*  Author: Stefan
+*  Author: Stefan & Prince
 */
 
 
@@ -30,11 +30,11 @@
 // -------------------------------DEBUGGING CONFIG-------------------------------------
 // DEBUGGING CONFIG AREA
 
-/** 
+/**
 	P,I and D values
 	set value 100 times bigger, for instance if you want 5.0, set P, I or D to 500.
 	example for kP=5.0  insert "KP_GAIN_DEBUGGING 500"
-	
+
 	WORKING PID VALUES WITH SETPOINT
 #define KP_GAIN_DEBUGGING 600
 #define KI_GAIN_DEBUGGING 99
@@ -59,7 +59,7 @@ extern double kI_Gain;
 extern double kD_Gain;
 extern int setPoint;
 
-// dt är 50ms eller 0.5s
+// dt ï¿½r 50ms eller 0.5s
 #define DTIME_MS 50
 #define DT_SECONDS 0.5
 

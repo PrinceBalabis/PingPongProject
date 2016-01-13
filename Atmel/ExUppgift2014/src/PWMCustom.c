@@ -2,7 +2,7 @@
 * PWMCustom.c
 *
 * Created: 2015-10-10 16:06:06
-*  Author: Stefan
+*  Author: Stefan & Prince
 */
 #include <asf.h>
 #include "PWMCustom.h"
@@ -18,7 +18,7 @@ void PWMSetup()
 		.ul_mck = sysclk_get_cpu_hz()
 	};
 	pwm_init(PWM, &pwm_clock);
-	
+
 	pwm_channel.alignment = PWM_ALIGN_LEFT;
 	pwm_channel.polarity = PWM_LOW;
 	pwm_channel.ul_prescaler = PWM_CMR_CPRE_CLKA;

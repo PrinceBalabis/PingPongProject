@@ -2,8 +2,8 @@
  * PIDTask.h
  *
  * Created: 2015-12-14 22:05:40
- *  Author: Stefan
- */ 
+ *  Author: Stefan & Prince
+ */
 
 #ifndef PIDTASK_H_
 #define PIDTASK_H_

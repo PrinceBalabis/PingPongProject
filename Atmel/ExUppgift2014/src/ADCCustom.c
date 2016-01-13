@@ -2,7 +2,7 @@
 * ADCCustom.c
 *
 * Created: 2015-10-10 16:03:29
-*  Author: Stefan
+*  Author: Stefan & Prince
 */
 #include <asf.h>
 #include "ADCCustom.h"
@@ -20,12 +20,10 @@ void ADCSetup()
 	adc_enable_channel(ADC, ADC_CHANNEL_10);				// PB17 - AD8 for Arduino Due
 }
 
-/* Read ADC value*/ 
+/* Read ADC value*/
 int ADCReadSensor()
 {
 	adc_start(ADC);
 	while((adc_get_status(ADC) & 0x1<<24)==0);  // Wait until DRDY(Data Ready) is HIGH
 	return adc_get_latest_value(ADC);
 }
-
-

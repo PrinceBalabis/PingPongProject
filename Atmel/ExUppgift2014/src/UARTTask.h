@@ -2,8 +2,8 @@
  * UARTTask.h
  *
  * Created: 2015-12-14 22:06:21
- *  Author: Stefan
- */ 
+ *  Author: Stefan & Prince
+ */
 
 
 #ifndef UARTTASK_H_

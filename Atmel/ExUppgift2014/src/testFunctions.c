@@ -2,7 +2,7 @@
 * testFunctions.c
 *
 * Created: 2015-10-10 16:06:54
-*  Author: Stefan
+*  Author: Stefan & Prince
 */
 #include "asf.h"
 #include "testFunctions.h"
@@ -19,11 +19,11 @@ void testFans()
 		PWMDutyCycle(999);
 		printf("100\n");
 		delay_ms(3000);
-		
+
 		PWMDutyCycle(0);
 		printf("0\n");
 		delay_ms(3000);
-		
+
 		PWMDutyCycle(500);
 		printf("50\n");
 		delay_ms(3000);
@@ -33,15 +33,15 @@ void testFans()
 void blinkTest()
 {
 	ioport_set_pin_dir(LED13, IOPORT_DIR_OUTPUT);
-	
+
 	int delay = 1000000;
-	
+
 	for(int i=0; i < delay; i++){
 		ioport_set_pin_level(LED13, HIGH);
 
 	}
 	for (int i=0; i < delay; i++){
-		
+
 		ioport_set_pin_level(LED13, LOW);
 	}
 }

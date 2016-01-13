@@ -2,7 +2,7 @@
 * UARTTask.c
 *
 * Created: 2015-12-14 22:05:57
-*  Author: Stefan
+*  Author: Stefan & Prince
 */
 #include <asf.h>
 #include "UARTTask.h"
@@ -14,16 +14,16 @@
 void SerialComTask (void *pvParameters)
 {
 	getPIDValues(); // Get Values from Matlab
-	
+
 	xSemaphoreGive(sem); // Tell PID Task to start
 
 	for(;;){
-		
+
 		// Wait here for Matlab to send signal its ready to receive values
 		while (!uart_is_rx_ready (CONF_UART)){
 			vTaskDelay(1);
 		};
-		
+
 		// Clear RX buffer
 		while (uart_is_rx_ready (CONF_UART)){
 			uint8_t clearBuffer = 0;

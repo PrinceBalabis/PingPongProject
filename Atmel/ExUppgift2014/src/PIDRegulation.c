@@ -2,7 +2,7 @@
 * PIDRegulation.c
 *
 * Created: 2015-10-10 16:05:52
-*  Author: Stefan
+*  Author: Stefan & Prince
 */
 #include <asf.h>
 #include "PIDRegulation.h"
@@ -14,17 +14,17 @@
 
 /* PID Function */
 void PIDRegulate(void){
-	
+
 	// moving average filter of sampled sensor values
 	int valuesTotal = 0;
 	for(int i = 0; i<FILTER_AVERAGE_SAMPLES-1; i++){
 		valuesTotal += ADCReadSensor();
 	}
 	distance = valuesTotal / FILTER_AVERAGE_SAMPLES;
-	
+
 	// P-regulation
 	error = (setPoint - distance);
-	
+
 	// I-regulation
 	error_sum = (double)error_sum + (double)error;
 	double I_Output;
@@ -34,10 +34,10 @@ void PIDRegulate(void){
 		} else {
 		I_Output = (double)(DT_SECONDS/((double)kI_Gain))*error_sum;
 	}
-	
+
 	// D-regulation
 	double D_Output;
-	
+
 	if(error == 1)
 	{
 		D_Output = 0;
@@ -45,10 +45,10 @@ void PIDRegulate(void){
 		D_Output = (double)((kD_Gain*(error - error_old))/DT_SECONDS);
 	}
 	error_old = error;
-	
+
 	// Add up P, I and D outputs
 	output_value = (double)((double)kP_Gain*(double)(error+I_Output+D_Output));
-	
+
 	// Protection vs overflow/underflow
 	if (output_value < PID_PWM_MIN)
 	{

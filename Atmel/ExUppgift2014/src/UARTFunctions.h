@@ -2,8 +2,8 @@
  * UARTFunctions.h
  *
  * Created: 2015-11-14 01:49:50
- *  Author: Stefan
- */ 
+ *  Author: Stefan & Prince
+ */
 
 
 #ifndef UARTFUNCTIONS_H_
