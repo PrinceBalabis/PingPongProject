@@ -13,6 +13,15 @@ Kalibrera sensorn vinkel på systemet(för högt eller för lågt ger fel sensorvärde
 Kalibrera sensor setpoits för cm(kolla i global_variables.h CALIBRATION CONFIG section)
 Använd Arduino IDE Serial Monitor och skicka en nolla("0") för att starta debug mode
 
+
+
+
+
+
+
+
+
+
 Manual Kalibrering(ej Ziegler–Nichols method):
 kolla GIF, "PID_Compensation_Animated_MANUAL_TUNING" för en animation av hur manual tuning fungerar
 Vid manual kalibrering börjar man alltid med konstanterna på noll och sakta ökar
