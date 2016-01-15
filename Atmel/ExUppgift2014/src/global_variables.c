@@ -14,11 +14,11 @@ xSemaphoreHandle sem = NULL;
 double kP_Gain = 0;
 double kI_Gain = 0;
 double kD_Gain = 0;
-int setPoint = 0;
+int32_t setPoint = 0;
 
 uint8_t isMatlab = 1; // 1 for matlab, 0 for terminal debugging
-int output_value = 0;
-int distance = 0;
-int error = 0;
-int error_sum = 0;
-int error_old = 0;
+int32_t output_value = 0;
+int32_t distance = 0;
+int32_t error = 0;
+int32_t error_sum = 0;
+int32_t error_old = 0;

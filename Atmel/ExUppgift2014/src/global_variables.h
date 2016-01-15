@@ -57,7 +57,7 @@ extern xSemaphoreHandle sem;
 extern double kP_Gain;
 extern double kI_Gain;
 extern double kD_Gain;
-extern int setPoint;
+extern int32_t setPoint;
 
 // dt �r 50ms eller 0.5s
 #define DTIME_MS 50
@@ -67,11 +67,11 @@ extern int setPoint;
 //#define DTIME_SECONDS DTIME_MS/1000
 
 extern uint8_t isMatlab;
-extern int output_value;
-extern int distance;
-extern int error;
-extern int error_sum;
-extern int error_old;
+extern int32_t output_value;
+extern int32_t distance;
+extern int32_t error;
+extern int32_t error_sum;
+extern int32_t error_old;
 
 /* PWM */
 pwm_channel_t pwm_channel;

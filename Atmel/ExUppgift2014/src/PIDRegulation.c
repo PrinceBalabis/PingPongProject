@@ -16,7 +16,7 @@
 void PIDRegulate(void){
 
 	// moving average filter of sampled sensor values
-	int valuesTotal = 0;
+	uint32_t valuesTotal = 0;
 	for(int i = 0; i<FILTER_AVERAGE_SAMPLES-1; i++){
 		valuesTotal += ADCReadSensor();
 	}
@@ -48,7 +48,7 @@ void PIDRegulate(void){
 
 	// Add up P, I and D outputs
 	output_value = (kP_Gain*(error+I_Output+D_Output));
-
+	
 	// Protection vs overflow/underflow
 	if (output_value < PID_PWM_MIN)
 	{
