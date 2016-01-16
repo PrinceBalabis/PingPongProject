@@ -102,6 +102,16 @@ void getPIDValues()
 		break;
 		printf("Invalid distance\n");
 	}
+
+	// Wait here untill start signal is sent from matlab
+	while (!uart_is_rx_ready (CONF_UART)){
+		vTaskDelay(1);
+	};
+	// Clear RX buffer
+	while (uart_is_rx_ready (CONF_UART)){
+		uint8_t clearBuffer = 0;
+		uart_read(CONF_UART, &clearBuffer);
+	};
 }
 
 /* Function that sends values to Matlab */

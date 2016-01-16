@@ -53,7 +53,9 @@ pause(0.5);
 fwrite(arduino, Kd, 'int8');
 pause(0.5);
 fwrite(arduino, setpoint, 'int8');
-pause(0.5);
+pause(1);
+% Send startsignal to Arduino
+fwrite(arduino, 1, 'int8');
 
 disp('Starting sampling...');
 %Clear uart buffer

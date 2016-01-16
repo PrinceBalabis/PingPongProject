@@ -26,7 +26,7 @@ void PIDRegulate(void){
 	error = (setPoint - distance);
 
 	// I-regulation
-	error_sum = (double)error_sum + (double)error*DT_SECONDS;
+	error_sum = (double)error_sum + (double)((double)error*(double)DT_SECONDS);
 	double I_Output;
 	if(kI_Gain == 0)
 	{
@@ -42,7 +42,7 @@ void PIDRegulate(void){
 	{
 		D_Output = 0;
 		} else {
-		D_Output = (double)((kD_Gain*(error - error_old))/DT_SECONDS);
+		D_Output = (double)((double)((double)kD_Gain*(double)(error - error_old))/(double)DT_SECONDS);
 	}
 	error_old = error;
 
