@@ -21,7 +21,7 @@
 #define CENTIMETER_30 1000
 #define CENTIMETER_40 790
 #define CENTIMETER_50 770
-#define CENTIMETER_DEFAULT 1560
+#define CENTIMETER_DEFAULT 1000
 
 // How many samples to acquire for filter at each PID run.
 #define FILTER_AVERAGE_SAMPLES 50
