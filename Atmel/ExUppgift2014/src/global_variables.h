@@ -11,19 +11,20 @@
 // -------------------------------CALIBRATION CONFIG-------------------------------------
 // CALIBRATION CONFIG AREA
 //Minimum/Maximum PWM output from PID-regulation
-#define PID_PWM_MIN 360
+// #define PID_PWM_MIN 360
+#define PID_PWM_MIN 0
 #define PID_PWM_MAX 999
 
 // Setpoint ADC to centimeter
-#define CENTIMETER_10 3278
-#define CENTIMETER_20 1560
-#define CENTIMETER_30 920
-#define CENTIMETER_40 820
-#define CENTIMETER_50 750
+#define CENTIMETER_10 3500
+#define CENTIMETER_20 1740
+#define CENTIMETER_30 1000
+#define CENTIMETER_40 790
+#define CENTIMETER_50 770
 #define CENTIMETER_DEFAULT 1560
 
 // How many samples to acquire for filter at each PID run.
-#define FILTER_AVERAGE_SAMPLES 10
+#define FILTER_AVERAGE_SAMPLES 50
 
 // ------------------------------CALIBRATION CONFIG--------------------------------------
 
@@ -59,9 +60,9 @@ extern double kI_Gain;
 extern double kD_Gain;
 extern int32_t setPoint;
 
-// dt �r 50ms eller 0.5s
+// dt �r 50ms eller 0.05s
 #define DTIME_MS 50
-#define DT_SECONDS 0.5
+#define DT_SECONDS 0.05
 
 // Convert ms to s
 //#define DTIME_SECONDS DTIME_MS/1000

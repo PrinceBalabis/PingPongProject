@@ -26,13 +26,13 @@ void PIDRegulate(void){
 	error = (setPoint - distance);
 
 	// I-regulation
-	error_sum = (double)error_sum + (double)error;
+	error_sum = (double)error_sum + (double)error*DT_SECONDS;
 	double I_Output;
 	if(kI_Gain == 0)
 	{
 		I_Output = 0;
 		} else {
-		I_Output = (double)(DT_SECONDS/((double)kI_Gain))*error_sum;
+		I_Output = (double)kI_Gain*error_sum;
 	}
 
 	// D-regulation
@@ -47,7 +47,7 @@ void PIDRegulate(void){
 	error_old = error;
 
 	// Add up P, I and D outputs
-	output_value = (kP_Gain*(error+I_Output+D_Output));
+	output_value = (kP_Gain*error)+I_Output+D_Output;
 	
 	// Protection vs overflow/underflow
 	if (output_value < PID_PWM_MIN)

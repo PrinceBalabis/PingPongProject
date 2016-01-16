@@ -1,11 +1,20 @@
+function pushbutton1_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+display('Goodbye');
+end
+
 function [] = startPID(port, dT, T, setpoint, Kp, Ki, Kd)
 
-% dT,(seconds) sampletime for graphing/Arduino UART polling = 0.3
+pb = uicontrol('Style','pushbutton','Callback',@pushbutton1_Callback);
+
+% dT,(seconds) sampletime for graphing/Arduino UART polling = 0.1
 % T,(seconds) Total time for test to run
 % setpoint,(cm), 10,20,30,40 or 50
-% Kp,K-constant to send ex '2.2'
-% Ki,I-constant to send ex '2'
-% Kd,D-constant to send ex '1.5'
+% Kp,K-constant to send '2.2', send '22', because its divided with 10 in Arduino
+% Ki,I-constant to send '2', send '20', because its divided with 10 in Arduino
+% Kd,D-constant to send '1.5', send '15', because its divided with 10 in Arduino
 
 % Example
 % startPID('COM13', 0.3, 30, 20, 60, 9, 40)
@@ -37,11 +46,6 @@ x = 1:N;
 %Clear uart buffer
 flushinput(arduino);
 flushoutput(arduino);
-
-%Convert to values arduino can read
-Kp = Kp*divider;
-Ki = Ki*divider;
-Kd = Kd*divider;
 
 pause(0.5);
 fwrite(arduino, 1, 'int8');
