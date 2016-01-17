@@ -8,7 +8,7 @@ function [] = startPID(port, dT, T, setpoint, Kp, Ki, Kd)
 % Kd,D-constant to send ex '15.0'
 
 % Example
-% startPID('COM13', 0.3, 30, 30, 1.1, 2.0, 15.0)
+% startPID('COM13', 0.3, 30, 30, 1.1, 1.0, 15.0)
 
 %Before running, dont forget to put something to disable reflection of
 %motor to sensor(like a scarf or something)
