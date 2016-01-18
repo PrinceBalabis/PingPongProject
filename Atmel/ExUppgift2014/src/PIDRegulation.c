@@ -23,7 +23,9 @@ void PIDRegulate(void){
 	distance = valuesTotal / FILTER_AVERAGE_SAMPLES;
 
 	// P-regulation
-	error = (setPoint - distance);
+	error = setPoint - distance;
+	uint32_t P_Output = kD_Gain*error+setPoint;
+
 
 	// I-regulation
 	error_sum = (double)error_sum + (double)((double)error*(double)DT_SECONDS);
@@ -47,7 +49,7 @@ void PIDRegulate(void){
 	error_old = error;
 
 	// Add up P, I and D outputs
-	output_value = (kP_Gain*error)+I_Output+D_Output;
+	output_value = P_Output+I_Output+D_Output;
 	
 	// Protection vs overflow/underflow
 	if (output_value < PID_PWM_MIN)

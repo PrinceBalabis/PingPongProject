@@ -13,14 +13,14 @@
 //Minimum/Maximum PWM output from PID-regulation
 // #define PID_PWM_MIN 360
 #define PID_PWM_MIN 0
-#define PID_PWM_MAX 999
+#define PID_PWM_MAX 100
 
 // Setpoint ADC to centimeter
-#define CENTIMETER_10 3500
-#define CENTIMETER_20 1740
-#define CENTIMETER_30 1000
-#define CENTIMETER_40 790
-#define CENTIMETER_50 770
+#define CENTIMETER_10 3250
+#define CENTIMETER_20 1700
+#define CENTIMETER_30 1500
+#define CENTIMETER_40 1260
+#define CENTIMETER_50 1130
 #define CENTIMETER_DEFAULT 1000
 
 // How many samples to acquire for filter at each PID run.
