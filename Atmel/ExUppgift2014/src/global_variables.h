@@ -16,11 +16,11 @@
 #define PID_PWM_MAX 999
 
 // Setpoint ADC to centimeter
-#define CENTIMETER_10 3500
-#define CENTIMETER_20 1740
-#define CENTIMETER_30 1000
-#define CENTIMETER_40 790
-#define CENTIMETER_50 770
+#define CENTIMETER_10 3400
+#define CENTIMETER_20 1900
+#define CENTIMETER_30 1400
+#define CENTIMETER_40 1300
+#define CENTIMETER_50 1100
 #define CENTIMETER_DEFAULT 1000
 
 // How many samples to acquire for filter at each PID run.
@@ -73,6 +73,7 @@ extern int32_t distance;
 extern int32_t error;
 extern int32_t I_Output_old;
 extern int32_t error_old;
+extern int32_t pwm_val;
 
 /* PWM */
 pwm_channel_t pwm_channel;

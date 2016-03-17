@@ -120,7 +120,7 @@ void sendValues(){
 		printf("Values:\n");
 	}
 	printf("%i\n\r", error);
-	printf("%i\n\r", output_value);
+	printf("%i\n\r", pwm_val);
 	printf("%i\n\r", distance);
 	printf("%i\n\r", setPoint);
 }
