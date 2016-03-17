@@ -20,5 +20,5 @@ uint8_t isMatlab = 1; // 1 for matlab, 0 for terminal debugging
 int32_t output_value = 0;
 int32_t distance = 0;
 int32_t error = 0;
-int32_t error_sum = 0;
+int32_t I_Output_old = 0;
 int32_t error_old = 0;
