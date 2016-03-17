@@ -71,7 +71,7 @@ extern uint8_t isMatlab;
 extern int32_t output_value;
 extern int32_t distance;
 extern int32_t error;
-extern int32_t error_sum;
+extern int32_t I_Output_old;
 extern int32_t error_old;
 
 /* PWM */
