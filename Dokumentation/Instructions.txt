@@ -7,10 +7,9 @@ Tanka ner Github repot
 "Add to path" i matlab för matlabkoden
 C:\Users\Prince\Documents\GitHub\PingPongProject\Matlab
 
-Sätt en mörk matt objekt över motorn(för att sensorn läser av fel pga reflektioner av motorn)
 Kalibrera sensorn vinkel på systemet(för högt eller för lågt ger fel sensorvärden)
 
-Kalibrera sensor setpoits för cm(kolla i global_variables.h CALIBRATION CONFIG section)
+Kalibrera sensor för cm(kolla i global_variables.h CALIBRATION CONFIG section)
 Använd Arduino IDE Serial Monitor och skicka en nolla("0") för att starta debug mode
 
 
