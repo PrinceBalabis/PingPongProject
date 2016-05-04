@@ -78,23 +78,23 @@ void getPIDValues()
 
 	switch(setPointCm){
 		case 10 :
-		setPoint = CENTIMETER_10;
+		setPoint = setPointCm;
 		break;
 
 		case 20:
-		setPoint = CENTIMETER_20;
+		setPoint = setPointCm;
 		break;
 
 		case 30 :
-		setPoint = CENTIMETER_30;
+		setPoint = setPointCm;
 		break;
 
 		case 40 :
-		setPoint = CENTIMETER_40;
+		setPoint = setPointCm;
 		break;
 
 		case 50 :
-		setPoint = CENTIMETER_50;
+		setPoint = setPointCm;
 		break;
 
 		default:

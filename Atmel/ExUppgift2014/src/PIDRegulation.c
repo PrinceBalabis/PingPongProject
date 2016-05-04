@@ -18,13 +18,15 @@ void PIDRegulate(void){
 	// moving average filter of sampled sensor values
 // 	uint32_t valuesTotal = 0;
 // 	for(int i = 0; i<FILTER_AVERAGE_SAMPLES-1; i++){
-// 		valuesTotal += ADCReadSensor();
+// 		valuesTotal += ADCLinearValues();
 // 	}
 // 	distance = valuesTotal / FILTER_AVERAGE_SAMPLES;
 	distance = ADCLinearValues();
 
 	// P-regulation
 	error = (setPoint - distance);
+	//invert error
+	error =	-1*error;
 
 	// D-regulation
 	double D_Output;

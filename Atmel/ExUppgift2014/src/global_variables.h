@@ -21,7 +21,7 @@
 #define CENTIMETER_40 1300
 #define CENTIMETER_45 1200
 #define CENTIMETER_50 1150
-#define CENTIMETER_DEFAULT 1500
+#define CENTIMETER_DEFAULT 30
 
 //Minimum/Maximum PWM output from PID-regulation
 // #define PID_PWM_MIN 360
@@ -29,7 +29,7 @@
 #define PID_PWM_MAX 999
 
 // How many samples to acquire for filter at each PID run.
-#define FILTER_AVERAGE_SAMPLES 50
+#define FILTER_AVERAGE_SAMPLES 10
 
 // ------------------------------CALIBRATION CONFIG--------------------------------------
 
