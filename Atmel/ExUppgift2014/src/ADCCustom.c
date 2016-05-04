@@ -27,3 +27,31 @@ int ADCReadSensor()
 	while((adc_get_status(ADC) & 0x1<<24)==0);  // Wait until DRDY(Data Ready) is HIGH
 	return adc_get_latest_value(ADC);
 }
+
+/* Linear ADC Value*/
+int ADCLinearValues()
+{
+	int tempADCValue = ADCReadSensor();
+	if(tempADCValue < CENTIMETER_50){
+		return 50;
+		} else if(tempADCValue > CENTIMETER_50 && tempADCValue < CENTIMETER_45){
+		return 50;
+		} else if(tempADCValue > CENTIMETER_45 && tempADCValue < CENTIMETER_40){
+		return 45;
+		} else if(tempADCValue > CENTIMETER_40 && tempADCValue < CENTIMETER_35){
+		return 40;
+		} else if(tempADCValue > CENTIMETER_35 && tempADCValue < CENTIMETER_30){
+		return 35;
+		} else if(tempADCValue > CENTIMETER_30 && tempADCValue < CENTIMETER_25){
+		return 30;
+		} else if(tempADCValue > CENTIMETER_25 && tempADCValue < CENTIMETER_20){
+		return 25;
+		} else if(tempADCValue > CENTIMETER_20 && tempADCValue < CENTIMETER_15){
+		return 20;
+		} else if(tempADCValue > CENTIMETER_15 && tempADCValue < CENTIMETER_10){
+		return 15;
+		} else if(tempADCValue > CENTIMETER_10){
+		return 10;
+	}
+	return CENTIMETER_DEFAULT;
+}

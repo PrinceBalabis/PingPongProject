@@ -16,11 +16,12 @@
 void PIDRegulate(void){
 
 	// moving average filter of sampled sensor values
-	uint32_t valuesTotal = 0;
-	for(int i = 0; i<FILTER_AVERAGE_SAMPLES-1; i++){
-		valuesTotal += ADCReadSensor();
-	}
-	distance = valuesTotal / FILTER_AVERAGE_SAMPLES;
+// 	uint32_t valuesTotal = 0;
+// 	for(int i = 0; i<FILTER_AVERAGE_SAMPLES-1; i++){
+// 		valuesTotal += ADCReadSensor();
+// 	}
+// 	distance = valuesTotal / FILTER_AVERAGE_SAMPLES;
+	distance = ADCLinearValues();
 
 	// P-regulation
 	error = (setPoint - distance);
@@ -49,6 +50,7 @@ void PIDRegulate(void){
 	// Add up P, I and D outputs
 	output_value = (kP_Gain*error)+I_Output+D_Output;
 	
+	//Apply output from PID to pwm control 
 	pwm_val = pwm_val+(output_value*0.5); 
 	
 	// Protection vs overflow/underflow

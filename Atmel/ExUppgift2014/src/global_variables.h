@@ -10,18 +10,23 @@
 #define GLOBAL_VARIABLES_H_
 // -------------------------------CALIBRATION CONFIG-------------------------------------
 // CALIBRATION CONFIG AREA
+
+// The ADC value at each centimeter. Also used for the setpoint function to convert cm to adc value for sensor
+#define CENTIMETER_10 3400
+#define CENTIMETER_15 2300
+#define CENTIMETER_20 2000
+#define CENTIMETER_25 1750
+#define CENTIMETER_30 1500
+#define CENTIMETER_35 1400
+#define CENTIMETER_40 1300
+#define CENTIMETER_45 1200
+#define CENTIMETER_50 1150
+#define CENTIMETER_DEFAULT 1500
+
 //Minimum/Maximum PWM output from PID-regulation
 // #define PID_PWM_MIN 360
 #define PID_PWM_MIN 0
 #define PID_PWM_MAX 999
-
-// Setpoint ADC to centimeter
-#define CENTIMETER_10 3400
-#define CENTIMETER_20 1900
-#define CENTIMETER_30 1400
-#define CENTIMETER_40 1300
-#define CENTIMETER_50 1100
-#define CENTIMETER_DEFAULT 1000
 
 // How many samples to acquire for filter at each PID run.
 #define FILTER_AVERAGE_SAMPLES 50

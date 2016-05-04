@@ -1,11 +1,11 @@
 Sensor: Signal A8, Spänning 5V, GND
-Motor: Shield output A
+Motor: Shield output A & Pin 3 på motorshielden ska ej kopplas till arduino!(böj pinnen utåt)
 PWM för Motor: Kabel mellan Digitalpin 3 till Digitalpin 7
 
 Tanka ner Github repot
 
 "Add to path" i matlab för matlabkoden
-C:\Users\Spellabbet\Desktop\PingPongProject\Matlab
+C:\Users\Prince\Documents\GitHub\PingPongProject\Matlab
 
 Sätt en mörk matt objekt över motorn(för att sensorn läser av fel pga reflektioner av motorn)
 Kalibrera sensorn vinkel på systemet(för högt eller för lågt ger fel sensorvärden)
