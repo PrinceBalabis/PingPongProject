@@ -16,12 +16,14 @@
 void PIDRegulate(void){
 
 	// moving average filter of sampled sensor values
-	uint32_t valuesTotal = 0;
-	for(int i = 0; i<FILTER_AVERAGE_SAMPLES-1; i++){
-		valuesTotal += ADCLinearValues();
+	for(int i = 0; i<9; i++){ // Remove the oldest value
+		adc_filter_values[i] = adc_filter_values[i+1];
+ 	adc_filter_values[9] = ADCLinearValues(); // Save the lastest ADC value at the back of the array.
+	uint32_t adc_filter_values_total;
+	for(int i = 0; i<10; i++){ // Add up all the values
+		adc_filter_values_total += adc_filter_values[i];
 	}
-	distance = valuesTotal / FILTER_AVERAGE_SAMPLES;
-	//distance = ADCLinearValues();
+	distance = adc_filter_values_total / 10 // Get the average
 
 	// P-regulation
 	error = -1*(setPoint - distance);
@@ -43,15 +45,15 @@ void PIDRegulate(void){
 	//{
 	//	I_Output = 0;
 	//} else {
-		I_Output = (double)(I_Output_old + kI_Gain * error * DT_SECONDS);
-		I_Output_old = I_Output;
+	I_Output = (double)(I_Output_old + kI_Gain * error * DT_SECONDS);
+	I_Output_old = I_Output;
 	//}
 
 	// Add up P, I and D outputs
 	output_value = (kP_Gain*error)+I_Output+D_Output;
 	
-	//Apply output from PID to pwm control 
-	pwm_val = pwm_val+(output_value*PWM_CHANGE_GAIN); 
+	//Apply output from PID to pwm control
+	pwm_val = pwm_val+(output_value*PWM_CHANGE_GAIN);
 	
 	// Protection vs overflow/underflow
 	if (pwm_val < PID_PWM_MIN)
