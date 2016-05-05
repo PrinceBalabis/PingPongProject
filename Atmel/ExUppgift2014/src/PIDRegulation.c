@@ -19,7 +19,7 @@ void PIDRegulate(void){
 	for(int i = 0; i<9; i++){ // Remove the oldest value
 		adc_filter_values[i] = adc_filter_values[i+1];
 	}
-	adc_filter_values[9] = ADCLinearValues(); // Save the lastest ADC value at the back of the array.
+	adc_filter_values[9] = ADCLinearValues(); // Save the latest ADC value at the back of the array.
 	uint32_t adc_filter_values_total;
 	for(int i = 0; i<10; i++) {// Add up all the values
 		adc_filter_values_total += adc_filter_values[i];
