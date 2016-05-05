@@ -79,7 +79,7 @@ extern int32_t error;
 extern int32_t I_Output_old;
 extern int32_t error_old;
 extern int32_t pwm_val;
-extern int32_t adc_filter_values;
+extern int32_t adc_filter_values[];
 
 /* PWM */
 pwm_channel_t pwm_channel;
