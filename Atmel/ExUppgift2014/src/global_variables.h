@@ -15,14 +15,14 @@
 #define PWM_CHANGE_GAIN 0.5
 
 // The ADC value at each centimeter. Also used for the setpoint function to convert cm to adc value for sensor
-#define CENTIMETER_10 3400
+#define CENTIMETER_10 3450
 #define CENTIMETER_15 2300
-#define CENTIMETER_20 2000
-#define CENTIMETER_25 1750
+#define CENTIMETER_20 1950
+#define CENTIMETER_25 1700
 #define CENTIMETER_30 1500
 #define CENTIMETER_35 1400
-#define CENTIMETER_40 1300
-#define CENTIMETER_45 1200
+#define CENTIMETER_40 1350
+#define CENTIMETER_45 1250
 #define CENTIMETER_50 1150
 #define CENTIMETER_DEFAULT 30
 

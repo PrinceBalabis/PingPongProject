@@ -20,11 +20,13 @@ void PIDRegulate(void){
 		adc_filter_values[i] = adc_filter_values[i+1];
 	}
 	adc_filter_values[9] = ADCLinearValues(); // Save the latest ADC value at the back of the array.
-	uint32_t adc_filter_values_total;
+	uint32_t adc_filter_values_total = 0;
 	for(int i = 0; i<10; i++) {// Add up all the values
 		adc_filter_values_total += adc_filter_values[i];
 	}
 	distance = adc_filter_values_total / 10; // Get the average
+
+	//distance = ADCLinearValues();
 
 	// P-regulation
 	error = -1*(setPoint - distance);

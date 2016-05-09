@@ -7,33 +7,33 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
   1 .ARM.exidx    00000008  00086524  00086524  0000e524  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  2 .relocate     000009a4  20070000  0008652c  00010000  2**3
+  2 .relocate     000009cc  20070000  0008652c  00010000  2**3
                   CONTENTS, ALLOC, LOAD, CODE
-  3 .bss          00008308  200709a8  00086ed8  000109a8  2**3
+  3 .bss          000082e0  200709d0  00086f00  000109d0  2**3
                   ALLOC
-  4 .stack        00002000  20078cb0  0008f1e0  000109a8  2**0
+  4 .stack        00002000  20078cb0  0008f1e0  000109d0  2**0
                   ALLOC
-  5 .ARM.attributes 00000029  00000000  00000000  000109a4  2**0
+  5 .ARM.attributes 00000029  00000000  00000000  000109cc  2**0
                   CONTENTS, READONLY
-  6 .comment      0000005b  00000000  00000000  000109cd  2**0
+  6 .comment      0000005b  00000000  00000000  000109f5  2**0
                   CONTENTS, READONLY
-  7 .debug_info   00016889  00000000  00000000  00010a28  2**0
+  7 .debug_info   00016889  00000000  00000000  00010a50  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_abbrev 00003b2c  00000000  00000000  000272b1  2**0
+  8 .debug_abbrev 00003b2c  00000000  00000000  000272d9  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_loc    000087e6  00000000  00000000  0002addd  2**0
+  9 .debug_loc    000087f2  00000000  00000000  0002ae05  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_aranges 00001000  00000000  00000000  000335c3  2**0
+ 10 .debug_aranges 00001000  00000000  00000000  000335f7  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000ec8  00000000  00000000  000345c3  2**0
+ 11 .debug_ranges 00000ec8  00000000  00000000  000345f7  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_macro  0001c5a1  00000000  00000000  0003548b  2**0
+ 12 .debug_macro  0001c5a1  00000000  00000000  000354bf  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_line   000168de  00000000  00000000  00051a2c  2**0
+ 13 .debug_line   000168df  00000000  00000000  00051a60  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_str    0006b220  00000000  00000000  0006830a  2**0
+ 14 .debug_str    0006b220  00000000  00000000  0006833f  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_frame  00003094  00000000  00000000  000d352c  2**2
+ 15 .debug_frame  00003094  00000000  00000000  000d3560  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -109,7 +109,7 @@ Disassembly of section .text:
    80106:	2301      	movs	r3, #1
    80108:	7023      	strb	r3, [r4, #0]
    8010a:	bd10      	pop	{r4, pc}
-   8010c:	200709a8 	.word	0x200709a8
+   8010c:	200709d0 	.word	0x200709d0
    80110:	00000000 	.word	0x00000000
    80114:	0008652c 	.word	0x0008652c
 
@@ -132,7 +132,7 @@ Disassembly of section .text:
    8013a:	bf00      	nop
    8013c:	00000000 	.word	0x00000000
    80140:	0008652c 	.word	0x0008652c
-   80144:	200709ac 	.word	0x200709ac
+   80144:	200709d4 	.word	0x200709d4
    80148:	0008652c 	.word	0x0008652c
    8014c:	00000000 	.word	0x00000000
 
@@ -237,17 +237,17 @@ int ADCLinearValues()
 		return 50;
 		} else if(tempADCValue > CENTIMETER_50 && tempADCValue < CENTIMETER_45){
    801f2:	f2a0 437f 	subw	r3, r0, #1151	; 0x47f
-   801f6:	2b30      	cmp	r3, #48	; 0x30
+   801f6:	2b62      	cmp	r3, #98	; 0x62
    801f8:	d927      	bls.n	8024a <ADCLinearValues+0x66>
 		return 50;
 		} else if(tempADCValue > CENTIMETER_45 && tempADCValue < CENTIMETER_40){
-   801fa:	f2a0 43b1 	subw	r3, r0, #1201	; 0x4b1
+   801fa:	f2a0 43e3 	subw	r3, r0, #1251	; 0x4e3
    801fe:	2b62      	cmp	r3, #98	; 0x62
    80200:	d925      	bls.n	8024e <ADCLinearValues+0x6a>
 		return 45;
 		} else if(tempADCValue > CENTIMETER_40 && tempADCValue < CENTIMETER_35){
-   80202:	f2a0 5315 	subw	r3, r0, #1301	; 0x515
-   80206:	2b62      	cmp	r3, #98	; 0x62
+   80202:	f2a0 5347 	subw	r3, r0, #1351	; 0x547
+   80206:	2b30      	cmp	r3, #48	; 0x30
    80208:	d923      	bls.n	80252 <ADCLinearValues+0x6e>
 		return 40;
 		} else if(tempADCValue > CENTIMETER_35 && tempADCValue < CENTIMETER_30){
@@ -257,22 +257,22 @@ int ADCLinearValues()
 		return 35;
 		} else if(tempADCValue > CENTIMETER_30 && tempADCValue < CENTIMETER_25){
    80212:	f2a0 53dd 	subw	r3, r0, #1501	; 0x5dd
-   80216:	2bf8      	cmp	r3, #248	; 0xf8
+   80216:	2bc6      	cmp	r3, #198	; 0xc6
    80218:	d91f      	bls.n	8025a <ADCLinearValues+0x76>
 		return 30;
 		} else if(tempADCValue > CENTIMETER_25 && tempADCValue < CENTIMETER_20){
-   8021a:	f2a0 63d7 	subw	r3, r0, #1751	; 0x6d7
+   8021a:	f2a0 63a5 	subw	r3, r0, #1701	; 0x6a5
    8021e:	2bf8      	cmp	r3, #248	; 0xf8
    80220:	d91d      	bls.n	8025e <ADCLinearValues+0x7a>
 		return 25;
 		} else if(tempADCValue > CENTIMETER_20 && tempADCValue < CENTIMETER_15){
-   80222:	f2a0 73d1 	subw	r3, r0, #2001	; 0x7d1
-   80226:	f5b3 7f95 	cmp.w	r3, #298	; 0x12a
+   80222:	f2a0 739f 	subw	r3, r0, #1951	; 0x79f
+   80226:	f5b3 7fae 	cmp.w	r3, #348	; 0x15c
    8022a:	d91a      	bls.n	80262 <ADCLinearValues+0x7e>
 		return 20;
 		} else if(tempADCValue > CENTIMETER_15 && tempADCValue < CENTIMETER_10){
    8022c:	f6a0 02fd 	subw	r2, r0, #2301	; 0x8fd
-   80230:	f240 434a 	movw	r3, #1098	; 0x44a
+   80230:	f240 437c 	movw	r3, #1148	; 0x47c
    80234:	429a      	cmp	r2, r3
    80236:	d916      	bls.n	80266 <ADCLinearValues+0x82>
 		return 15;
@@ -280,7 +280,7 @@ int ADCLinearValues()
 		return 10;
 	}
 	return CENTIMETER_DEFAULT;
-   80238:	f640 5348 	movw	r3, #3400	; 0xd48
+   80238:	f640 537a 	movw	r3, #3450	; 0xd7a
    8023c:	4298      	cmp	r0, r3
    8023e:	bfcc      	ite	gt
    80240:	200a      	movgt	r0, #10
@@ -657,194 +657,196 @@ void PIDRegulate(void){
    80380:	d1f9      	bne.n	80376 <PIDRegulate+0xe>
 		adc_filter_values[i] = adc_filter_values[i+1];
 	}
-	adc_filter_values[9] = ADCLinearValues(); // Save the lastest ADC value at the back of the array.
+	adc_filter_values[9] = ADCLinearValues(); // Save the latest ADC value at the back of the array.
    80382:	4b46      	ldr	r3, [pc, #280]	; (8049c <PIDRegulate+0x134>)
    80384:	4798      	blx	r3
-   80386:	4a44      	ldr	r2, [pc, #272]	; (80498 <PIDRegulate+0x130>)
-   80388:	6250      	str	r0, [r2, #36]	; 0x24
-   8038a:	3228      	adds	r2, #40	; 0x28
-	uint32_t adc_filter_values_total;
+   80386:	4944      	ldr	r1, [pc, #272]	; (80498 <PIDRegulate+0x130>)
+   80388:	6248      	str	r0, [r1, #36]	; 0x24
+   8038a:	3128      	adds	r1, #40	; 0x28
+	uint32_t adc_filter_values_total = 0;
+   8038c:	2300      	movs	r3, #0
 	for(int i = 0; i<10; i++) {// Add up all the values
 		adc_filter_values_total += adc_filter_values[i];
-   8038c:	f854 3b04 	ldr.w	r3, [r4], #4
-   80390:	441d      	add	r5, r3
+   8038e:	f854 2b04 	ldr.w	r2, [r4], #4
+   80392:	4413      	add	r3, r2
 	for(int i = 0; i<9; i++){ // Remove the oldest value
 		adc_filter_values[i] = adc_filter_values[i+1];
 	}
-	adc_filter_values[9] = ADCLinearValues(); // Save the lastest ADC value at the back of the array.
-	uint32_t adc_filter_values_total;
+	adc_filter_values[9] = ADCLinearValues(); // Save the latest ADC value at the back of the array.
+	uint32_t adc_filter_values_total = 0;
 	for(int i = 0; i<10; i++) {// Add up all the values
-   80392:	4294      	cmp	r4, r2
-   80394:	d1fa      	bne.n	8038c <PIDRegulate+0x24>
+   80394:	428c      	cmp	r4, r1
+   80396:	d1fa      	bne.n	8038e <PIDRegulate+0x26>
 		adc_filter_values_total += adc_filter_values[i];
 	}
 	distance = adc_filter_values_total / 10; // Get the average
-   80396:	4e42      	ldr	r6, [pc, #264]	; (804a0 <PIDRegulate+0x138>)
-   80398:	fba6 3505 	umull	r3, r5, r6, r5
-   8039c:	08ed      	lsrs	r5, r5, #3
-   8039e:	4b41      	ldr	r3, [pc, #260]	; (804a4 <PIDRegulate+0x13c>)
-   803a0:	601d      	str	r5, [r3, #0]
+   80398:	4e41      	ldr	r6, [pc, #260]	; (804a0 <PIDRegulate+0x138>)
+   8039a:	fba6 2303 	umull	r2, r3, r6, r3
+   8039e:	08db      	lsrs	r3, r3, #3
+   803a0:	4a40      	ldr	r2, [pc, #256]	; (804a4 <PIDRegulate+0x13c>)
+   803a2:	6013      	str	r3, [r2, #0]
+
+	//distance = ADCLinearValues();
 
 	// P-regulation
 	error = -1*(setPoint - distance);
-   803a2:	4b41      	ldr	r3, [pc, #260]	; (804a8 <PIDRegulate+0x140>)
-   803a4:	681e      	ldr	r6, [r3, #0]
-   803a6:	1bae      	subs	r6, r5, r6
-   803a8:	4b40      	ldr	r3, [pc, #256]	; (804ac <PIDRegulate+0x144>)
-   803aa:	601e      	str	r6, [r3, #0]
+   803a4:	4a40      	ldr	r2, [pc, #256]	; (804a8 <PIDRegulate+0x140>)
+   803a6:	6816      	ldr	r6, [r2, #0]
+   803a8:	1b9e      	subs	r6, r3, r6
+   803aa:	4b40      	ldr	r3, [pc, #256]	; (804ac <PIDRegulate+0x144>)
+   803ac:	601e      	str	r6, [r3, #0]
 
 	//if(error == 1)
 	//{
 	//D_Output = 0;
 	//} else {
 	D_Output = (double)(kD_Gain * (error-error_old) * 1000.0 / DTIME_MS);
-   803ac:	4f40      	ldr	r7, [pc, #256]	; (804b0 <PIDRegulate+0x148>)
-   803ae:	6838      	ldr	r0, [r7, #0]
-   803b0:	4d40      	ldr	r5, [pc, #256]	; (804b4 <PIDRegulate+0x14c>)
-   803b2:	1a30      	subs	r0, r6, r0
-   803b4:	47a8      	blx	r5
-   803b6:	4c40      	ldr	r4, [pc, #256]	; (804b8 <PIDRegulate+0x150>)
-   803b8:	4b40      	ldr	r3, [pc, #256]	; (804bc <PIDRegulate+0x154>)
-   803ba:	e9d3 2300 	ldrd	r2, r3, [r3]
-   803be:	47a0      	blx	r4
-   803c0:	2200      	movs	r2, #0
-   803c2:	4b3f      	ldr	r3, [pc, #252]	; (804c0 <PIDRegulate+0x158>)
-   803c4:	47a0      	blx	r4
-   803c6:	2200      	movs	r2, #0
-   803c8:	4b3e      	ldr	r3, [pc, #248]	; (804c4 <PIDRegulate+0x15c>)
-   803ca:	f8df c11c 	ldr.w	ip, [pc, #284]	; 804e8 <PIDRegulate+0x180>
-   803ce:	47e0      	blx	ip
-   803d0:	e9cd 0102 	strd	r0, r1, [sp, #8]
+   803ae:	4f40      	ldr	r7, [pc, #256]	; (804b0 <PIDRegulate+0x148>)
+   803b0:	6838      	ldr	r0, [r7, #0]
+   803b2:	4d40      	ldr	r5, [pc, #256]	; (804b4 <PIDRegulate+0x14c>)
+   803b4:	1a30      	subs	r0, r6, r0
+   803b6:	47a8      	blx	r5
+   803b8:	4c3f      	ldr	r4, [pc, #252]	; (804b8 <PIDRegulate+0x150>)
+   803ba:	4b40      	ldr	r3, [pc, #256]	; (804bc <PIDRegulate+0x154>)
+   803bc:	e9d3 2300 	ldrd	r2, r3, [r3]
+   803c0:	47a0      	blx	r4
+   803c2:	2200      	movs	r2, #0
+   803c4:	4b3e      	ldr	r3, [pc, #248]	; (804c0 <PIDRegulate+0x158>)
+   803c6:	47a0      	blx	r4
+   803c8:	2200      	movs	r2, #0
+   803ca:	4b3e      	ldr	r3, [pc, #248]	; (804c4 <PIDRegulate+0x15c>)
+   803cc:	f8df c118 	ldr.w	ip, [pc, #280]	; 804e8 <PIDRegulate+0x180>
+   803d0:	47e0      	blx	ip
+   803d2:	e9cd 0102 	strd	r0, r1, [sp, #8]
 	//}
 	error_old = error;
-   803d4:	603e      	str	r6, [r7, #0]
+   803d6:	603e      	str	r6, [r7, #0]
 	double I_Output;
 	//if(kI_Gain == 0)
 	//{
 	//	I_Output = 0;
 	//} else {
 	I_Output = (double)(I_Output_old + kI_Gain * error * DT_SECONDS);
-   803d6:	4630      	mov	r0, r6
-   803d8:	47a8      	blx	r5
-   803da:	4606      	mov	r6, r0
-   803dc:	460f      	mov	r7, r1
-   803de:	f8df b10c 	ldr.w	fp, [pc, #268]	; 804ec <PIDRegulate+0x184>
-   803e2:	f8db 0000 	ldr.w	r0, [fp]
-   803e6:	47a8      	blx	r5
-   803e8:	4680      	mov	r8, r0
-   803ea:	4689      	mov	r9, r1
-   803ec:	e9cd 6700 	strd	r6, r7, [sp]
-   803f0:	4630      	mov	r0, r6
-   803f2:	4639      	mov	r1, r7
-   803f4:	4b34      	ldr	r3, [pc, #208]	; (804c8 <PIDRegulate+0x160>)
-   803f6:	e9d3 2300 	ldrd	r2, r3, [r3]
-   803fa:	47a0      	blx	r4
-   803fc:	a324      	add	r3, pc, #144	; (adr r3, 80490 <PIDRegulate+0x128>)
-   803fe:	e9d3 2300 	ldrd	r2, r3, [r3]
-   80402:	47a0      	blx	r4
-   80404:	4602      	mov	r2, r0
-   80406:	460b      	mov	r3, r1
-   80408:	4f30      	ldr	r7, [pc, #192]	; (804cc <PIDRegulate+0x164>)
-   8040a:	4640      	mov	r0, r8
-   8040c:	4649      	mov	r1, r9
-   8040e:	47b8      	blx	r7
-   80410:	4680      	mov	r8, r0
-   80412:	4689      	mov	r9, r1
+   803d8:	4630      	mov	r0, r6
+   803da:	47a8      	blx	r5
+   803dc:	4606      	mov	r6, r0
+   803de:	460f      	mov	r7, r1
+   803e0:	f8df b108 	ldr.w	fp, [pc, #264]	; 804ec <PIDRegulate+0x184>
+   803e4:	f8db 0000 	ldr.w	r0, [fp]
+   803e8:	47a8      	blx	r5
+   803ea:	4680      	mov	r8, r0
+   803ec:	4689      	mov	r9, r1
+   803ee:	e9cd 6700 	strd	r6, r7, [sp]
+   803f2:	4630      	mov	r0, r6
+   803f4:	4639      	mov	r1, r7
+   803f6:	4b34      	ldr	r3, [pc, #208]	; (804c8 <PIDRegulate+0x160>)
+   803f8:	e9d3 2300 	ldrd	r2, r3, [r3]
+   803fc:	47a0      	blx	r4
+   803fe:	a324      	add	r3, pc, #144	; (adr r3, 80490 <PIDRegulate+0x128>)
+   80400:	e9d3 2300 	ldrd	r2, r3, [r3]
+   80404:	47a0      	blx	r4
+   80406:	4602      	mov	r2, r0
+   80408:	460b      	mov	r3, r1
+   8040a:	4f30      	ldr	r7, [pc, #192]	; (804cc <PIDRegulate+0x164>)
+   8040c:	4640      	mov	r0, r8
+   8040e:	4649      	mov	r1, r9
+   80410:	47b8      	blx	r7
+   80412:	4680      	mov	r8, r0
+   80414:	4689      	mov	r9, r1
 	I_Output_old = I_Output;
-   80414:	4e2e      	ldr	r6, [pc, #184]	; (804d0 <PIDRegulate+0x168>)
-   80416:	47b0      	blx	r6
-   80418:	f8cb 0000 	str.w	r0, [fp]
+   80416:	4e2e      	ldr	r6, [pc, #184]	; (804d0 <PIDRegulate+0x168>)
+   80418:	47b0      	blx	r6
+   8041a:	f8cb 0000 	str.w	r0, [fp]
 	//}
 
 	// Add up P, I and D outputs
 	output_value = (kP_Gain*error)+I_Output+D_Output;
-   8041c:	e9dd 0100 	ldrd	r0, r1, [sp]
-   80420:	4b2c      	ldr	r3, [pc, #176]	; (804d4 <PIDRegulate+0x16c>)
-   80422:	e9d3 2300 	ldrd	r2, r3, [r3]
-   80426:	47a0      	blx	r4
-   80428:	4642      	mov	r2, r8
-   8042a:	464b      	mov	r3, r9
-   8042c:	47b8      	blx	r7
-   8042e:	e9dd 2302 	ldrd	r2, r3, [sp, #8]
-   80432:	47b8      	blx	r7
-   80434:	47b0      	blx	r6
-   80436:	4681      	mov	r9, r0
-   80438:	4b27      	ldr	r3, [pc, #156]	; (804d8 <PIDRegulate+0x170>)
-   8043a:	6018      	str	r0, [r3, #0]
+   8041e:	e9dd 0100 	ldrd	r0, r1, [sp]
+   80422:	4b2c      	ldr	r3, [pc, #176]	; (804d4 <PIDRegulate+0x16c>)
+   80424:	e9d3 2300 	ldrd	r2, r3, [r3]
+   80428:	47a0      	blx	r4
+   8042a:	4642      	mov	r2, r8
+   8042c:	464b      	mov	r3, r9
+   8042e:	47b8      	blx	r7
+   80430:	e9dd 2302 	ldrd	r2, r3, [sp, #8]
+   80434:	47b8      	blx	r7
+   80436:	47b0      	blx	r6
+   80438:	4681      	mov	r9, r0
+   8043a:	4b27      	ldr	r3, [pc, #156]	; (804d8 <PIDRegulate+0x170>)
+   8043c:	6018      	str	r0, [r3, #0]
 	
 	//Apply output from PID to pwm control
 	pwm_val = pwm_val+(output_value*PWM_CHANGE_GAIN);
-   8043c:	4b27      	ldr	r3, [pc, #156]	; (804dc <PIDRegulate+0x174>)
-   8043e:	6818      	ldr	r0, [r3, #0]
-   80440:	47a8      	blx	r5
-   80442:	4682      	mov	sl, r0
-   80444:	468b      	mov	fp, r1
-   80446:	4648      	mov	r0, r9
-   80448:	47a8      	blx	r5
-   8044a:	2200      	movs	r2, #0
-   8044c:	4b24      	ldr	r3, [pc, #144]	; (804e0 <PIDRegulate+0x178>)
-   8044e:	47a0      	blx	r4
-   80450:	4602      	mov	r2, r0
-   80452:	460b      	mov	r3, r1
-   80454:	4650      	mov	r0, sl
-   80456:	4659      	mov	r1, fp
-   80458:	47b8      	blx	r7
-   8045a:	47b0      	blx	r6
+   8043e:	4b27      	ldr	r3, [pc, #156]	; (804dc <PIDRegulate+0x174>)
+   80440:	6818      	ldr	r0, [r3, #0]
+   80442:	47a8      	blx	r5
+   80444:	4682      	mov	sl, r0
+   80446:	468b      	mov	fp, r1
+   80448:	4648      	mov	r0, r9
+   8044a:	47a8      	blx	r5
+   8044c:	2200      	movs	r2, #0
+   8044e:	4b24      	ldr	r3, [pc, #144]	; (804e0 <PIDRegulate+0x178>)
+   80450:	47a0      	blx	r4
+   80452:	4602      	mov	r2, r0
+   80454:	460b      	mov	r3, r1
+   80456:	4650      	mov	r0, sl
+   80458:	4659      	mov	r1, fp
+   8045a:	47b8      	blx	r7
+   8045c:	47b0      	blx	r6
 	
 	// Protection vs overflow/underflow
 	if (pwm_val < PID_PWM_MIN)
-   8045c:	2800      	cmp	r0, #0
-   8045e:	da03      	bge.n	80468 <PIDRegulate+0x100>
+   8045e:	2800      	cmp	r0, #0
+   80460:	da03      	bge.n	8046a <PIDRegulate+0x102>
 	{
 		pwm_val = PID_PWM_MIN;
-   80460:	2200      	movs	r2, #0
-   80462:	4b1e      	ldr	r3, [pc, #120]	; (804dc <PIDRegulate+0x174>)
-   80464:	601a      	str	r2, [r3, #0]
-   80466:	e009      	b.n	8047c <PIDRegulate+0x114>
+   80462:	2200      	movs	r2, #0
+   80464:	4b1d      	ldr	r3, [pc, #116]	; (804dc <PIDRegulate+0x174>)
+   80466:	601a      	str	r2, [r3, #0]
+   80468:	e009      	b.n	8047e <PIDRegulate+0x116>
 	}
 	else if (pwm_val > PID_PWM_MAX)
-   80468:	f5b0 7f7a 	cmp.w	r0, #1000	; 0x3e8
-   8046c:	da02      	bge.n	80474 <PIDRegulate+0x10c>
+   8046a:	f5b0 7f7a 	cmp.w	r0, #1000	; 0x3e8
+   8046e:	da02      	bge.n	80476 <PIDRegulate+0x10e>
 
 	// Add up P, I and D outputs
 	output_value = (kP_Gain*error)+I_Output+D_Output;
 	
 	//Apply output from PID to pwm control
 	pwm_val = pwm_val+(output_value*PWM_CHANGE_GAIN);
-   8046e:	4b1b      	ldr	r3, [pc, #108]	; (804dc <PIDRegulate+0x174>)
-   80470:	6018      	str	r0, [r3, #0]
-   80472:	e003      	b.n	8047c <PIDRegulate+0x114>
+   80470:	4b1a      	ldr	r3, [pc, #104]	; (804dc <PIDRegulate+0x174>)
+   80472:	6018      	str	r0, [r3, #0]
+   80474:	e003      	b.n	8047e <PIDRegulate+0x116>
 	{
 		pwm_val = PID_PWM_MIN;
 	}
 	else if (pwm_val > PID_PWM_MAX)
 	{
 		pwm_val = PID_PWM_MAX;
-   80474:	f240 32e7 	movw	r2, #999	; 0x3e7
-   80478:	4b18      	ldr	r3, [pc, #96]	; (804dc <PIDRegulate+0x174>)
-   8047a:	601a      	str	r2, [r3, #0]
+   80476:	f240 32e7 	movw	r2, #999	; 0x3e7
+   8047a:	4b18      	ldr	r3, [pc, #96]	; (804dc <PIDRegulate+0x174>)
+   8047c:	601a      	str	r2, [r3, #0]
 	}
 	
 	// Write PID value to PWM
 	PWMDutyCycle(pwm_val);
-   8047c:	4b17      	ldr	r3, [pc, #92]	; (804dc <PIDRegulate+0x174>)
-   8047e:	6818      	ldr	r0, [r3, #0]
-   80480:	4b18      	ldr	r3, [pc, #96]	; (804e4 <PIDRegulate+0x17c>)
-   80482:	4798      	blx	r3
+   8047e:	4b17      	ldr	r3, [pc, #92]	; (804dc <PIDRegulate+0x174>)
+   80480:	6818      	ldr	r0, [r3, #0]
+   80482:	4b18      	ldr	r3, [pc, #96]	; (804e4 <PIDRegulate+0x17c>)
+   80484:	4798      	blx	r3
 }
-   80484:	b005      	add	sp, #20
-   80486:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
-   8048a:	bf00      	nop
+   80486:	b005      	add	sp, #20
+   80488:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
    8048c:	f3af 8000 	nop.w
    80490:	9999999a 	.word	0x9999999a
    80494:	3fa99999 	.word	0x3fa99999
-   80498:	200709d4 	.word	0x200709d4
+   80498:	2007012c 	.word	0x2007012c
    8049c:	000801e5 	.word	0x000801e5
    804a0:	cccccccd 	.word	0xcccccccd
-   804a4:	200709d0 	.word	0x200709d0
+   804a4:	200709f8 	.word	0x200709f8
    804a8:	20070a24 	.word	0x20070a24
-   804ac:	20070a10 	.word	0x20070a10
-   804b0:	200709cc 	.word	0x200709cc
+   804ac:	200709fc 	.word	0x200709fc
+   804b0:	200709f4 	.word	0x200709f4
    804b4:	00082e59 	.word	0x00082e59
    804b8:	00082f25 	.word	0x00082f25
    804bc:	20070a08 	.word	0x20070a08
@@ -855,11 +857,11 @@ void PIDRegulate(void){
    804d0:	00083349 	.word	0x00083349
    804d4:	20070a00 	.word	0x20070a00
    804d8:	20070a20 	.word	0x20070a20
-   804dc:	200709c8 	.word	0x200709c8
+   804dc:	200709f0 	.word	0x200709f0
    804e0:	3fe00000 	.word	0x3fe00000
    804e4:	000805bd 	.word	0x000805bd
    804e8:	00083179 	.word	0x00083179
-   804ec:	20070a14 	.word	0x20070a14
+   804ec:	20070a10 	.word	0x20070a10
 
 000804f0 <PIDRegulationTask>:
 #include "global_variables.h"
@@ -918,7 +920,7 @@ vTaskDelay(1000);
    8052c:	47a8      	blx	r5
 	}
    8052e:	e7fa      	b.n	80526 <PIDRegulationTask+0x36>
-   80530:	200709c4 	.word	0x200709c4
+   80530:	200709ec 	.word	0x200709ec
    80534:	000811c5 	.word	0x000811c5
    80538:	00081651 	.word	0x00081651
    8053c:	00081939 	.word	0x00081939
@@ -1438,7 +1440,7 @@ static inline void usart_serial_init(usart_if p_usart,
    807c0:	20078ca0 	.word	0x20078ca0
    807c4:	0501bd00 	.word	0x0501bd00
    807c8:	0008234d 	.word	0x0008234d
-   807cc:	20070568 	.word	0x20070568
+   807cc:	20070590 	.word	0x20070590
    807d0:	00083599 	.word	0x00083599
    807d4:	400e0e00 	.word	0x400e0e00
 
@@ -1834,7 +1836,7 @@ void getPIDValues()
 }
    809a4:	b004      	add	sp, #16
    809a6:	bd70      	pop	{r4, r5, r6, pc}
-   809a8:	2007012c 	.word	0x2007012c
+   809a8:	20070154 	.word	0x20070154
    809ac:	400e0800 	.word	0x400e0800
    809b0:	00082385 	.word	0x00082385
    809b4:	00081939 	.word	0x00081939
@@ -1893,13 +1895,13 @@ void sendValues(){
    80a2a:	6819      	ldr	r1, [r3, #0]
    80a2c:	47a0      	blx	r4
    80a2e:	bd38      	pop	{r3, r4, r5, pc}
-   80a30:	2007012c 	.word	0x2007012c
+   80a30:	20070154 	.word	0x20070154
    80a34:	000863c4 	.word	0x000863c4
    80a38:	000833e9 	.word	0x000833e9
    80a3c:	000863d0 	.word	0x000863d0
-   80a40:	20070a10 	.word	0x20070a10
-   80a44:	200709c8 	.word	0x200709c8
-   80a48:	200709d0 	.word	0x200709d0
+   80a40:	200709fc 	.word	0x200709fc
+   80a44:	200709f0 	.word	0x200709f0
+   80a48:	200709f8 	.word	0x200709f8
    80a4c:	20070a24 	.word	0x20070a24
 
 00080a50 <SerialComTask>:
@@ -1993,7 +1995,7 @@ void SerialComTask (void *pvParameters)
 	}
    80a96:	e7ee      	b.n	80a76 <SerialComTask+0x26>
    80a98:	000807d9 	.word	0x000807d9
-   80a9c:	200709c4 	.word	0x200709c4
+   80a9c:	200709ec 	.word	0x200709ec
    80aa0:	0008100d 	.word	0x0008100d
    80aa4:	400e0800 	.word	0x400e0800
    80aa8:	00082385 	.word	0x00082385
@@ -2306,7 +2308,7 @@ void vPortEnterCritical( void )
    80bdc:	6013      	str	r3, [r2, #0]
    80bde:	bd08      	pop	{r3, pc}
    80be0:	00080bc1 	.word	0x00080bc1
-   80be4:	20070130 	.word	0x20070130
+   80be4:	20070158 	.word	0x20070158
 
 00080be8 <vPortClearInterruptMask>:
 }
@@ -2340,7 +2342,7 @@ void vPortExitCritical( void )
    80bfe:	4b02      	ldr	r3, [pc, #8]	; (80c08 <vPortExitCritical+0x18>)
    80c00:	4798      	blx	r3
    80c02:	bd08      	pop	{r3, pc}
-   80c04:	20070130 	.word	0x20070130
+   80c04:	20070158 	.word	0x20070158
    80c08:	00080be9 	.word	0x00080be9
 
 00080c0c <PendSV_Handler>:
@@ -2476,7 +2478,7 @@ portBASE_TYPE xPortStartScheduler( void )
    80cb2:	bf00      	nop
    80cb4:	e000ed20 	.word	0xe000ed20
    80cb8:	00080c75 	.word	0x00080c75
-   80cbc:	20070130 	.word	0x20070130
+   80cbc:	20070158 	.word	0x20070158
    80cc0:	00080b61 	.word	0x00080b61
 
 00080cc4 <prvInsertBlockIntoFreeList>:
@@ -2783,7 +2785,7 @@ void *pvReturn = NULL;
    80dcc:	20078a28 	.word	0x20078a28
    80dd0:	20078a2c 	.word	0x20078a2c
    80dd4:	20070a28 	.word	0x20070a28
-   80dd8:	20070134 	.word	0x20070134
+   80dd8:	2007015c 	.word	0x2007015c
    80ddc:	00080cc5 	.word	0x00080cc5
    80de0:	0008179d 	.word	0x0008179d
 
@@ -2831,7 +2833,7 @@ void vPortFree( void *pv )
    80e08:	4770      	bx	lr
    80e0a:	bf00      	nop
    80e0c:	00081641 	.word	0x00081641
-   80e10:	20070134 	.word	0x20070134
+   80e10:	2007015c 	.word	0x2007015c
    80e14:	00080cc5 	.word	0x00080cc5
    80e18:	0008179d 	.word	0x0008179d
 
@@ -4141,7 +4143,7 @@ static void prvAddCurrentTaskToDelayedList( portTickType xTimeToWake )
    813c0:	20078b84 	.word	0x20078b84
    813c4:	00080af5 	.word	0x00080af5
    813c8:	20078a4c 	.word	0x20078a4c
-   813cc:	20070138 	.word	0x20070138
+   813cc:	20070160 	.word	0x20070160
 
 000813d0 <xTaskGenericCreate>:
 /*-----------------------------------------------------------
@@ -4874,7 +4876,7 @@ void vTaskIncrementTick( void )
    81778:	00080bc1 	.word	0x00080bc1
    8177c:	20078b84 	.word	0x20078b84
    81780:	20078b60 	.word	0x20078b60
-   81784:	20070138 	.word	0x20070138
+   81784:	20070160 	.word	0x20070160
    81788:	00080b39 	.word	0x00080b39
    8178c:	20078a80 	.word	0x20078a80
    81790:	20078a84 	.word	0x20078a84
@@ -9042,11 +9044,11 @@ void Reset_Handler(void)
    8292e:	bf00      	nop
    82930:	20070000 	.word	0x20070000
    82934:	0008652c 	.word	0x0008652c
-   82938:	200709a4 	.word	0x200709a4
+   82938:	200709cc 	.word	0x200709cc
    8293c:	20078cb0 	.word	0x20078cb0
-   82940:	200709a8 	.word	0x200709a8
-   82944:	200709a7 	.word	0x200709a7
-   82948:	200709ac 	.word	0x200709ac
+   82940:	200709d0 	.word	0x200709d0
+   82944:	200709cf 	.word	0x200709cf
+   82948:	200709d4 	.word	0x200709d4
    8294c:	20078cb3 	.word	0x20078cb3
    82950:	00080000 	.word	0x00080000
    82954:	e000ed00 	.word	0xe000ed00
@@ -9239,7 +9241,7 @@ void SystemCoreClockUpdate(void)
    82a5a:	bf00      	nop
    82a5c:	400e0600 	.word	0x400e0600
    82a60:	400e1a10 	.word	0x400e1a10
-   82a64:	2007013c 	.word	0x2007013c
+   82a64:	20070164 	.word	0x20070164
    82a68:	00b71b00 	.word	0x00b71b00
    82a6c:	003d0900 	.word	0x003d0900
    82a70:	007a1200 	.word	0x007a1200
@@ -9471,7 +9473,7 @@ int main (void)
    82b78:	000805d9 	.word	0x000805d9
    82b7c:	00080151 	.word	0x00080151
    82b80:	00080fb5 	.word	0x00080fb5
-   82b84:	200709c4 	.word	0x200709c4
+   82b84:	200709ec 	.word	0x200709ec
    82b88:	0008100d 	.word	0x0008100d
    82b8c:	000804f1 	.word	0x000804f1
    82b90:	00086428 	.word	0x00086428
@@ -10186,7 +10188,7 @@ int main (void)
    83404:	e8bd 4010 	ldmia.w	sp!, {r4, lr}
    83408:	b004      	add	sp, #16
    8340a:	4770      	bx	lr
-   8340c:	20070568 	.word	0x20070568
+   8340c:	20070590 	.word	0x20070590
 
 00083410 <memcpy>:
    83410:	4684      	mov	ip, r0
@@ -10463,7 +10465,7 @@ int main (void)
    83690:	f44f 6780 	mov.w	r7, #1024	; 0x400
    83694:	e7ec      	b.n	83670 <setvbuf+0xc8>
    83696:	bf00      	nop
-   83698:	20070568 	.word	0x20070568
+   83698:	20070590 	.word	0x20070590
    8369c:	000846c1 	.word	0x000846c1
 
 000836a0 <strlen>:
@@ -11875,7 +11877,7 @@ int main (void)
    84522:	81a2      	strh	r2, [r4, #12]
    84524:	bd38      	pop	{r3, r4, r5, pc}
    84526:	bf00      	nop
-   84528:	20070568 	.word	0x20070568
+   84528:	20070590 	.word	0x20070590
 
 0008452c <register_fini>:
    8452c:	4b02      	ldr	r3, [pc, #8]	; (84538 <register_fini+0xc>)
@@ -12333,9 +12335,9 @@ int main (void)
    8495a:	6053      	str	r3, [r2, #4]
    8495c:	6008      	str	r0, [r1, #0]
    8495e:	e7d5      	b.n	8490c <_malloc_trim_r+0x3c>
-   84960:	20070590 	.word	0x20070590
+   84960:	200705b8 	.word	0x200705b8
    84964:	20078c50 	.word	0x20078c50
-   84968:	2007099c 	.word	0x2007099c
+   84968:	200709c4 	.word	0x200709c4
 
 0008496c <_free_r>:
    8496c:	2900      	cmp	r1, #0
@@ -12514,9 +12516,9 @@ int main (void)
    84b06:	247e      	movs	r4, #126	; 0x7e
    84b08:	e789      	b.n	84a1e <_free_r+0xb2>
    84b0a:	bf00      	nop
-   84b0c:	20070590 	.word	0x20070590
-   84b10:	20070598 	.word	0x20070598
-   84b14:	20070998 	.word	0x20070998
+   84b0c:	200705b8 	.word	0x200705b8
+   84b10:	200705c0 	.word	0x200705c0
+   84b14:	200709c0 	.word	0x200709c0
    84b18:	20078c4c 	.word	0x20078c4c
 
 00084b1c <__sfvwrite_r>:
@@ -12872,14 +12874,14 @@ int main (void)
 00084e8c <__locale_charset>:
    84e8c:	4800      	ldr	r0, [pc, #0]	; (84e90 <__locale_charset+0x4>)
    84e8e:	4770      	bx	lr
-   84e90:	2007056c 	.word	0x2007056c
+   84e90:	20070594 	.word	0x20070594
 
 00084e94 <__locale_mb_cur_max>:
    84e94:	4b01      	ldr	r3, [pc, #4]	; (84e9c <__locale_mb_cur_max+0x8>)
    84e96:	6818      	ldr	r0, [r3, #0]
    84e98:	4770      	bx	lr
    84e9a:	bf00      	nop
-   84e9c:	2007058c 	.word	0x2007058c
+   84e9c:	200705b4 	.word	0x200705b4
 
 00084ea0 <__smakebuf_r>:
    84ea0:	898b      	ldrh	r3, [r1, #12]
@@ -12977,7 +12979,7 @@ int main (void)
    84f84:	6818      	ldr	r0, [r3, #0]
    84f86:	f000 b803 	b.w	84f90 <_malloc_r>
    84f8a:	bf00      	nop
-   84f8c:	20070568 	.word	0x20070568
+   84f8c:	20070590 	.word	0x20070590
 
 00084f90 <_malloc_r>:
    84f90:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
@@ -13272,12 +13274,12 @@ int main (void)
    852a6:	0041      	lsls	r1, r0, #1
    852a8:	e6b2      	b.n	85010 <_malloc_r+0x80>
    852aa:	bf00      	nop
-   852ac:	20070590 	.word	0x20070590
+   852ac:	200705b8 	.word	0x200705b8
    852b0:	20078c4c 	.word	0x20078c4c
    852b4:	20078c50 	.word	0x20078c50
    852b8:	20078c48 	.word	0x20078c48
    852bc:	20078c44 	.word	0x20078c44
-   852c0:	2007099c 	.word	0x2007099c
+   852c0:	200709c4 	.word	0x200709c4
    852c4:	0a5a      	lsrs	r2, r3, #9
    852c6:	2a04      	cmp	r2, #4
    852c8:	d955      	bls.n	85376 <_malloc_r+0x3e6>
@@ -13458,7 +13460,7 @@ int main (void)
    85492:	e720      	b.n	852d6 <_malloc_r+0x346>
    85494:	687b      	ldr	r3, [r7, #4]
    85496:	e78b      	b.n	853b0 <_malloc_r+0x420>
-   85498:	20070590 	.word	0x20070590
+   85498:	200705b8 	.word	0x200705b8
 
 0008549c <memchr>:
    8549c:	0783      	lsls	r3, r0, #30
@@ -13975,7 +13977,7 @@ int main (void)
    859d4:	3518      	adds	r5, #24
    859d6:	f8ca 201c 	str.w	r2, [sl, #28]
    859da:	e739      	b.n	85850 <_realloc_r+0x250>
-   859dc:	20070590 	.word	0x20070590
+   859dc:	200705b8 	.word	0x200705b8
 
 000859e0 <_sbrk_r>:
    859e0:	b538      	push	{r3, r4, r5, lr}
@@ -14168,7 +14170,7 @@ int main (void)
    85b7a:	47b8      	blx	r7
    85b7c:	e7eb      	b.n	85b56 <_wcrtomb_r+0x26>
    85b7e:	bf00      	nop
-   85b80:	200709a0 	.word	0x200709a0
+   85b80:	200709c8 	.word	0x200709c8
 
 00085b84 <__ascii_wctomb>:
    85b84:	b121      	cbz	r1, 85b90 <__ascii_wctomb+0xc>
@@ -15032,7 +15034,7 @@ int main (void)
    864a8:	00000043 	.word	0x00000043
 
 000864ac <_global_impure_ptr>:
-   864ac:	20070140                                @.. 
+   864ac:	20070168                                h.. 
 
 000864b0 <zeroes.6869>:
    864b0:	30303030 30303030 30303030 30303030     0000000000000000
@@ -15177,7 +15179,7 @@ void SystemInit(void)
 20070094:	01370809 	.word	0x01370809
 20070098:	200d3f01 	.word	0x200d3f01
 2007009c:	0501bd00 	.word	0x0501bd00
-200700a0:	2007013c 	.word	0x2007013c
+200700a0:	20070164 	.word	0x20070164
 
 200700a4 <system_init_flash>:
 __no_inline
@@ -15256,112 +15258,117 @@ void system_init_flash(uint32_t ul_clk)
 20070124:	04c4b3ff 	.word	0x04c4b3ff
 20070128:	055d4a7f 	.word	0x055d4a7f
 
-2007012c <isMatlab>:
-2007012c:	00000001                                ....
+2007012c <adc_filter_values>:
+2007012c:	00000001 00000001 00000001 00000001     ................
+2007013c:	00000001 00000001 00000001 00000001     ................
+2007014c:	00000001 00000001                       ........
 
-20070130 <uxCriticalNesting>:
-20070130:	aaaaaaaa                                ....
+20070154 <isMatlab>:
+20070154:	00000001                                ....
 
-20070134 <xFreeBytesRemaining>:
-20070134:	00008000                                ....
+20070158 <uxCriticalNesting>:
+20070158:	aaaaaaaa                                ....
 
-20070138 <xNextTaskUnblockTime>:
-20070138:	0000ffff                                ....
+2007015c <xFreeBytesRemaining>:
+2007015c:	00008000                                ....
 
-2007013c <SystemCoreClock>:
-2007013c:	003d0900                                ..=.
+20070160 <xNextTaskUnblockTime>:
+20070160:	0000ffff                                ....
 
-20070140 <impure_data>:
-20070140:	00000000 2007042c 20070494 200704fc     ....,.. ... ... 
+20070164 <SystemCoreClock>:
+20070164:	003d0900                                ..=.
+
+20070168 <impure_data>:
+20070168:	00000000 20070454 200704bc 20070524     ....T.. ... $.. 
 	...
-20070174:	000864a8 00000000 00000000 00000000     .d..............
+2007019c:	000864a8 00000000 00000000 00000000     .d..............
 	...
-200701e8:	00000001 00000000 abcd330e e66d1234     .........3..4.m.
-200701f8:	0005deec 0000000b 00000000 00000000     ................
-	...
-
-20070568 <_impure_ptr>:
-20070568:	20070140                                @.. 
-
-2007056c <lc_ctype_charset>:
-2007056c:	49435341 00000049 00000000 00000000     ASCII...........
+20070210:	00000001 00000000 abcd330e e66d1234     .........3..4.m.
+20070220:	0005deec 0000000b 00000000 00000000     ................
 	...
 
-2007058c <__mb_cur_max>:
-2007058c:	00000001                                ....
+20070590 <_impure_ptr>:
+20070590:	20070168                                h.. 
 
-20070590 <__malloc_av_>:
+20070594 <lc_ctype_charset>:
+20070594:	49435341 00000049 00000000 00000000     ASCII...........
 	...
-20070598:	20070590 20070590 20070598 20070598     ... ... ... ... 
-200705a8:	200705a0 200705a0 200705a8 200705a8     ... ... ... ... 
-200705b8:	200705b0 200705b0 200705b8 200705b8     ... ... ... ... 
-200705c8:	200705c0 200705c0 200705c8 200705c8     ... ... ... ... 
-200705d8:	200705d0 200705d0 200705d8 200705d8     ... ... ... ... 
-200705e8:	200705e0 200705e0 200705e8 200705e8     ... ... ... ... 
-200705f8:	200705f0 200705f0 200705f8 200705f8     ... ... ... ... 
-20070608:	20070600 20070600 20070608 20070608     ... ... ... ... 
-20070618:	20070610 20070610 20070618 20070618     ... ... ... ... 
-20070628:	20070620 20070620 20070628 20070628      ..  .. (.. (.. 
-20070638:	20070630 20070630 20070638 20070638     0.. 0.. 8.. 8.. 
-20070648:	20070640 20070640 20070648 20070648     @.. @.. H.. H.. 
-20070658:	20070650 20070650 20070658 20070658     P.. P.. X.. X.. 
-20070668:	20070660 20070660 20070668 20070668     `.. `.. h.. h.. 
-20070678:	20070670 20070670 20070678 20070678     p.. p.. x.. x.. 
-20070688:	20070680 20070680 20070688 20070688     ... ... ... ... 
-20070698:	20070690 20070690 20070698 20070698     ... ... ... ... 
-200706a8:	200706a0 200706a0 200706a8 200706a8     ... ... ... ... 
-200706b8:	200706b0 200706b0 200706b8 200706b8     ... ... ... ... 
-200706c8:	200706c0 200706c0 200706c8 200706c8     ... ... ... ... 
-200706d8:	200706d0 200706d0 200706d8 200706d8     ... ... ... ... 
-200706e8:	200706e0 200706e0 200706e8 200706e8     ... ... ... ... 
-200706f8:	200706f0 200706f0 200706f8 200706f8     ... ... ... ... 
-20070708:	20070700 20070700 20070708 20070708     ... ... ... ... 
-20070718:	20070710 20070710 20070718 20070718     ... ... ... ... 
-20070728:	20070720 20070720 20070728 20070728      ..  .. (.. (.. 
-20070738:	20070730 20070730 20070738 20070738     0.. 0.. 8.. 8.. 
-20070748:	20070740 20070740 20070748 20070748     @.. @.. H.. H.. 
-20070758:	20070750 20070750 20070758 20070758     P.. P.. X.. X.. 
-20070768:	20070760 20070760 20070768 20070768     `.. `.. h.. h.. 
-20070778:	20070770 20070770 20070778 20070778     p.. p.. x.. x.. 
-20070788:	20070780 20070780 20070788 20070788     ... ... ... ... 
-20070798:	20070790 20070790 20070798 20070798     ... ... ... ... 
-200707a8:	200707a0 200707a0 200707a8 200707a8     ... ... ... ... 
-200707b8:	200707b0 200707b0 200707b8 200707b8     ... ... ... ... 
-200707c8:	200707c0 200707c0 200707c8 200707c8     ... ... ... ... 
-200707d8:	200707d0 200707d0 200707d8 200707d8     ... ... ... ... 
-200707e8:	200707e0 200707e0 200707e8 200707e8     ... ... ... ... 
-200707f8:	200707f0 200707f0 200707f8 200707f8     ... ... ... ... 
-20070808:	20070800 20070800 20070808 20070808     ... ... ... ... 
-20070818:	20070810 20070810 20070818 20070818     ... ... ... ... 
-20070828:	20070820 20070820 20070828 20070828      ..  .. (.. (.. 
-20070838:	20070830 20070830 20070838 20070838     0.. 0.. 8.. 8.. 
-20070848:	20070840 20070840 20070848 20070848     @.. @.. H.. H.. 
-20070858:	20070850 20070850 20070858 20070858     P.. P.. X.. X.. 
-20070868:	20070860 20070860 20070868 20070868     `.. `.. h.. h.. 
-20070878:	20070870 20070870 20070878 20070878     p.. p.. x.. x.. 
-20070888:	20070880 20070880 20070888 20070888     ... ... ... ... 
-20070898:	20070890 20070890 20070898 20070898     ... ... ... ... 
-200708a8:	200708a0 200708a0 200708a8 200708a8     ... ... ... ... 
-200708b8:	200708b0 200708b0 200708b8 200708b8     ... ... ... ... 
-200708c8:	200708c0 200708c0 200708c8 200708c8     ... ... ... ... 
-200708d8:	200708d0 200708d0 200708d8 200708d8     ... ... ... ... 
-200708e8:	200708e0 200708e0 200708e8 200708e8     ... ... ... ... 
-200708f8:	200708f0 200708f0 200708f8 200708f8     ... ... ... ... 
-20070908:	20070900 20070900 20070908 20070908     ... ... ... ... 
-20070918:	20070910 20070910 20070918 20070918     ... ... ... ... 
-20070928:	20070920 20070920 20070928 20070928      ..  .. (.. (.. 
-20070938:	20070930 20070930 20070938 20070938     0.. 0.. 8.. 8.. 
-20070948:	20070940 20070940 20070948 20070948     @.. @.. H.. H.. 
-20070958:	20070950 20070950 20070958 20070958     P.. P.. X.. X.. 
-20070968:	20070960 20070960 20070968 20070968     `.. `.. h.. h.. 
-20070978:	20070970 20070970 20070978 20070978     p.. p.. x.. x.. 
-20070988:	20070980 20070980 20070988 20070988     ... ... ... ... 
 
-20070998 <__malloc_trim_threshold>:
-20070998:	00020000                                ....
+200705b4 <__mb_cur_max>:
+200705b4:	00000001                                ....
 
-2007099c <__malloc_sbrk_base>:
-2007099c:	ffffffff                                ....
+200705b8 <__malloc_av_>:
+	...
+200705c0:	200705b8 200705b8 200705c0 200705c0     ... ... ... ... 
+200705d0:	200705c8 200705c8 200705d0 200705d0     ... ... ... ... 
+200705e0:	200705d8 200705d8 200705e0 200705e0     ... ... ... ... 
+200705f0:	200705e8 200705e8 200705f0 200705f0     ... ... ... ... 
+20070600:	200705f8 200705f8 20070600 20070600     ... ... ... ... 
+20070610:	20070608 20070608 20070610 20070610     ... ... ... ... 
+20070620:	20070618 20070618 20070620 20070620     ... ...  ..  .. 
+20070630:	20070628 20070628 20070630 20070630     (.. (.. 0.. 0.. 
+20070640:	20070638 20070638 20070640 20070640     8.. 8.. @.. @.. 
+20070650:	20070648 20070648 20070650 20070650     H.. H.. P.. P.. 
+20070660:	20070658 20070658 20070660 20070660     X.. X.. `.. `.. 
+20070670:	20070668 20070668 20070670 20070670     h.. h.. p.. p.. 
+20070680:	20070678 20070678 20070680 20070680     x.. x.. ... ... 
+20070690:	20070688 20070688 20070690 20070690     ... ... ... ... 
+200706a0:	20070698 20070698 200706a0 200706a0     ... ... ... ... 
+200706b0:	200706a8 200706a8 200706b0 200706b0     ... ... ... ... 
+200706c0:	200706b8 200706b8 200706c0 200706c0     ... ... ... ... 
+200706d0:	200706c8 200706c8 200706d0 200706d0     ... ... ... ... 
+200706e0:	200706d8 200706d8 200706e0 200706e0     ... ... ... ... 
+200706f0:	200706e8 200706e8 200706f0 200706f0     ... ... ... ... 
+20070700:	200706f8 200706f8 20070700 20070700     ... ... ... ... 
+20070710:	20070708 20070708 20070710 20070710     ... ... ... ... 
+20070720:	20070718 20070718 20070720 20070720     ... ...  ..  .. 
+20070730:	20070728 20070728 20070730 20070730     (.. (.. 0.. 0.. 
+20070740:	20070738 20070738 20070740 20070740     8.. 8.. @.. @.. 
+20070750:	20070748 20070748 20070750 20070750     H.. H.. P.. P.. 
+20070760:	20070758 20070758 20070760 20070760     X.. X.. `.. `.. 
+20070770:	20070768 20070768 20070770 20070770     h.. h.. p.. p.. 
+20070780:	20070778 20070778 20070780 20070780     x.. x.. ... ... 
+20070790:	20070788 20070788 20070790 20070790     ... ... ... ... 
+200707a0:	20070798 20070798 200707a0 200707a0     ... ... ... ... 
+200707b0:	200707a8 200707a8 200707b0 200707b0     ... ... ... ... 
+200707c0:	200707b8 200707b8 200707c0 200707c0     ... ... ... ... 
+200707d0:	200707c8 200707c8 200707d0 200707d0     ... ... ... ... 
+200707e0:	200707d8 200707d8 200707e0 200707e0     ... ... ... ... 
+200707f0:	200707e8 200707e8 200707f0 200707f0     ... ... ... ... 
+20070800:	200707f8 200707f8 20070800 20070800     ... ... ... ... 
+20070810:	20070808 20070808 20070810 20070810     ... ... ... ... 
+20070820:	20070818 20070818 20070820 20070820     ... ...  ..  .. 
+20070830:	20070828 20070828 20070830 20070830     (.. (.. 0.. 0.. 
+20070840:	20070838 20070838 20070840 20070840     8.. 8.. @.. @.. 
+20070850:	20070848 20070848 20070850 20070850     H.. H.. P.. P.. 
+20070860:	20070858 20070858 20070860 20070860     X.. X.. `.. `.. 
+20070870:	20070868 20070868 20070870 20070870     h.. h.. p.. p.. 
+20070880:	20070878 20070878 20070880 20070880     x.. x.. ... ... 
+20070890:	20070888 20070888 20070890 20070890     ... ... ... ... 
+200708a0:	20070898 20070898 200708a0 200708a0     ... ... ... ... 
+200708b0:	200708a8 200708a8 200708b0 200708b0     ... ... ... ... 
+200708c0:	200708b8 200708b8 200708c0 200708c0     ... ... ... ... 
+200708d0:	200708c8 200708c8 200708d0 200708d0     ... ... ... ... 
+200708e0:	200708d8 200708d8 200708e0 200708e0     ... ... ... ... 
+200708f0:	200708e8 200708e8 200708f0 200708f0     ... ... ... ... 
+20070900:	200708f8 200708f8 20070900 20070900     ... ... ... ... 
+20070910:	20070908 20070908 20070910 20070910     ... ... ... ... 
+20070920:	20070918 20070918 20070920 20070920     ... ...  ..  .. 
+20070930:	20070928 20070928 20070930 20070930     (.. (.. 0.. 0.. 
+20070940:	20070938 20070938 20070940 20070940     8.. 8.. @.. @.. 
+20070950:	20070948 20070948 20070950 20070950     H.. H.. P.. P.. 
+20070960:	20070958 20070958 20070960 20070960     X.. X.. `.. `.. 
+20070970:	20070968 20070968 20070970 20070970     h.. h.. p.. p.. 
+20070980:	20070978 20070978 20070980 20070980     x.. x.. ... ... 
+20070990:	20070988 20070988 20070990 20070990     ... ... ... ... 
+200709a0:	20070998 20070998 200709a0 200709a0     ... ... ... ... 
+200709b0:	200709a8 200709a8 200709b0 200709b0     ... ... ... ... 
 
-200709a0 <__wctomb>:
-200709a0:	00085b85                                .[..
+200709c0 <__malloc_trim_threshold>:
+200709c0:	00020000                                ....
+
+200709c4 <__malloc_sbrk_base>:
+200709c4:	ffffffff                                ....
+
+200709c8 <__wctomb>:
+200709c8:	00085b85                                .[..

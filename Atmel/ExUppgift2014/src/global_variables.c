@@ -23,4 +23,4 @@ int32_t error = 0;
 int32_t I_Output_old = 0;
 int32_t error_old = 0;
 int32_t pwm_val = 0;
-int32_t adc_filter_values[] = {0,0,0,0,0,0,0,0,0,0}; // 10 values array
+int32_t adc_filter_values[] = {1,1,1,1,1,1,1,1,1,1}; // 10 values array
