@@ -12,7 +12,7 @@
 // CALIBRATION CONFIG AREA
 
 //PWM Change Gain
-#define PWM_CHANGE_GAIN 5.0
+#define PWM_CHANGE_GAIN 0.5
 
 // The ADC value at each centimeter. Also used for the setpoint function to convert cm to adc value for sensor
 #define CENTIMETER_10 3450
@@ -22,7 +22,7 @@
 #define CENTIMETER_30 1500
 #define CENTIMETER_35 1400
 #define CENTIMETER_40 1350
-#define CENTIMETER_45 1250
+#define CENTIMETER_45 1200
 #define CENTIMETER_50 1150
 #define CENTIMETER_DEFAULT 30
 
@@ -76,7 +76,8 @@ extern uint8_t isMatlab;
 extern int32_t output_value;
 extern int32_t distance;
 extern int32_t error;
-extern int32_t I_Output_old;
+extern float I_Output;
+extern float D_Output;
 extern int32_t error_old;
 extern int32_t pwm_val;
 extern int32_t adc_filter_values[];

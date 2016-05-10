@@ -26,5 +26,6 @@ vTaskDelay(1000);
 	for(;;){
 		vTaskDelayUntil(&xLastWakeTime,xFrequency);	// Samplingstid
 		PIDRegulate(); // Run PID
+		//PRegulatorZN(); // Zieg
 	}
 }

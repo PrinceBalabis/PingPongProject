@@ -12,6 +12,17 @@
 #include "global_variables.h"
 #include "UARTFunctions.h"
 
+void PRegulatorZN(void){
+	distance = ADCLinearValues();
+	
+	// P-regulation
+	error = (setPoint - distance);
+	output_value = 525+(error*kP_Gain);
+	pwm_val = output_value;
+	// Write PID value to PWM
+	PWMDutyCycle(pwm_val);
+}
+
 /* PID Function */
 void PIDRegulate(void){
 
@@ -25,37 +36,41 @@ void PIDRegulate(void){
 		adc_filter_values_total += adc_filter_values[i];
 	}
 	distance = adc_filter_values_total / 5; // Get the average
-
+	
+	//uncomment for linear calibration
+	//distance = ADCReadSensor();
+	
 	// P-regulation
 	error = -1*(setPoint - distance);
-
+	
 	// D-regulation
-	double D_Output;
-
+	
 	//if(error == 1)
 	//{
 	//D_Output = 0;
 	//} else {
-	D_Output = (double)(kD_Gain * ((error-error_old) * 1000.0 / DTIME_MS));
+	D_Output = (float)((error-error_old) / DTIME_MS);
 	//}
 	error_old = error;
-
+	
 	// I-regulation
-	double I_Output;
 	//if(kI_Gain == 0)
 	//{
 	//	I_Output = 0;
 	//} else {
-	I_Output = (double)(I_Output_old + kI_Gain * error * DT_SECONDS);
-	I_Output_old = I_Output;
+	I_Output += (error * DTIME_MS);
 	//}
-
+	
 	// Add up P, I and D outputs
-	output_value = (kP_Gain*error)+I_Output+D_Output;
+	output_value = (kP_Gain * error) + (kD_Gain * D_Output) + (kI_Gain * I_Output);
+	//output_value = (kP_Gain * (error + (I_Output / kI_Gain))); // PI regulering
+	//output_value = (kP_Gain * (error + (kD_Gain * D_Output))); // PD regulering
+	//output_value = (kP_Gain*error)+I_Output+D_Output;
 	//output_value = (kP_Gain*error); // P regulator
 	
 	//Apply output from PID to pwm control
 	pwm_val = pwm_val+(float)(output_value*PWM_CHANGE_GAIN);
+	//pwm_val = output_value;
 	
 	// Protection vs overflow/underflow
 	if (pwm_val < PID_PWM_MIN)
@@ -69,4 +84,5 @@ void PIDRegulate(void){
 	
 	// Write PID value to PWM
 	PWMDutyCycle(pwm_val);
+	
 }
