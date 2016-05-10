@@ -12,7 +12,7 @@
 // CALIBRATION CONFIG AREA
 
 //PWM Change Gain
-#define PWM_CHANGE_GAIN 0.5
+#define PWM_CHANGE_GAIN 5.0
 
 // The ADC value at each centimeter. Also used for the setpoint function to convert cm to adc value for sensor
 #define CENTIMETER_10 3450

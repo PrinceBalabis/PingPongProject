@@ -29,7 +29,6 @@ I-kalibrering: Oscillation är ok och överstigningen är ej viktigt, viktigt är at
 D-kalibrering: Oscillationen ska nästan helt bort, bollen ska ligga vid setpoint
 
 BRA VÄRDEN
-#define KP_GAIN_DEBUGGING 60
-#define KI_GAIN_DEBUGGING 9
-#define KD_GAIN_DEBUGGING 40
-#define SETPOINT_DEBUGGING 10
+P : 0.3
+I : 0.3
+D : 0.8
