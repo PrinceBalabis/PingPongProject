@@ -123,5 +123,5 @@ void sendValues(){
 	printf("%i\n\r", error);
 	printf("%i\n\r", pwm_val);
 	printf("%i\n\r", distance);
-	printf("%i\n\r", (int32_t)I_Output);
+	printf("%i\n\r", setPoint);
 }

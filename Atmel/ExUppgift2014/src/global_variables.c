@@ -25,3 +25,6 @@ float D_Output = 0;
 int32_t error_old = 0;
 int32_t pwm_val = 0;
 int32_t adc_filter_values[] = {1,1,1,1,1}; // 5 values array
+	
+	
+int distanceTemp;

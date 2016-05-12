@@ -65,9 +65,9 @@ extern double kI_Gain;
 extern double kD_Gain;
 extern int32_t setPoint;
 
-// dt �r 50ms eller 0.05s
+// dt �r 50ms-100ms
 #define DTIME_MS 100
-#define DT_SECONDS 0.1
+#define DT_SECONDS DTIME_MS/1000
 
 // Convert ms to s
 //#define DTIME_SECONDS DTIME_MS/1000
@@ -81,6 +81,8 @@ extern float D_Output;
 extern int32_t error_old;
 extern int32_t pwm_val;
 extern int32_t adc_filter_values[];
+
+extern int distanceTemp;
 
 /* PWM */
 pwm_channel_t pwm_channel;

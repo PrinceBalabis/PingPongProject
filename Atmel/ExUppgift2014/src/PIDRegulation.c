@@ -25,7 +25,7 @@ void PRegulatorZN(void){
 
 /* PID Function */
 void PIDRegulate(void){
-	distance = ADCLinearValues();
+	distance = readThrough();
 	
 	//uncomment for linear calibration
 	//distance = ADCReadSensor();
