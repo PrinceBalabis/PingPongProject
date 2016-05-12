@@ -43,26 +43,20 @@ void PIDRegulate(void){
 	// P-regulation
 	error = -1*(setPoint - distance);
 	
-	// D-regulation
+	// I-regulation
+	I_Output += kI_Gain*error;
+	if(I_Output > PID_PWM_MAX){ // Remove windup induced lag
+		I_Output = PID_PWM_MAX;
+		} else if(I_Output < PID_PWM_MIN){
+		I_Output = PID_PWM_MIN;
+	}
 	
-	//if(error == 1)
-	//{
-	//D_Output = 0;
-	//} else {
-	D_Output = (float)((error-error_old) / DTIME_MS);
-	//}
+	// D-regulation
+	float D_Output = (float)(error-error_old);
 	error_old = error;
 	
-	// I-regulation
-	//if(kI_Gain == 0)
-	//{
-	//	I_Output = 0;
-	//} else {
-	I_Output += (error * DTIME_MS);
-	//}
-	
 	// Add up P, I and D outputs
-	output_value = (kP_Gain * error) + (kD_Gain * D_Output) + (kI_Gain * I_Output);
+	output_value = (kP_Gain * error) + I_Output - (kD_Gain*D_Output);
 	//output_value = (kP_Gain * (error + (I_Output / kI_Gain))); // PI regulering
 	//output_value = (kP_Gain * (error + (kD_Gain * D_Output))); // PD regulering
 	//output_value = (kP_Gain*error)+I_Output+D_Output;

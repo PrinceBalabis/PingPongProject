@@ -77,7 +77,6 @@ extern int32_t output_value;
 extern int32_t distance;
 extern int32_t error;
 extern float I_Output;
-extern float D_Output;
 extern int32_t error_old;
 extern int32_t pwm_val;
 extern int32_t adc_filter_values[];
