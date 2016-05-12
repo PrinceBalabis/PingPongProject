@@ -25,17 +25,7 @@ void PRegulatorZN(void){
 
 /* PID Function */
 void PIDRegulate(void){
-
-	// moving average filter of sampled sensor values
-	for(int i = 0; i<4; i++){ // Remove the oldest value
-		adc_filter_values[i] = adc_filter_values[i+1];
-	}
-	adc_filter_values[4] = ADCLinearValues(); // Save the latest ADC value at the back of the array.
-	uint32_t adc_filter_values_total = 0;
-	for(int i = 0; i<5; i++) {// Add up all the values
-		adc_filter_values_total += adc_filter_values[i];
-	}
-	distance = adc_filter_values_total / 5; // Get the average
+	distance = ADCLinearValues();
 	
 	//uncomment for linear calibration
 	//distance = ADCReadSensor();
@@ -45,10 +35,10 @@ void PIDRegulate(void){
 	
 	// I-regulation
 	I_Output += error*DT_SECONDS;
-	if(I_Output > PID_PWM_MAX){ // Remove windup induced lag
-		I_Output = PID_PWM_MAX;
-		} else if(I_Output < PID_PWM_MIN){
-		I_Output = PID_PWM_MIN;
+	if(I_Output > 20){ // Remove windup induced lag
+		I_Output = 20;
+		} else if(I_Output < -20){
+		I_Output = -20;
 	}
 	
 	// D-regulation
@@ -56,7 +46,17 @@ void PIDRegulate(void){
 	error_old = error;
 	
 	// Add up P, I and D outputs
-	output_value = (kP_Gain * error) +  (kI_Gain*I_Output)+ (kD_Gain*D_Output);
+	if(kI_Gain != 0 && kD_Gain != 0){ // PID
+		output_value = kP_Gain * (error +  (I_Output/kI_Gain) + (kD_Gain*D_Output));
+		} else if(kI_Gain != 0 && kD_Gain == 0){ // PI
+		output_value = kP_Gain * (error +  (I_Output/kI_Gain));
+		} else if(kI_Gain == 0 && kD_Gain != 0){ // PD
+		output_value = kP_Gain * (error + (kD_Gain*D_Output));
+		} else if(kI_Gain == 0 && kD_Gain == 0){ //P
+		output_value = kP_Gain * error;
+		} else {
+		output_value = kP_Gain * (error +  (I_Output/kI_Gain) + (kD_Gain*D_Output));
+	}
 	//output_value = (kP_Gain * (error + (I_Output / kI_Gain))); // PI regulering
 	//output_value = (kP_Gain * (error + (kD_Gain * D_Output))); // PD regulering
 	//output_value = (kP_Gain*error)+I_Output+D_Output;
@@ -64,8 +64,8 @@ void PIDRegulate(void){
 	
 	//Apply output from PID to pwm control
 	//pwm_val = pwm_val+(float)(output_value*PWM_CHANGE_GAIN);
-	//pwm_val = pwm_val+output_value;
-	pwm_val = output_value;
+	pwm_val = pwm_val+output_value;
+	//pwm_val = output_value;
 
 	// Protection vs overflow/underflow
 	if (pwm_val < PID_PWM_MIN)

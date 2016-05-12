@@ -14,7 +14,7 @@ function [] = startPID(port, dT, T, setpoint, Kp, Ki, Kd)
 %motor to sensor(like a scarf or something)
 
 %Make sure the same divider is set for Arduino
-divider = 10;
+divider = 100;
 
 arduino = serial(port, 'BaudRate', 115200,'databits', 8);
 fopen(arduino);

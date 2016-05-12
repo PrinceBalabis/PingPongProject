@@ -33,3 +33,27 @@ Gain: 0.5
 P : 0.3
 I : 0.3
 D : 0.8
+
+
+T = 14.1-9.3 = 4.8
+
+
+Tid: 9.3		Error: -10		Utsignal: 52		Sensor Distans: 20		Setpoint: 30
+Tid: 9.6		Error: -10		Utsignal: 49		Sensor Distans: 20		Setpoint: 30
+Tid: 9.9		Error: -10		Utsignal: 46		Sensor Distans: 20		Setpoint: 30
+Tid: 10.2		Error: -5		Utsignal: 44		Sensor Distans: 25		Setpoint: 30
+Tid: 10.5		Error: -5		Utsignal: 44		Sensor Distans: 25		Setpoint: 30
+Tid: 10.8		Error: 0		Utsignal: 44		Sensor Distans: 30		Setpoint: 30
+Tid: 11.1		Error: 5		Utsignal: 44		Sensor Distans: 35		Setpoint: 30
+Tid: 11.4		Error: 10		Utsignal: 45		Sensor Distans: 40		Setpoint: 30
+Tid: 11.7		Error: 10		Utsignal: 48		Sensor Distans: 40		Setpoint: 30
+Tid: 12		Error: 10		Utsignal: 51		Sensor Distans: 40		Setpoint: 30
+Tid: 12.3		Error: 10		Utsignal: 54		Sensor Distans: 40		Setpoint: 30
+Tid: 12.6		Error: 10		Utsignal: 57		Sensor Distans: 40		Setpoint: 30
+Tid: 12.9		Error: 0		Utsignal: 58		Sensor Distans: 30		Setpoint: 30
+Tid: 13.2		Error: 5		Utsignal: 58		Sensor Distans: 35		Setpoint: 30
+Tid: 13.5		Error: -5		Utsignal: 58		Sensor Distans: 25		Setpoint: 30
+Tid: 13.8		Error: -5		Utsignal: 58		Sensor Distans: 25		Setpoint: 30
+Tid: 14.1		Error: -10		Utsignal: 55		Sensor Distans: 20		Setpoint: 30
+Tid: 14.4		Error: -10		Utsignal: 52		Sensor Distans: 20		Setpoint: 30
+Tid: 14.7		Error: -10		Utsignal: 50		Sensor Distans: 20		Setpoint: 30

@@ -26,7 +26,7 @@ void configure_console(void){
 void getPIDValues()
 {
 	// divier which is used to decode encoded doubles sent from Matlab
-	const uint8_t divider = 10;
+	const uint8_t divider = 100;
 
 	isMatlab = 0; // 1 for matlab, 0 for terminal debugging
 	uint16_t kP_Gain_temp = 0;
@@ -123,5 +123,5 @@ void sendValues(){
 	printf("%i\n\r", error);
 	printf("%i\n\r", pwm_val);
 	printf("%i\n\r", distance);
-	printf("%i\n\r", setPoint);
+	printf("%i\n\r", (int32_t)I_Output);
 }

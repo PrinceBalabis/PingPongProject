@@ -31,7 +31,16 @@ int ADCReadSensor()
 /* Linear ADC Value*/
 int ADCLinearValues()
 {
-	int tempADCValue = ADCReadSensor();
+	for(int i = 0; i<4; i++){ // Remove the oldest value
+		adc_filter_values[i] = adc_filter_values[i+1];
+	}
+	adc_filter_values[4] = ADCReadSensor(); // Save the latest ADC value at the back of the array.
+	uint32_t adc_filter_values_total = 0;
+	for(int i = 0; i<5; i++) {// Add up all the values
+		adc_filter_values_total += adc_filter_values[i];
+	}
+	int tempADCValue = adc_filter_values_total / 5; // Get the average
+
 	if(tempADCValue < CENTIMETER_50){
 		return 50;
 		} else if(tempADCValue > CENTIMETER_50 && tempADCValue < CENTIMETER_45){
