@@ -17,7 +17,7 @@ void PRegulatorZN(void){
 	
 	// P-regulation
 	error = (setPoint - distance);
-	output_value = 525+(error*kP_Gain);
+	output_value = 52+(error*kP_Gain);
 	pwm_val = output_value;
 	// Write PID value to PWM
 	PWMDutyCycle(pwm_val);
@@ -40,11 +40,11 @@ void PIDRegulate(void){
 	//uncomment for linear calibration
 	//distance = ADCReadSensor();
 	
-	// P-regulation
+	// P-regulation and invert error
 	error = -1*(setPoint - distance);
 	
 	// I-regulation
-	I_Output += kI_Gain*error;
+	I_Output += error*DT_SECONDS;
 	if(I_Output > PID_PWM_MAX){ // Remove windup induced lag
 		I_Output = PID_PWM_MAX;
 		} else if(I_Output < PID_PWM_MIN){
@@ -52,20 +52,21 @@ void PIDRegulate(void){
 	}
 	
 	// D-regulation
-	float D_Output = (float)(error-error_old);
+	D_Output = (float)(error-error_old);
 	error_old = error;
 	
 	// Add up P, I and D outputs
-	output_value = (kP_Gain * error) + I_Output - (kD_Gain*D_Output);
+	output_value = (kP_Gain * error) +  (kI_Gain*I_Output)+ (kD_Gain*D_Output);
 	//output_value = (kP_Gain * (error + (I_Output / kI_Gain))); // PI regulering
 	//output_value = (kP_Gain * (error + (kD_Gain * D_Output))); // PD regulering
 	//output_value = (kP_Gain*error)+I_Output+D_Output;
 	//output_value = (kP_Gain*error); // P regulator
 	
 	//Apply output from PID to pwm control
-	pwm_val = pwm_val+(float)(output_value*PWM_CHANGE_GAIN);
-	//pwm_val = output_value;
-	
+	//pwm_val = pwm_val+(float)(output_value*PWM_CHANGE_GAIN);
+	//pwm_val = pwm_val+output_value;
+	pwm_val = output_value;
+
 	// Protection vs overflow/underflow
 	if (pwm_val < PID_PWM_MIN)
 	{

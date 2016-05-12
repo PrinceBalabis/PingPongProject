@@ -12,7 +12,7 @@
 // CALIBRATION CONFIG AREA
 
 //PWM Change Gain
-#define PWM_CHANGE_GAIN 0.5
+#define PWM_CHANGE_GAIN 0.1
 
 // The ADC value at each centimeter. Also used for the setpoint function to convert cm to adc value for sensor
 #define CENTIMETER_10 3450
@@ -29,7 +29,7 @@
 //Minimum/Maximum PWM output from PID-regulation
 // #define PID_PWM_MIN 360
 #define PID_PWM_MIN 0
-#define PID_PWM_MAX 999
+#define PID_PWM_MAX 100
 
 // ------------------------------CALIBRATION CONFIG--------------------------------------
 
@@ -66,8 +66,8 @@ extern double kD_Gain;
 extern int32_t setPoint;
 
 // dt �r 50ms eller 0.05s
-#define DTIME_MS 50
-#define DT_SECONDS 0.05
+#define DTIME_MS 100
+#define DT_SECONDS 0.1
 
 // Convert ms to s
 //#define DTIME_SECONDS DTIME_MS/1000
@@ -77,6 +77,7 @@ extern int32_t output_value;
 extern int32_t distance;
 extern int32_t error;
 extern float I_Output;
+extern float D_Output;
 extern int32_t error_old;
 extern int32_t pwm_val;
 extern int32_t adc_filter_values[];

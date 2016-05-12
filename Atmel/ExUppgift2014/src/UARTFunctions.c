@@ -119,6 +119,7 @@ void sendValues(){
 	if(!isMatlab){
 		printf("Values:\n");
 	}
+	//printf("%i\n\r", (int32_t)((float)(10000*D_Output)));
 	printf("%i\n\r", error);
 	printf("%i\n\r", pwm_val);
 	printf("%i\n\r", distance);

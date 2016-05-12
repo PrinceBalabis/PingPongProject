@@ -90,10 +90,11 @@ for i = 1:N
         tq(i)=1;
     end
     
-    disp(['NuTid: '  num2str(tq(i))  9 9 'Error: ' num2str(error)  9 9 'Utsignal: ' num2str(pid_output)  9 9 'Sensor Distans: '  num2str(distance)  9 9 'Setpoint: '  num2str(setPoint)]);
+    disp(['Tid: '  num2str(tq(i))  9 9 'Error: ' num2str(error)  9 9 'Utsignal: ' num2str(pid_output)  9 9 'Sensor Distans: '  num2str(distance)  9 9 'Setpoint: '  num2str(setPoint)]);
     
     plot(tq, sp,'magenta',tq,e,'red',tq,o,'black',tq,d,'blue');
-    ylim([-70 70 ]);
+    ylim([-100 100 ]);
+    set(gca,'YDir','reverse');
     xlabel('Time(seconds)');
     ylabel('Position');
     title('PingPong System');

@@ -24,7 +24,6 @@ void PIDRegulationTask (void *pvParameters)
 	vTaskDelay(1000);
 
 	//set constants
-	kI_Gain = kI_Gain*DT_SECONDS;
 	kD_Gain = kD_Gain/DT_SECONDS;
 
 
