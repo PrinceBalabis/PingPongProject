@@ -10,6 +10,5 @@
 #define PIDREGULATION_H_
 
 void PIDRegulate(void);
-void PRegulatorZN(void);
 
 #endif /* PIDREGULATION_H_ */

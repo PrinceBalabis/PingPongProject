@@ -67,7 +67,7 @@ extern int32_t setPoint;
 
 // dt �r 50ms-100ms
 #define DTIME_MS 100
-#define DT_SECONDS DTIME_MS/1000
+#define DT_SECONDS 0.1
 
 // Convert ms to s
 //#define DTIME_SECONDS DTIME_MS/1000

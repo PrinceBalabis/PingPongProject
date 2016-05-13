@@ -12,20 +12,9 @@
 #include "global_variables.h"
 #include "UARTFunctions.h"
 
-void PRegulatorZN(void){
-	distance = ADCLinearValues();
-	
-	// P-regulation
-	error = (setPoint - distance);
-	output_value = 52+(error*kP_Gain);
-	pwm_val = output_value;
-	// Write PID value to PWM
-	PWMDutyCycle(pwm_val);
-}
-
 /* PID Function */
 void PIDRegulate(void){
-	distance = readThrough();
+	distance = ADCLinearValues();
 	
 	//uncomment for linear calibration
 	//distance = ADCReadSensor();

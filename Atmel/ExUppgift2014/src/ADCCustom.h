@@ -11,7 +11,6 @@
 void ADCSetup(void);
 int ADCReadSensor(void);
 int ADCLinearValues(void);
-int readThrough(void);
 
 #define M 3
 

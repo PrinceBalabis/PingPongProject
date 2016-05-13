@@ -30,10 +30,8 @@ void getPIDValues()
 
 	isMatlab = 0; // 1 for matlab, 0 for terminal debugging
 	uint16_t kP_Gain_temp = 0;
-	uint16_t kP_Gain_temp2 = 0;
 	uint16_t kI_Gain_temp = 0;
 	uint16_t kD_Gain_temp = 0;
-	uint16_t setPointCm = 0;
 	while (!uart_is_rx_ready (CONF_UART)){
 		vTaskDelay(1);
 	}
@@ -45,12 +43,12 @@ void getPIDValues()
 		kP_Gain_temp = KP_GAIN_DEBUGGING;
 		kI_Gain_temp = KI_GAIN_DEBUGGING;
 		kD_Gain_temp = KD_GAIN_DEBUGGING;
-		setPointCm = SETPOINT_DEBUGGING;
+		setPoint = SETPOINT_DEBUGGING;
 		printf("Preset values:\n");
 		printf("kP: %u\n\r", (uint16_t)(kP_Gain_temp));
 		printf("kI: %u\n\r", (uint16_t)(kI_Gain_temp));
 		printf("kD: %u\n\r", (uint16_t)(kD_Gain_temp));
-		printf("SetpointCm: %u\n\r", setPointCm);
+		printf("Setpoint: %u\n\r", setPoint);
 		} else {
 		while (!uart_is_rx_ready (CONF_UART)){
 			vTaskDelay(1);
@@ -68,40 +66,13 @@ void getPIDValues()
 		while (!uart_is_rx_ready (CONF_UART)){
 			vTaskDelay(1);
 		};
-		uart_read(CONF_UART, &setPointCm);
+		uart_read(CONF_UART, &setPoint);
 	}
 
 	//Convert to correct data types
 	kP_Gain = (double) ((double) kP_Gain_temp / divider);
 	kI_Gain = (double) (kI_Gain_temp / divider);
 	kD_Gain = (double) (kD_Gain_temp / divider);
-
-	switch(setPointCm){
-		case 10 :
-		setPoint = setPointCm;
-		break;
-
-		case 20:
-		setPoint = setPointCm;
-		break;
-
-		case 30 :
-		setPoint = setPointCm;
-		break;
-
-		case 40 :
-		setPoint = setPointCm;
-		break;
-
-		case 50 :
-		setPoint = setPointCm;
-		break;
-
-		default:
-		setPoint = CENTIMETER_DEFAULT;
-		break;
-		printf("Invalid distance\n");
-	}
 
 	// Wait here untill start signal is sent from matlab
 	while (!uart_is_rx_ready (CONF_UART)){
