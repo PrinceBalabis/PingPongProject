@@ -41,31 +41,31 @@ int ADCLinearValues()
 	}
 	int tempADCValue = adc_filter_values_total / 5; // Get the average
 	
-	if (tempADCValue <= 290)
+	if (tempADCValue <= CENTIMETER_50_MAX)
 	{
 		return 50;
-	} else if(tempADCValue > 290 && tempADCValue <= 310)
+	} else if(tempADCValue > CENTIMETER_50_MAX && tempADCValue <= CENTIMETER_45_MAX)
 	{
 		return 45;
-	}else if(tempADCValue > 310 && tempADCValue <= 340)
+	}else if(tempADCValue > CENTIMETER_45_MAX && tempADCValue <= CENTIMETER_40_MAX)
 	{
 		return 40;
-	}else if(tempADCValue > 340 && tempADCValue <= 360)
+	}else if(tempADCValue > CENTIMETER_40_MAX && tempADCValue <= CENTIMETER_35_MAX)
 	{
 		return 35;
-	}else if(tempADCValue > 360 && tempADCValue <= 405)
+	}else if(tempADCValue > CENTIMETER_35_MAX && tempADCValue <= CENTIMETER_30_MAX)
 	{
 		return 30;
-	}else if(tempADCValue > 405 && tempADCValue <= 470)
+	}else if(tempADCValue > CENTIMETER_30_MAX && tempADCValue <= CENTIMETER_25_MAX)
 	{
 		return 25;
-	}else if(tempADCValue > 470 && tempADCValue <= 525)
+	}else if(tempADCValue > CENTIMETER_25_MAX && tempADCValue <= CENTIMETER_20_MAX)
 	{
 		return 20;
-	}else if(tempADCValue > 525 && tempADCValue <= 650)
+	}else if(tempADCValue > CENTIMETER_20_MAX && tempADCValue <= CENTIMETER_15_MAX)
 	{
 		return 15;
-	}else if(tempADCValue > 650)
+	}else if(tempADCValue > CENTIMETER_15_MAX)
 	{
 		return 10;
 	}

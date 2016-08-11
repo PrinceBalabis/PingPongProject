@@ -5,7 +5,7 @@ PWM för Motor: Kabel mellan Digitalpin 3 till Digitalpin 7
 Tanka ner Github repot
 
 "Add to path" i matlab för matlabkoden
-C:\Users\Prince\Documents\GitHub\PingPongProject\Matlab
+Y:\Workspaces\PingPongProject\Matlab
 
 Kalibrera sensorn vinkel på systemet(för högt eller för lågt ger fel sensorvärden)
 

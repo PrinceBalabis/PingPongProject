@@ -94,5 +94,6 @@ void sendValues(){
 	printf("%i\n\r", error);
 	printf("%i\n\r", pwm_val);
 	printf("%i\n\r", distance);
+	//printf("%i\n\r", adc_filter_values[4]);
 	printf("%i\n\r", setPoint);
 }
