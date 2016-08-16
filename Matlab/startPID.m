@@ -38,7 +38,7 @@ x = 1:N;
 flushinput(arduino);
 flushoutput(arduino);
 
-%Convert to values arduino can read
+%Convert to values arduicno can read
 Kp = Kp*divider;
 Ki = Ki*divider;
 Kd = Kd*divider;
