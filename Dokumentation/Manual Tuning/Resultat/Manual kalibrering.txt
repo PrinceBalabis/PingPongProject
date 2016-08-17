@@ -1,34 +1,11 @@
-Sensor: Signal A8, Spänning 5V, GND
-Motor: Shield output A & Pin 3 på motorshielden ska ej kopplas till arduino!(böj pinnen utåt)
-PWM för Motor: Kabel mellan Digitalpin 3 till Digitalpin 7
+Manual Kalibrering(ej Zieglerâ€“Nichols method):
+kolla GIF, "PID_Compensation_Animated_MANUAL_TUNING" fÃ¶r en animation av hur manual tuning fungerar
+Vid manual kalibrering bÃ¶rjar man alltid med konstanterna pÃ¥ noll och sakta Ã¶kar
+P-kalibrering: Oscillation Ã¤r ok men Ã¶vershoot ska knappt Ã¶verstiga setpoint
+I-kalibrering: Oscillation Ã¤r ok och Ã¶verstigningen Ã¤r ej viktigt, viktigt Ã¤r att minsta vÃ¤rdet(i oscillationen) nÃ¤rmar sig setpoint
+D-kalibrering: Oscillationen ska nÃ¤stan helt bort, bollen ska ligga vid setpoint
 
-Tanka ner Github repot
-
-"Add to path" i matlab för matlabkoden
-Y:\Workspaces\PingPongProject\Matlab
-
-Kalibrera sensorn vinkel på systemet(för högt eller för lågt ger fel sensorvärden)
-
-Kalibrera sensor för cm(kolla i global_variables.h CALIBRATION CONFIG section)
-Använd Arduino IDE Serial Monitor och skicka en nolla("0") för att starta debug mode
-
-
-
-
-
-
-
-
-
-
-Manual Kalibrering(ej Ziegler–Nichols method):
-kolla GIF, "PID_Compensation_Animated_MANUAL_TUNING" för en animation av hur manual tuning fungerar
-Vid manual kalibrering börjar man alltid med konstanterna på noll och sakta ökar
-P-kalibrering: Oscillation är ok men övershoot ska knappt överstiga setpoint
-I-kalibrering: Oscillation är ok och överstigningen är ej viktigt, viktigt är att minsta värdet(i oscillationen) närmar sig setpoint
-D-kalibrering: Oscillationen ska nästan helt bort, bollen ska ligga vid setpoint
-
-BRA VÄRDEN
+BRA VÃ„RDEN
 Gain: 0.5
 P : 0.3
 I : 0.3
