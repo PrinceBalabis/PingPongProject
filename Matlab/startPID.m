@@ -7,14 +7,15 @@ function [] = startPID(port, dT, T, setpoint, Kp, Ki, Kd)
 % Ki,I-constant to send ex '2.0'
 % Kd,D-constant to send ex '15.0'
 
+
 % Example
-% startPID('COM13', 0.3, 30, 30, 1.1, 1.0, 15.0)
+% startPID('COM4', 0.3, 30, 30, 0.1, 0.9, 0.6)
 
 %Before running, dont forget to put something to disable reflection of
 %motor to sensor(like a scarf or something)
 
 %Make sure the same divider is set for Arduino
-divider = 10;
+divider = 100;
 
 arduino = serial(port, 'BaudRate', 115200,'databits', 8);
 fopen(arduino);
@@ -37,7 +38,7 @@ x = 1:N;
 flushinput(arduino);
 flushoutput(arduino);
 
-%Convert to values arduino can read
+%Convert to values arduicno can read
 Kp = Kp*divider;
 Ki = Ki*divider;
 Kd = Kd*divider;
@@ -90,10 +91,11 @@ for i = 1:N
         tq(i)=1;
     end
     
-    disp(['NuTid: '  num2str(tq(i))  9 9 'Error: ' num2str(error)  9 9 'Utsignal: ' num2str(pid_output)  9 9 'Sensor Distans: '  num2str(distance)  9 9 'Setpoint: '  num2str(setPoint)]);
+    disp(['Tid: '  num2str(tq(i))  9 9 'Error: ' num2str(error)  9 9 'Utsignal: ' num2str(pid_output)  9 9 'Sensor Distans: '  num2str(distance)  9 9 'Setpoint: '  num2str(setPoint)]);
     
     plot(tq, sp,'magenta',tq,e,'red',tq,o,'black',tq,d,'blue');
-    ylim([-3000 4000 ]);
+    ylim([-100 100 ]);
+    set(gca,'YDir','reverse');
     xlabel('Time(seconds)');
     ylabel('Position');
     title('PingPong System');

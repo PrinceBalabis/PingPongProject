@@ -1,0 +1,22 @@
+Sensor: Signal A8, Spänning 5V, GND
+Motor: Shield output A & Pin 3 på motorshielden ska ej kopplas till arduino!(böj pinnen utåt)
+PWM för Motor: Kabel mellan Digitalpin 3 till Digitalpin 7
+
+Tanka ner Github repot
+
+"Add to path" i matlab för matlabkoden
+Y:\Workspaces\PingPongProject\Matlab
+
+Kalibrera sensorn vinkel på systemet(för högt eller för lågt ger fel sensorvärden)
+
+Kalibrera sensor för cm(kolla i global_variables.h CALIBRATION CONFIG section)
+Använd Arduino IDE Serial Monitor och skicka en nolla("0") för att starta debug mode
+
+
+
+
+
+
+
+
+

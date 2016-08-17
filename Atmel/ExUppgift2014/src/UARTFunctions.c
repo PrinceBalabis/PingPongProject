@@ -26,14 +26,12 @@ void configure_console(void){
 void getPIDValues()
 {
 	// divier which is used to decode encoded doubles sent from Matlab
-	const uint8_t divider = 10;
+	const uint8_t divider = 100;
 
 	isMatlab = 0; // 1 for matlab, 0 for terminal debugging
 	uint16_t kP_Gain_temp = 0;
-	uint16_t kP_Gain_temp2 = 0;
 	uint16_t kI_Gain_temp = 0;
 	uint16_t kD_Gain_temp = 0;
-	uint16_t setPointCm = 0;
 	while (!uart_is_rx_ready (CONF_UART)){
 		vTaskDelay(1);
 	}
@@ -45,12 +43,12 @@ void getPIDValues()
 		kP_Gain_temp = KP_GAIN_DEBUGGING;
 		kI_Gain_temp = KI_GAIN_DEBUGGING;
 		kD_Gain_temp = KD_GAIN_DEBUGGING;
-		setPointCm = SETPOINT_DEBUGGING;
+		setPoint = SETPOINT_DEBUGGING;
 		printf("Preset values:\n");
 		printf("kP: %u\n\r", (uint16_t)(kP_Gain_temp));
 		printf("kI: %u\n\r", (uint16_t)(kI_Gain_temp));
 		printf("kD: %u\n\r", (uint16_t)(kD_Gain_temp));
-		printf("SetpointCm: %u\n\r", setPointCm);
+		printf("Setpoint: %u\n\r", setPoint);
 		} else {
 		while (!uart_is_rx_ready (CONF_UART)){
 			vTaskDelay(1);
@@ -68,40 +66,13 @@ void getPIDValues()
 		while (!uart_is_rx_ready (CONF_UART)){
 			vTaskDelay(1);
 		};
-		uart_read(CONF_UART, &setPointCm);
+		uart_read(CONF_UART, &setPoint);
 	}
 
 	//Convert to correct data types
 	kP_Gain = (double) ((double) kP_Gain_temp / divider);
 	kI_Gain = (double) (kI_Gain_temp / divider);
 	kD_Gain = (double) (kD_Gain_temp / divider);
-
-	switch(setPointCm){
-		case 10 :
-		setPoint = CENTIMETER_10;
-		break;
-
-		case 20:
-		setPoint = CENTIMETER_20;
-		break;
-
-		case 30 :
-		setPoint = CENTIMETER_30;
-		break;
-
-		case 40 :
-		setPoint = CENTIMETER_40;
-		break;
-
-		case 50 :
-		setPoint = CENTIMETER_50;
-		break;
-
-		default:
-		setPoint = CENTIMETER_DEFAULT;
-		break;
-		printf("Invalid distance\n");
-	}
 
 	// Wait here untill start signal is sent from matlab
 	while (!uart_is_rx_ready (CONF_UART)){
@@ -119,8 +90,10 @@ void sendValues(){
 	if(!isMatlab){
 		printf("Values:\n");
 	}
+	//printf("%i\n\r", (int32_t)((float)(10000*D_Output)));
 	printf("%i\n\r", error);
-	printf("%i\n\r", output_value);
-	printf("%i\n\r", distance);
+	printf("%i\n\r", pwm_val);
+	//printf("%i\n\r", distance);
+	printf("%i\n\r", adc_filter_values[4]);
 	printf("%i\n\r", setPoint);
 }

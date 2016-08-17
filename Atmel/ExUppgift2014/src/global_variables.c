@@ -20,5 +20,11 @@ uint8_t isMatlab = 1; // 1 for matlab, 0 for terminal debugging
 int32_t output_value = 0;
 int32_t distance = 0;
 int32_t error = 0;
-int32_t error_sum = 0;
+float I_Output = 0;
+float D_Output = 0;
 int32_t error_old = 0;
+int32_t pwm_val = 0;
+int32_t adc_filter_values[] = {1,1,1,1,1}; // 5 values array
+	
+	
+int distanceTemp;

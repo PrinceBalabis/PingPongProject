@@ -21,10 +21,15 @@ void PIDRegulationTask (void *pvParameters)
 	portTickType xLastWakeTime = xTaskGetTickCount();
 	const portTickType xFrequency =  DTIME_MS; // Run between 50-100ms
 
-vTaskDelay(1000);
+	vTaskDelay(1000);
+
+	//set constants
+	kD_Gain = kD_Gain/DT_SECONDS;
+
 
 	for(;;){
 		vTaskDelayUntil(&xLastWakeTime,xFrequency);	// Samplingstid
 		PIDRegulate(); // Run PID
+		//PRegulatorZN(); // Zieg
 	}
 }

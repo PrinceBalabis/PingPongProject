@@ -10,5 +10,8 @@
 
 void ADCSetup(void);
 int ADCReadSensor(void);
+int ADCLinearValues(void);
+
+#define M 3
 
 #endif /* ADCCUSTOM_H_ */

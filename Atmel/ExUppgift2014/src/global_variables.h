@@ -10,21 +10,25 @@
 #define GLOBAL_VARIABLES_H_
 // -------------------------------CALIBRATION CONFIG-------------------------------------
 // CALIBRATION CONFIG AREA
+
+//PWM Change Gain
+#define PWM_CHANGE_GAIN 0.1
+
+// The ADC value at each centimeter. Also used for the setpoint function to convert cm to adc value for sensor
+#define CENTIMETER_15_MAX 780
+#define CENTIMETER_20_MAX 560
+#define CENTIMETER_25_MAX 472
+#define CENTIMETER_30_MAX 430
+#define CENTIMETER_35_MAX 380
+#define CENTIMETER_40_MAX 350
+#define CENTIMETER_45_MAX 320
+#define CENTIMETER_50_MAX 292
+//#define CENTIMETER_DEFAULT 30
+
 //Minimum/Maximum PWM output from PID-regulation
 // #define PID_PWM_MIN 360
 #define PID_PWM_MIN 0
-#define PID_PWM_MAX 999
-
-// Setpoint ADC to centimeter
-#define CENTIMETER_10 3500
-#define CENTIMETER_20 1740
-#define CENTIMETER_30 1000
-#define CENTIMETER_40 790
-#define CENTIMETER_50 770
-#define CENTIMETER_DEFAULT 1000
-
-// How many samples to acquire for filter at each PID run.
-#define FILTER_AVERAGE_SAMPLES 50
+#define PID_PWM_MAX 100
 
 // ------------------------------CALIBRATION CONFIG--------------------------------------
 
@@ -60,9 +64,9 @@ extern double kI_Gain;
 extern double kD_Gain;
 extern int32_t setPoint;
 
-// dt �r 50ms eller 0.05s
-#define DTIME_MS 50
-#define DT_SECONDS 0.05
+// dt �r 50ms-100ms
+#define DTIME_MS 100
+#define DT_SECONDS 0.1
 
 // Convert ms to s
 //#define DTIME_SECONDS DTIME_MS/1000
@@ -71,8 +75,13 @@ extern uint8_t isMatlab;
 extern int32_t output_value;
 extern int32_t distance;
 extern int32_t error;
-extern int32_t error_sum;
+extern float I_Output;
+extern float D_Output;
 extern int32_t error_old;
+extern int32_t pwm_val;
+extern int32_t adc_filter_values[];
+
+extern int distanceTemp;
 
 /* PWM */
 pwm_channel_t pwm_channel;
