@@ -17,23 +17,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   6 .comment      00000059  00000000  00000000  000209e5  2**0
                   CONTENTS, READONLY
-  7 .debug_info   00016a68  00000000  00000000  00020a3e  2**0
+  7 .debug_info   00016a5d  00000000  00000000  00020a3e  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_abbrev 00003bfa  00000000  00000000  000374a6  2**0
+  8 .debug_abbrev 00003bf5  00000000  00000000  0003749b  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_loc    00008a4f  00000000  00000000  0003b0a0  2**0
+  9 .debug_loc    00008a4f  00000000  00000000  0003b090  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_aranges 00001000  00000000  00000000  00043aef  2**0
+ 10 .debug_aranges 00001000  00000000  00000000  00043adf  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000ec8  00000000  00000000  00044aef  2**0
+ 11 .debug_ranges 00000ec8  00000000  00000000  00044adf  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_macro  0001d1c6  00000000  00000000  000459b7  2**0
+ 12 .debug_macro  0001d1c6  00000000  00000000  000459a7  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_line   0001717f  00000000  00000000  00062b7d  2**0
+ 13 .debug_line   0001717f  00000000  00000000  00062b6d  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_str    0006bd60  00000000  00000000  00079cfc  2**0
+ 14 .debug_str    0006bd60  00000000  00000000  00079cec  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_frame  00003034  00000000  00000000  000e5a5c  2**2
+ 15 .debug_frame  00003034  00000000  00000000  000e5a4c  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -267,108 +267,109 @@ int ADCLinearValues()
    80214:	089b      	lsrs	r3, r3, #2
 	
 	if (tempADCValue <= CENTIMETER_50_MAX)
-   80216:	f5b3 7f92 	cmp.w	r3, #292	; 0x124
-   8021a:	dd1f      	ble.n	8025c <ADCLinearValues+0x78>
+   80216:	2b82      	cmp	r3, #130	; 0x82
+   80218:	dd1f      	ble.n	8025a <ADCLinearValues+0x76>
 	{
 		return 50;
 	} else if(tempADCValue > CENTIMETER_50_MAX && tempADCValue <= CENTIMETER_45_MAX)
-   8021c:	f2a3 1225 	subw	r2, r3, #293	; 0x125
-   80220:	2a1b      	cmp	r2, #27
-   80222:	d91d      	bls.n	80260 <ADCLinearValues+0x7c>
+   8021a:	f1a3 0283 	sub.w	r2, r3, #131	; 0x83
+   8021e:	2a13      	cmp	r2, #19
+   80220:	d91d      	bls.n	8025e <ADCLinearValues+0x7a>
 	{
 		return 45;
 	}else if(tempADCValue > CENTIMETER_45_MAX && tempADCValue <= CENTIMETER_40_MAX)
-   80224:	f2a3 1241 	subw	r2, r3, #321	; 0x141
-   80228:	2a1d      	cmp	r2, #29
-   8022a:	d91b      	bls.n	80264 <ADCLinearValues+0x80>
+   80222:	f1a3 0297 	sub.w	r2, r3, #151	; 0x97
+   80226:	2a27      	cmp	r2, #39	; 0x27
+   80228:	d91b      	bls.n	80262 <ADCLinearValues+0x7e>
 	{
 		return 40;
 	}else if(tempADCValue > CENTIMETER_40_MAX && tempADCValue <= CENTIMETER_35_MAX)
-   8022c:	f2a3 125f 	subw	r2, r3, #351	; 0x15f
-   80230:	2a1d      	cmp	r2, #29
-   80232:	d919      	bls.n	80268 <ADCLinearValues+0x84>
+   8022a:	f1a3 02bf 	sub.w	r2, r3, #191	; 0xbf
+   8022e:	2a31      	cmp	r2, #49	; 0x31
+   80230:	d919      	bls.n	80266 <ADCLinearValues+0x82>
 	{
 		return 35;
 	}else if(tempADCValue > CENTIMETER_35_MAX && tempADCValue <= CENTIMETER_30_MAX)
-   80234:	f2a3 127d 	subw	r2, r3, #381	; 0x17d
-   80238:	2a31      	cmp	r2, #49	; 0x31
-   8023a:	d917      	bls.n	8026c <ADCLinearValues+0x88>
+   80232:	f1a3 02f1 	sub.w	r2, r3, #241	; 0xf1
+   80236:	2a4f      	cmp	r2, #79	; 0x4f
+   80238:	d917      	bls.n	8026a <ADCLinearValues+0x86>
 	{
 		return 30;
 	}else if(tempADCValue > CENTIMETER_30_MAX && tempADCValue <= CENTIMETER_25_MAX)
-   8023c:	f2a3 12af 	subw	r2, r3, #431	; 0x1af
-   80240:	2a29      	cmp	r2, #41	; 0x29
-   80242:	d915      	bls.n	80270 <ADCLinearValues+0x8c>
+   8023a:	f2a3 1241 	subw	r2, r3, #321	; 0x141
+   8023e:	2a81      	cmp	r2, #129	; 0x81
+   80240:	d915      	bls.n	8026e <ADCLinearValues+0x8a>
 	{
 		return 25;
 	}else if(tempADCValue > CENTIMETER_25_MAX && tempADCValue <= CENTIMETER_20_MAX)
-   80244:	f2a3 12d9 	subw	r2, r3, #473	; 0x1d9
-   80248:	2a57      	cmp	r2, #87	; 0x57
-   8024a:	d913      	bls.n	80274 <ADCLinearValues+0x90>
+   80242:	f2a3 12c3 	subw	r2, r3, #451	; 0x1c3
+   80246:	2a8b      	cmp	r2, #139	; 0x8b
+   80248:	d913      	bls.n	80272 <ADCLinearValues+0x8e>
 	{
 		return 20;
 	}else if(tempADCValue > CENTIMETER_20_MAX && tempADCValue <= CENTIMETER_15_MAX)
-   8024c:	f2a3 2231 	subw	r2, r3, #561	; 0x231
-   80250:	2adb      	cmp	r2, #219	; 0xdb
-   80252:	d911      	bls.n	80278 <ADCLinearValues+0x94>
+   8024a:	f2a3 224f 	subw	r2, r3, #591	; 0x24f
+   8024e:	2abd      	cmp	r2, #189	; 0xbd
+   80250:	d911      	bls.n	80276 <ADCLinearValues+0x92>
 	{
 		return 15;
 	}else if(tempADCValue > CENTIMETER_15_MAX)
-   80254:	f5b3 7f43 	cmp.w	r3, #780	; 0x30c
-   80258:	dc10      	bgt.n	8027c <ADCLinearValues+0x98>
+   80252:	f5b3 7f43 	cmp.w	r3, #780	; 0x30c
+   80256:	dc10      	bgt.n	8027a <ADCLinearValues+0x96>
 	{
 		return 10;
 	}
-   8025a:	bd10      	pop	{r4, pc}
+   80258:	bd10      	pop	{r4, pc}
 	}
 	int tempADCValue = adc_filter_values_total / 5; // Get the average
 	
 	if (tempADCValue <= CENTIMETER_50_MAX)
 	{
 		return 50;
-   8025c:	2032      	movs	r0, #50	; 0x32
-   8025e:	bd10      	pop	{r4, pc}
+   8025a:	2032      	movs	r0, #50	; 0x32
+   8025c:	bd10      	pop	{r4, pc}
 	} else if(tempADCValue > CENTIMETER_50_MAX && tempADCValue <= CENTIMETER_45_MAX)
 	{
 		return 45;
-   80260:	202d      	movs	r0, #45	; 0x2d
-   80262:	bd10      	pop	{r4, pc}
+   8025e:	202d      	movs	r0, #45	; 0x2d
+   80260:	bd10      	pop	{r4, pc}
 	}else if(tempADCValue > CENTIMETER_45_MAX && tempADCValue <= CENTIMETER_40_MAX)
 	{
 		return 40;
-   80264:	2028      	movs	r0, #40	; 0x28
-   80266:	bd10      	pop	{r4, pc}
+   80262:	2028      	movs	r0, #40	; 0x28
+   80264:	bd10      	pop	{r4, pc}
 	}else if(tempADCValue > CENTIMETER_40_MAX && tempADCValue <= CENTIMETER_35_MAX)
 	{
 		return 35;
-   80268:	2023      	movs	r0, #35	; 0x23
-   8026a:	bd10      	pop	{r4, pc}
+   80266:	2023      	movs	r0, #35	; 0x23
+   80268:	bd10      	pop	{r4, pc}
 	}else if(tempADCValue > CENTIMETER_35_MAX && tempADCValue <= CENTIMETER_30_MAX)
 	{
 		return 30;
-   8026c:	201e      	movs	r0, #30
-   8026e:	bd10      	pop	{r4, pc}
+   8026a:	201e      	movs	r0, #30
+   8026c:	bd10      	pop	{r4, pc}
 	}else if(tempADCValue > CENTIMETER_30_MAX && tempADCValue <= CENTIMETER_25_MAX)
 	{
 		return 25;
-   80270:	2019      	movs	r0, #25
-   80272:	bd10      	pop	{r4, pc}
+   8026e:	2019      	movs	r0, #25
+   80270:	bd10      	pop	{r4, pc}
 	}else if(tempADCValue > CENTIMETER_25_MAX && tempADCValue <= CENTIMETER_20_MAX)
 	{
 		return 20;
-   80274:	2014      	movs	r0, #20
-   80276:	bd10      	pop	{r4, pc}
+   80272:	2014      	movs	r0, #20
+   80274:	bd10      	pop	{r4, pc}
 	}else if(tempADCValue > CENTIMETER_20_MAX && tempADCValue <= CENTIMETER_15_MAX)
 	{
 		return 15;
-   80278:	200f      	movs	r0, #15
-   8027a:	bd10      	pop	{r4, pc}
+   80276:	200f      	movs	r0, #15
+   80278:	bd10      	pop	{r4, pc}
 	}else if(tempADCValue > CENTIMETER_15_MAX)
 	{
 		return 10;
-   8027c:	200a      	movs	r0, #10
+   8027a:	200a      	movs	r0, #10
 	}
-   8027e:	bd10      	pop	{r4, pc}
+   8027c:	bd10      	pop	{r4, pc}
+   8027e:	bf00      	nop
    80280:	20070130 	.word	0x20070130
    80284:	000801b5 	.word	0x000801b5
    80288:	cccccccd 	.word	0xcccccccd
@@ -3539,12 +3540,12 @@ void sendValues(){
    81194:	6819      	ldr	r1, [r3, #0]
    81196:	4628      	mov	r0, r5
    81198:	47a0      	blx	r4
-	//printf("%i\n\r", distance);
-	printf("%i\n\r", adc_filter_values[4]);
+	printf("%i\n\r", distance); // cm
    8119a:	4b0a      	ldr	r3, [pc, #40]	; (811c4 <sendValues+0x4c>)
-   8119c:	6919      	ldr	r1, [r3, #16]
+   8119c:	6819      	ldr	r1, [r3, #0]
    8119e:	4628      	mov	r0, r5
    811a0:	47a0      	blx	r4
+	//printf("%i\n\r", adc_filter_values[4]); // ADC värden
 	printf("%i\n\r", setPoint);
    811a2:	4b09      	ldr	r3, [pc, #36]	; (811c8 <sendValues+0x50>)
    811a4:	6819      	ldr	r1, [r3, #0]
@@ -3557,7 +3558,7 @@ void sendValues(){
    811b8:	000868a8 	.word	0x000868a8
    811bc:	20070a60 	.word	0x20070a60
    811c0:	20070a58 	.word	0x20070a58
-   811c4:	20070130 	.word	0x20070130
+   811c4:	20070a5c 	.word	0x20070a5c
    811c8:	20070a88 	.word	0x20070a88
 
 000811cc <SerialComTask>:

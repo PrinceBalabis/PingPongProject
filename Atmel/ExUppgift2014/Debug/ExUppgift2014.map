@@ -10305,7 +10305,7 @@ OUTPUT(ExUppgift2014.elf elf32-littlearm)
  .comment       0x00000059       0x5a src/ASF/sam/drivers/uart/uart.o
  .comment       0x00000059       0x5a src/main.o
 
-.debug_info     0x00000000    0x16a68
+.debug_info     0x00000000    0x16a5d
  .debug_info    0x00000000     0x11e5 src/ADCCustom.o
  .debug_info    0x000011e5      0x79d src/ASF/common/services/clock/sam3x/sysclk.o
  .debug_info    0x00001982      0x1bb src/ASF/common/utils/stdio/read.o
@@ -10323,20 +10323,20 @@ OUTPUT(ExUppgift2014.elf elf32-littlearm)
  .debug_info    0x00009ef2      0xdff src/PIDRegulation.o
  .debug_info    0x0000acf1      0xd66 src/PIDTask.o
  .debug_info    0x0000ba57     0x1987 src/PWMCustom.o
- .debug_info    0x0000d3de     0x1d52 src/UARTFunctions.o
- .debug_info    0x0000f130      0xed8 src/UARTTask.o
- .debug_info    0x00010008      0x2b7 src/ASF/thirdparty/freertos/freertos-7.3.0/source/list.o
- .debug_info    0x000102bf      0x3a4 src/ASF/thirdparty/freertos/freertos-7.3.0/source/portable/gcc/sam/port.o
- .debug_info    0x00010663      0x38d src/ASF/thirdparty/freertos/freertos-7.3.0/source/portable/memmang/heap_4.o
- .debug_info    0x000109f0      0xe99 src/ASF/thirdparty/freertos/freertos-7.3.0/source/queue.o
- .debug_info    0x00011889     0x17fa src/ASF/thirdparty/freertos/freertos-7.3.0/source/tasks.o
- .debug_info    0x00013083      0xb4b src/ASF/thirdparty/freertos/freertos-7.3.0/source/timers.o
- .debug_info    0x00013bce      0x1c0 src/ASF/common/utils/stdio/write.o
- .debug_info    0x00013d8e     0x1592 src/ASF/sam/drivers/pwm/pwm.o
- .debug_info    0x00015320      0x889 src/ASF/sam/drivers/uart/uart.o
- .debug_info    0x00015ba9      0xebf src/main.o
+ .debug_info    0x0000d3de     0x1d47 src/UARTFunctions.o
+ .debug_info    0x0000f125      0xed8 src/UARTTask.o
+ .debug_info    0x0000fffd      0x2b7 src/ASF/thirdparty/freertos/freertos-7.3.0/source/list.o
+ .debug_info    0x000102b4      0x3a4 src/ASF/thirdparty/freertos/freertos-7.3.0/source/portable/gcc/sam/port.o
+ .debug_info    0x00010658      0x38d src/ASF/thirdparty/freertos/freertos-7.3.0/source/portable/memmang/heap_4.o
+ .debug_info    0x000109e5      0xe99 src/ASF/thirdparty/freertos/freertos-7.3.0/source/queue.o
+ .debug_info    0x0001187e     0x17fa src/ASF/thirdparty/freertos/freertos-7.3.0/source/tasks.o
+ .debug_info    0x00013078      0xb4b src/ASF/thirdparty/freertos/freertos-7.3.0/source/timers.o
+ .debug_info    0x00013bc3      0x1c0 src/ASF/common/utils/stdio/write.o
+ .debug_info    0x00013d83     0x1592 src/ASF/sam/drivers/pwm/pwm.o
+ .debug_info    0x00015315      0x889 src/ASF/sam/drivers/uart/uart.o
+ .debug_info    0x00015b9e      0xebf src/main.o
 
-.debug_abbrev   0x00000000     0x3bfa
+.debug_abbrev   0x00000000     0x3bf5
  .debug_abbrev  0x00000000      0x2b4 src/ADCCustom.o
  .debug_abbrev  0x000002b4      0x241 src/ASF/common/services/clock/sam3x/sysclk.o
  .debug_abbrev  0x000004f5      0x101 src/ASF/common/utils/stdio/read.o
@@ -10354,18 +10354,18 @@ OUTPUT(ExUppgift2014.elf elf32-littlearm)
  .debug_abbrev  0x00001a5b      0x1e9 src/PIDRegulation.o
  .debug_abbrev  0x00001c44      0x249 src/PIDTask.o
  .debug_abbrev  0x00001e8d      0x317 src/PWMCustom.o
- .debug_abbrev  0x000021a4      0x3af src/UARTFunctions.o
- .debug_abbrev  0x00002553      0x244 src/UARTTask.o
- .debug_abbrev  0x00002797       0xfb src/ASF/thirdparty/freertos/freertos-7.3.0/source/list.o
- .debug_abbrev  0x00002892      0x248 src/ASF/thirdparty/freertos/freertos-7.3.0/source/portable/gcc/sam/port.o
- .debug_abbrev  0x00002ada      0x220 src/ASF/thirdparty/freertos/freertos-7.3.0/source/portable/memmang/heap_4.o
- .debug_abbrev  0x00002cfa      0x231 src/ASF/thirdparty/freertos/freertos-7.3.0/source/queue.o
- .debug_abbrev  0x00002f2b      0x2db src/ASF/thirdparty/freertos/freertos-7.3.0/source/tasks.o
- .debug_abbrev  0x00003206      0x27a src/ASF/thirdparty/freertos/freertos-7.3.0/source/timers.o
- .debug_abbrev  0x00003480       0xf5 src/ASF/common/utils/stdio/write.o
- .debug_abbrev  0x00003575      0x245 src/ASF/sam/drivers/pwm/pwm.o
- .debug_abbrev  0x000037ba      0x1bd src/ASF/sam/drivers/uart/uart.o
- .debug_abbrev  0x00003977      0x283 src/main.o
+ .debug_abbrev  0x000021a4      0x3aa src/UARTFunctions.o
+ .debug_abbrev  0x0000254e      0x244 src/UARTTask.o
+ .debug_abbrev  0x00002792       0xfb src/ASF/thirdparty/freertos/freertos-7.3.0/source/list.o
+ .debug_abbrev  0x0000288d      0x248 src/ASF/thirdparty/freertos/freertos-7.3.0/source/portable/gcc/sam/port.o
+ .debug_abbrev  0x00002ad5      0x220 src/ASF/thirdparty/freertos/freertos-7.3.0/source/portable/memmang/heap_4.o
+ .debug_abbrev  0x00002cf5      0x231 src/ASF/thirdparty/freertos/freertos-7.3.0/source/queue.o
+ .debug_abbrev  0x00002f26      0x2db src/ASF/thirdparty/freertos/freertos-7.3.0/source/tasks.o
+ .debug_abbrev  0x00003201      0x27a src/ASF/thirdparty/freertos/freertos-7.3.0/source/timers.o
+ .debug_abbrev  0x0000347b       0xf5 src/ASF/common/utils/stdio/write.o
+ .debug_abbrev  0x00003570      0x245 src/ASF/sam/drivers/pwm/pwm.o
+ .debug_abbrev  0x000037b5      0x1bd src/ASF/sam/drivers/uart/uart.o
+ .debug_abbrev  0x00003972      0x283 src/main.o
 
 .debug_loc      0x00000000     0x8a4f
  .debug_loc     0x00000000       0xd7 src/ADCCustom.o
@@ -10754,7 +10754,7 @@ OUTPUT(ExUppgift2014.elf elf32-littlearm)
  .debug_str     0x00068b49      0x399 src/PWMCustom.o
                               0x64eb0 (size before relaxing)
  .debug_str     0x00068ee2      0x295 src/UARTFunctions.o
-                              0x64fb5 (size before relaxing)
+                              0x64fac (size before relaxing)
  .debug_str     0x00069177       0x8f src/UARTTask.o
                               0x64a57 (size before relaxing)
  .debug_str     0x00069206      0x165 src/ASF/thirdparty/freertos/freertos-7.3.0/source/list.o
@@ -11393,7 +11393,6 @@ adc_enable_interrupt                              src/ASF/sam/drivers/adc/adc.o
 adc_enable_tag                                    src/ASF/sam/drivers/adc/adc.o
 adc_enable_ts                                     src/ASF/sam/drivers/adc/adc.o
 adc_filter_values                                 src/global_variables.o
-                                                  src/UARTFunctions.o
                                                   src/ADCCustom.o
 adc_get_actual_adc_clock                          src/ASF/sam/drivers/adc/adc.o
 adc_get_channel_status                            src/ASF/sam/drivers/adc/adc.o
@@ -11435,6 +11434,7 @@ configure_console                                 src/UARTFunctions.o
 cpu_irq_enter_critical                            src/ASF/common/utils/interrupt/interrupt_sam_nvic.o
 cpu_irq_leave_critical                            src/ASF/common/utils/interrupt/interrupt_sam_nvic.o
 distance                                          src/global_variables.o
+                                                  src/UARTFunctions.o
                                                   src/testFunctions.o
                                                   src/PIDRegulation.o
 distanceTemp                                      src/global_variables.o

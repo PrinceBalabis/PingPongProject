@@ -93,7 +93,7 @@ void sendValues(){
 	//printf("%i\n\r", (int32_t)((float)(10000*D_Output)));
 	printf("%i\n\r", error);
 	printf("%i\n\r", pwm_val);
-	//printf("%i\n\r", distance);
-	printf("%i\n\r", adc_filter_values[4]);
+	printf("%i\n\r", distance); // cm
+	//printf("%i\n\r", adc_filter_values[4]); // ADC värden
 	printf("%i\n\r", setPoint);
 }

@@ -12,17 +12,17 @@
 // CALIBRATION CONFIG AREA
 
 //PWM Change Gain
-#define PWM_CHANGE_GAIN 0.1
+#define PWM_CHANGE_GAIN 0.6
 
 // The ADC value at each centimeter. Also used for the setpoint function to convert cm to adc value for sensor
-#define CENTIMETER_15_MAX 780
-#define CENTIMETER_20_MAX 560
-#define CENTIMETER_25_MAX 472
-#define CENTIMETER_30_MAX 430
-#define CENTIMETER_35_MAX 380
-#define CENTIMETER_40_MAX 350
-#define CENTIMETER_45_MAX 320
-#define CENTIMETER_50_MAX 292
+#define CENTIMETER_15_MAX 780 // På 10
+#define CENTIMETER_20_MAX 590 // På 15
+#define CENTIMETER_25_MAX 450 // På 20
+#define CENTIMETER_30_MAX 320 // På 25
+#define CENTIMETER_35_MAX 240 // På 30
+#define CENTIMETER_40_MAX 190 // På 35
+#define CENTIMETER_45_MAX 150 // På 40
+#define CENTIMETER_50_MAX 130 // På 45
 //#define CENTIMETER_DEFAULT 30
 
 //Minimum/Maximum PWM output from PID-regulation
