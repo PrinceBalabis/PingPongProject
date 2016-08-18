@@ -15,14 +15,23 @@
 #define PWM_CHANGE_GAIN 0.6
 
 // The ADC value at each centimeter. Also used for the setpoint function to convert cm to adc value for sensor
-#define CENTIMETER_15_MAX 780 // På 10
-#define CENTIMETER_20_MAX 590 // På 15
-#define CENTIMETER_25_MAX 450 // På 20
-#define CENTIMETER_30_MAX 320 // På 25
-#define CENTIMETER_35_MAX 240 // På 30
-#define CENTIMETER_40_MAX 190 // På 35
-#define CENTIMETER_45_MAX 150 // På 40
-#define CENTIMETER_50_MAX 130 // På 45
+//KALIBRERING: LÄGG BOLLEN PRECIS OVANFÖR/FÖRBI MOTSVARANDE CM
+#define CENTIMETER_15_MAX 750
+#define CENTIMETER_20_MAX 500
+#define CENTIMETER_25_MAX 390
+#define CENTIMETER_30_MAX 285
+#define CENTIMETER_35_MAX 215
+#define CENTIMETER_40_MAX 170
+#define CENTIMETER_45_MAX 145
+#define CENTIMETER_50_MAX 100
+//#define CENTIMETER_15_MAX 780
+//#define CENTIMETER_20_MAX 590
+//#define CENTIMETER_25_MAX 450
+//#define CENTIMETER_30_MAX 320
+//#define CENTIMETER_35_MAX 240
+//#define CENTIMETER_40_MAX 190 
+//#define CENTIMETER_45_MAX 150
+//#define CENTIMETER_50_MAX 130
 //#define CENTIMETER_DEFAULT 30
 
 //Minimum/Maximum PWM output from PID-regulation

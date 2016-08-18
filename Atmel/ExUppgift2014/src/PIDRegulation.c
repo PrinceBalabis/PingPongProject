@@ -24,10 +24,10 @@ void PIDRegulate(void){
 	
 	// I-regulation
 	I_Output += error*DT_SECONDS;
-	if(I_Output > 20){ // Remove windup induced lag
-		I_Output = 20;
-		} else if(I_Output < -20){
-		I_Output = -20;
+	if(I_Output > 40){ // Remove windup induced lag
+		I_Output = 40;
+		} else if(I_Output < -40){
+		I_Output = -40;
 	}
 	
 	// D-regulation

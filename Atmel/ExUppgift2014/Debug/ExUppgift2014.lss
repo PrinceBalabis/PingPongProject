@@ -267,109 +267,109 @@ int ADCLinearValues()
    80214:	089b      	lsrs	r3, r3, #2
 	
 	if (tempADCValue <= CENTIMETER_50_MAX)
-   80216:	2b82      	cmp	r3, #130	; 0x82
-   80218:	dd1f      	ble.n	8025a <ADCLinearValues+0x76>
+   80216:	2b64      	cmp	r3, #100	; 0x64
+   80218:	dd20      	ble.n	8025c <ADCLinearValues+0x78>
 	{
 		return 50;
 	} else if(tempADCValue > CENTIMETER_50_MAX && tempADCValue <= CENTIMETER_45_MAX)
-   8021a:	f1a3 0283 	sub.w	r2, r3, #131	; 0x83
-   8021e:	2a13      	cmp	r2, #19
-   80220:	d91d      	bls.n	8025e <ADCLinearValues+0x7a>
+   8021a:	f1a3 0265 	sub.w	r2, r3, #101	; 0x65
+   8021e:	2a2c      	cmp	r2, #44	; 0x2c
+   80220:	d91e      	bls.n	80260 <ADCLinearValues+0x7c>
 	{
 		return 45;
 	}else if(tempADCValue > CENTIMETER_45_MAX && tempADCValue <= CENTIMETER_40_MAX)
-   80222:	f1a3 0297 	sub.w	r2, r3, #151	; 0x97
-   80226:	2a27      	cmp	r2, #39	; 0x27
-   80228:	d91b      	bls.n	80262 <ADCLinearValues+0x7e>
+   80222:	f1a3 0292 	sub.w	r2, r3, #146	; 0x92
+   80226:	2a18      	cmp	r2, #24
+   80228:	d91c      	bls.n	80264 <ADCLinearValues+0x80>
 	{
 		return 40;
 	}else if(tempADCValue > CENTIMETER_40_MAX && tempADCValue <= CENTIMETER_35_MAX)
-   8022a:	f1a3 02bf 	sub.w	r2, r3, #191	; 0xbf
-   8022e:	2a31      	cmp	r2, #49	; 0x31
-   80230:	d919      	bls.n	80266 <ADCLinearValues+0x82>
+   8022a:	f1a3 02ab 	sub.w	r2, r3, #171	; 0xab
+   8022e:	2a2c      	cmp	r2, #44	; 0x2c
+   80230:	d91a      	bls.n	80268 <ADCLinearValues+0x84>
 	{
 		return 35;
 	}else if(tempADCValue > CENTIMETER_35_MAX && tempADCValue <= CENTIMETER_30_MAX)
-   80232:	f1a3 02f1 	sub.w	r2, r3, #241	; 0xf1
-   80236:	2a4f      	cmp	r2, #79	; 0x4f
-   80238:	d917      	bls.n	8026a <ADCLinearValues+0x86>
+   80232:	f1a3 02d8 	sub.w	r2, r3, #216	; 0xd8
+   80236:	2a45      	cmp	r2, #69	; 0x45
+   80238:	d918      	bls.n	8026c <ADCLinearValues+0x88>
 	{
 		return 30;
 	}else if(tempADCValue > CENTIMETER_30_MAX && tempADCValue <= CENTIMETER_25_MAX)
-   8023a:	f2a3 1241 	subw	r2, r3, #321	; 0x141
-   8023e:	2a81      	cmp	r2, #129	; 0x81
-   80240:	d915      	bls.n	8026e <ADCLinearValues+0x8a>
+   8023a:	f5a3 728f 	sub.w	r2, r3, #286	; 0x11e
+   8023e:	2a68      	cmp	r2, #104	; 0x68
+   80240:	d916      	bls.n	80270 <ADCLinearValues+0x8c>
 	{
 		return 25;
 	}else if(tempADCValue > CENTIMETER_25_MAX && tempADCValue <= CENTIMETER_20_MAX)
-   80242:	f2a3 12c3 	subw	r2, r3, #451	; 0x1c3
-   80246:	2a8b      	cmp	r2, #139	; 0x8b
-   80248:	d913      	bls.n	80272 <ADCLinearValues+0x8e>
+   80242:	f2a3 1287 	subw	r2, r3, #391	; 0x187
+   80246:	2a6d      	cmp	r2, #109	; 0x6d
+   80248:	d914      	bls.n	80274 <ADCLinearValues+0x90>
 	{
 		return 20;
 	}else if(tempADCValue > CENTIMETER_20_MAX && tempADCValue <= CENTIMETER_15_MAX)
-   8024a:	f2a3 224f 	subw	r2, r3, #591	; 0x24f
-   8024e:	2abd      	cmp	r2, #189	; 0xbd
-   80250:	d911      	bls.n	80276 <ADCLinearValues+0x92>
+   8024a:	f2a3 12f5 	subw	r2, r3, #501	; 0x1f5
+   8024e:	2af9      	cmp	r2, #249	; 0xf9
+   80250:	d912      	bls.n	80278 <ADCLinearValues+0x94>
 	{
 		return 15;
 	}else if(tempADCValue > CENTIMETER_15_MAX)
-   80252:	f5b3 7f43 	cmp.w	r3, #780	; 0x30c
-   80256:	dc10      	bgt.n	8027a <ADCLinearValues+0x96>
+   80252:	f240 22ee 	movw	r2, #750	; 0x2ee
+   80256:	4293      	cmp	r3, r2
+   80258:	dc10      	bgt.n	8027c <ADCLinearValues+0x98>
 	{
 		return 10;
 	}
-   80258:	bd10      	pop	{r4, pc}
+   8025a:	bd10      	pop	{r4, pc}
 	}
 	int tempADCValue = adc_filter_values_total / 5; // Get the average
 	
 	if (tempADCValue <= CENTIMETER_50_MAX)
 	{
 		return 50;
-   8025a:	2032      	movs	r0, #50	; 0x32
-   8025c:	bd10      	pop	{r4, pc}
+   8025c:	2032      	movs	r0, #50	; 0x32
+   8025e:	bd10      	pop	{r4, pc}
 	} else if(tempADCValue > CENTIMETER_50_MAX && tempADCValue <= CENTIMETER_45_MAX)
 	{
 		return 45;
-   8025e:	202d      	movs	r0, #45	; 0x2d
-   80260:	bd10      	pop	{r4, pc}
+   80260:	202d      	movs	r0, #45	; 0x2d
+   80262:	bd10      	pop	{r4, pc}
 	}else if(tempADCValue > CENTIMETER_45_MAX && tempADCValue <= CENTIMETER_40_MAX)
 	{
 		return 40;
-   80262:	2028      	movs	r0, #40	; 0x28
-   80264:	bd10      	pop	{r4, pc}
+   80264:	2028      	movs	r0, #40	; 0x28
+   80266:	bd10      	pop	{r4, pc}
 	}else if(tempADCValue > CENTIMETER_40_MAX && tempADCValue <= CENTIMETER_35_MAX)
 	{
 		return 35;
-   80266:	2023      	movs	r0, #35	; 0x23
-   80268:	bd10      	pop	{r4, pc}
+   80268:	2023      	movs	r0, #35	; 0x23
+   8026a:	bd10      	pop	{r4, pc}
 	}else if(tempADCValue > CENTIMETER_35_MAX && tempADCValue <= CENTIMETER_30_MAX)
 	{
 		return 30;
-   8026a:	201e      	movs	r0, #30
-   8026c:	bd10      	pop	{r4, pc}
+   8026c:	201e      	movs	r0, #30
+   8026e:	bd10      	pop	{r4, pc}
 	}else if(tempADCValue > CENTIMETER_30_MAX && tempADCValue <= CENTIMETER_25_MAX)
 	{
 		return 25;
-   8026e:	2019      	movs	r0, #25
-   80270:	bd10      	pop	{r4, pc}
+   80270:	2019      	movs	r0, #25
+   80272:	bd10      	pop	{r4, pc}
 	}else if(tempADCValue > CENTIMETER_25_MAX && tempADCValue <= CENTIMETER_20_MAX)
 	{
 		return 20;
-   80272:	2014      	movs	r0, #20
-   80274:	bd10      	pop	{r4, pc}
+   80274:	2014      	movs	r0, #20
+   80276:	bd10      	pop	{r4, pc}
 	}else if(tempADCValue > CENTIMETER_20_MAX && tempADCValue <= CENTIMETER_15_MAX)
 	{
 		return 15;
-   80276:	200f      	movs	r0, #15
-   80278:	bd10      	pop	{r4, pc}
+   80278:	200f      	movs	r0, #15
+   8027a:	bd10      	pop	{r4, pc}
 	}else if(tempADCValue > CENTIMETER_15_MAX)
 	{
 		return 10;
-   8027a:	200a      	movs	r0, #10
+   8027c:	200a      	movs	r0, #10
 	}
-   8027c:	bd10      	pop	{r4, pc}
-   8027e:	bf00      	nop
+   8027e:	bd10      	pop	{r4, pc}
    80280:	20070130 	.word	0x20070130
    80284:	000801b5 	.word	0x000801b5
    80288:	cccccccd 	.word	0xcccccccd
@@ -2332,17 +2332,17 @@ void PIDRegulate(void){
    80ae0:	4b62      	ldr	r3, [pc, #392]	; (80c6c <PIDRegulate+0x1d4>)
    80ae2:	4798      	blx	r3
    80ae4:	4607      	mov	r7, r0
-	if(I_Output > 20){ // Remove windup induced lag
+	if(I_Output > 40){ // Remove windup induced lag
    80ae6:	4962      	ldr	r1, [pc, #392]	; (80c70 <PIDRegulate+0x1d8>)
    80ae8:	4b62      	ldr	r3, [pc, #392]	; (80c74 <PIDRegulate+0x1dc>)
    80aea:	4798      	blx	r3
    80aec:	b118      	cbz	r0, 80af6 <PIDRegulate+0x5e>
-		I_Output = 20;
+		I_Output = 40;
    80aee:	4a60      	ldr	r2, [pc, #384]	; (80c70 <PIDRegulate+0x1d8>)
    80af0:	4b5a      	ldr	r3, [pc, #360]	; (80c5c <PIDRegulate+0x1c4>)
    80af2:	601a      	str	r2, [r3, #0]
    80af4:	e00a      	b.n	80b0c <PIDRegulate+0x74>
-		} else if(I_Output < -20){
+		} else if(I_Output < -40){
    80af6:	4960      	ldr	r1, [pc, #384]	; (80c78 <PIDRegulate+0x1e0>)
    80af8:	4638      	mov	r0, r7
    80afa:	4b60      	ldr	r3, [pc, #384]	; (80c7c <PIDRegulate+0x1e4>)
@@ -2357,10 +2357,10 @@ void PIDRegulate(void){
    80b00:	4b56      	ldr	r3, [pc, #344]	; (80c5c <PIDRegulate+0x1c4>)
    80b02:	601f      	str	r7, [r3, #0]
    80b04:	e002      	b.n	80b0c <PIDRegulate+0x74>
-	if(I_Output > 20){ // Remove windup induced lag
-		I_Output = 20;
-		} else if(I_Output < -20){
-		I_Output = -20;
+	if(I_Output > 40){ // Remove windup induced lag
+		I_Output = 40;
+		} else if(I_Output < -40){
+		I_Output = -40;
    80b06:	4a5c      	ldr	r2, [pc, #368]	; (80c78 <PIDRegulate+0x1e0>)
    80b08:	4b54      	ldr	r3, [pc, #336]	; (80c5c <PIDRegulate+0x1c4>)
    80b0a:	601a      	str	r2, [r3, #0]
@@ -2562,9 +2562,9 @@ void PIDRegulate(void){
    80c64:	00082f79 	.word	0x00082f79
    80c68:	00082c15 	.word	0x00082c15
    80c6c:	000834fd 	.word	0x000834fd
-   80c70:	41a00000 	.word	0x41a00000
+   80c70:	42200000 	.word	0x42200000
    80c74:	00083891 	.word	0x00083891
-   80c78:	c1a00000 	.word	0xc1a00000
+   80c78:	c2200000 	.word	0xc2200000
    80c7c:	00083855 	.word	0x00083855
    80c80:	20070a50 	.word	0x20070a50
    80c84:	00083711 	.word	0x00083711
